@@ -14,5 +14,14 @@ class Prayer_request extends Model
         'user_id',
         'status',
     ];
-    
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function prayer()
+    {
+        return $this->belongsTo(Prayer::class);
+    }
 }
+
