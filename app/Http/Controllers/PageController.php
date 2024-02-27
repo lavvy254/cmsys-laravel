@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Prayer;
+use App\Models\Prayer_request;
 
 class PageController extends Controller
 
@@ -34,7 +35,8 @@ class PageController extends Controller
     public function tables()
     {
         $prayers = Prayer::all();
-        return view('pages.tables',compact('prayers'));
+        $prayerrequests = Prayer_request::all();
+        return view('pages.tables',compact('prayers','prayerrequests'));
     }
 
     /**
