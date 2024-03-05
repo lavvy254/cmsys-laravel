@@ -8,16 +8,7 @@ use App\Models\User;
 class PageController extends Controller
 
 {
-    /**
-     * Display icons page
-     *
-     * @return \Illuminate\View\View
-     */
-    public function icons()
-    {
-        return view('pages.icons');
-    }
-
+    
     /**
      * Display maps page
      *

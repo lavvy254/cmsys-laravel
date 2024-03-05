@@ -95,9 +95,9 @@
                                             </div>
                                         </li>
                                         <li >
-                                            <a href="{{ route('pages.icons') }}">
+                                            <a href="{{ route('giving.index') }}">
                                                 <i class="tim-icons icon-atom"></i>
-                                                <p>{{ _('Prayer') }}</p>
+                                                <p>{{ __('giving') }}</p>
                                             </a>
                                         </li>
                                         <li >
@@ -248,7 +248,8 @@
                     <div class="col-4 text-right">
                         <a href="{{ route('user.add') }}" class="btn btn-sm btn-primary">Add user</a>
                     </div>
-                    @if (session('success'))
+                </div>
+                @if (session('success'))
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                     {{session('success')}}
                         <button type="button" class="button-close" data-bs-dismiss="alert" aria-label="close">
@@ -256,7 +257,6 @@
                         </button>
                     </div>
                     @endif
-                </div>
             </div>
             <div class="card-body">
                 

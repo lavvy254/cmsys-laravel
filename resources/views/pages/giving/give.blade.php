@@ -10,6 +10,7 @@
       </div>
       <div class="card-body">
         <div class="table-responsive">
+          <a href="{{route('giving.create')}}" class="btn btn-sm btn-primary">Contribute</a>
           <table class="table tablesorter " id="">
             <thead class=" text-primary">
               <tr>
@@ -22,15 +23,15 @@
                 <th class="align-middle">Action</th>
               </tr>
             </thead>
-           
+            @foreach ($givings as $giving )
             <tbody>
               <tr>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
+              <th>{{$giving->id}}</th>
+                <th>{{$giving->User->fname}}</th>
+                <th>{{$giving->transaction}}</th>
+                <th>{{$giving->type}}</th>
+                <th>{{$giving->amount}}</th>
+                <th>{{$giving->created_at}}</th>
                 </td>
                 <td class="align-middle">
                   <a rel="tooltip" class="btn btn-success btn-link" href="" data-original-title="" title="">
@@ -50,8 +51,8 @@
                   </form>
               </td>
             </tbody>
-             
-             
+             @endforeach 
+             {{ $givings->links('vendor.pagination.bootstrap-5') }}
           </table>
         </div>
       </div>
