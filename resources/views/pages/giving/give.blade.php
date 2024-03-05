@@ -51,6 +51,7 @@
               </td>
             </tbody>
              @endforeach 
+             {{ $givings->links('vendor.pagination.bootstrap-5') }}
           </table>
         </div>
       </div>
