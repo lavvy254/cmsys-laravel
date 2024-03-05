@@ -10,6 +10,7 @@
       </div>
       <div class="card-body">
         <div class="table-responsive">
+          <a href="" class="btn btn-sm btn-primary">Add Prayer</a>
           <table class="table tablesorter " id="">
             <thead class=" text-primary">
               <tr>
