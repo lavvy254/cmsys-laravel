@@ -69,7 +69,6 @@
       <div class="card-header">
         <h4 class="card-title"> REQUESTED PRAYES</h4>
         <p class="category"> Here is a table for prayer requests</p>
-        <a href="#" class="btn btn-sm btn-primary">Add Request</a>
       </div>
       <div class="card-body">
         <div class="table-responsive">
@@ -114,12 +113,8 @@
                               <i class="fas fa-ellipsis-v"></i>
                           </a>
                           <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                            <a class="dropdown-item" href="#">Edit</a>
-                            <form action="" method="POST">
-                                  @csrf
-                                  @method('DELETE')
-                                  <button type="submit" class="dropdown-item" >Delete</button>
-              </tr>
+                            <a class="dropdown-item" href="{{route('prayerrequest.edit',$prayerrequest->id)}}">Edit</a>
+                          </div> 
               <td class="text-center">
 
               </td>
