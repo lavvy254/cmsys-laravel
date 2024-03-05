@@ -49,8 +49,13 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::delete('/users/{user}',[UserController::class,'destroy'])->name('user.delete');
 	Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
 	Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
-	Route::get('/add', [PrayerController::class, 'create'])->name('prayer.add');
-	Route::post('/store', [PrayerController::class, 'store'])->name('prayer.store');
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
+});
+Route::group(['middleware' => 'auth'], function () {
+	Route::get('/create', [PrayerController::class, 'create'])->name('prayer.add');
+	Route::get('/prayer/{prayer}/edit', [PrayerController::class, 'edit'])->name('prayer.edit');
+	Route::put('/prayer/{prayer}', [PrayerController::class, 'update'])->name('prayer.update');
+	Route::post('/store', [PrayerController::class, 'store'])->name('prayer.store');
+    Route::delete('/prayer/{prayer}',[PrayerController::class,'destroy'])->name('prayer.delete');	
 });
 

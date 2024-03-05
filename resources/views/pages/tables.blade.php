@@ -46,8 +46,8 @@
                               <i class="fas fa-ellipsis-v"></i>
                           </a>
                           <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                            <a class="dropdown-item" href="">Edit</a>
-                            <form action="" method="POST">
+                            <a class="dropdown-item" href="{{route('prayer.edit',$prayer->id)}}">Edit</a>
+                            <form action="{{route('prayer.delete',$prayer->id)}}" method="POST">
                                   @csrf
                                   @method('DELETE')
                                   <button type="submit" class="dropdown-item" >Delete</button>

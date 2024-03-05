@@ -289,11 +289,7 @@
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                               <a class="dropdown-item" href="{{route('user.edit',$member->id)}}">Edit</a>
-                                              <form action="{{route('user.delete',$member->id)}}" method="POST">
-                                                     @csrf
-                                                     @method('DELETE')
-                                                    <button type="submit" class="dropdown-item" >Delete</button>
-                                              </form>
+                                              <a class="dropdown-item delete-user" data-user-id="{{$member->id}}" href="#">Delete</a>
                                             </div>
                                             
                                             
@@ -401,7 +397,33 @@
 
     <script src="{{ asset('black') }}/js/black-dashboard.min.js?v=1.0.0"></script>
     <script src="{{ asset('black') }}/js/theme.js"></script>
+    <script>
+    // Add event listener to delete-user links
+    document.querySelectorAll('.delete-user').forEach(item => {
+    item.addEventListener('click', event => {
+        event.preventDefault();
+        if (confirm('Are you sure you want to delete this user?')) {
+            var userId = item.getAttribute('data-user-id');
+            var form = document.createElement('form');
+            form.method = 'POST';
+            form.action = "{{ url('users') }}/" + userId; // Adjusted form action
+            var token = document.createElement('input');
+            token.setAttribute('type', 'hidden');
+            token.setAttribute('name', '_token');
+            token.setAttribute('value', '{{ csrf_token() }}');
+            form.appendChild(token);
+            var method = document.createElement('input');
+            method.setAttribute('type', 'hidden');
+            method.setAttribute('name', '_method');
+            method.setAttribute('value', 'DELETE');
+            form.appendChild(method);
+            document.body.appendChild(form);
+            form.submit();
+        }
+    });
+});
 
+</script>
     @stack('js')
 
     <script>
