@@ -22,10 +22,10 @@
                 <th class="align-middle">Action</th>
               </tr>
             </thead>
-           
+            @foreach ($givings as $giving )
             <tbody>
               <tr>
-                <th></th>
+              <th>{{$giving->id}}</th>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -50,8 +50,7 @@
                   </form>
               </td>
             </tbody>
-             
-             
+             @endforeach 
           </table>
         </div>
       </div>
