@@ -26,11 +26,11 @@
             <tbody>
               <tr>
               <th>{{$giving->id}}</th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
+                <th>{{$giving->User->fname}}</th>
+                <th>{{$giving->transaction}}</th>
+                <th>{{$giving->type}}</th>
+                <th>{{$giving->amount}}</th>
+                <th>{{$giving->created_at}}</th>
                 </td>
                 <td class="align-middle">
                   <a rel="tooltip" class="btn btn-success btn-link" href="" data-original-title="" title="">
