@@ -1,8 +1,9 @@
-@extends('layouts.app', ['class' => 'login-page', 'page' => __('Login Page'), 'contentClass' => 'login-page'])
+
+@extends('layouts.app', ['class' => 'login-page', 'page' => __('Login Page'), 'style' => "background-image: '127.0.0.1:8000/images/church.jpg';background-size: cover;background-repeat: no-repeat;"])
 
 @section('content')
     <div class="col-md-10 text-center ml-auto mr-auto">
-        <h3 class="mb-5">Log in to see how you can speed up your web development with out of the box CRUD for #User Management and more.</h3>
+        {{-- <h3 class="mb-5">Log in to see how you can speed up your web development with out of the box CRUD for #User Management and more.</h3> --}}
     </div>
     <div class="col-lg-4 col-md-6 ml-auto mr-auto">
         <form class="form" method="post" action="{{ route('login') }}">

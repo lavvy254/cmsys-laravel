@@ -60,20 +60,20 @@
                         <div class="sidebar">
                                 <div class="sidebar-wrapper">
                                     <div class="logo">
-                                        <a href="#" class="simple-text logo-mini">{{ __('BD') }}</a>
-                                        <a href="#" class="simple-text logo-normal">{{ __('Black Dashboard') }}</a>
+                                        <a href="#" class="simple-text logo-mini">{{ _('BD') }}</a>
+                                        <a href="#" class="simple-text logo-normal">{{ _('Black Dashboard') }}</a>
                                     </div>
                                     <ul class="nav">
                                         <li>
                                             <a href="{{ route('home') }}">
                                                 <i class="tim-icons icon-chart-pie-36"></i>
-                                                <p>{{ __('Dashboard') }}</p>
+                                                <p>{{ _('Dashboard') }}</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a data-toggle="collapse" href="#laravel-examples" aria-expanded="true">
                                                 <i class="fab fa-laravel" ></i>
-                                                <span class="nav-link-text" >{{ __('Members') }}</span>
+                                                <span class="nav-link-text" >{{ __('Manage Users') }}</span>
                                                 <b class="caret mt-1"></b>
                                             </a>
                             
@@ -82,13 +82,13 @@
                                                     <li >
                                                         <a href="{{route('profile.edit')}}">
                                                             <i class="tim-icons icon-single-02"></i>
-                                                            <p>{{ __('User Profile') }}</p>
+                                                            <p>{{ _('User Profile') }}</p>
                                                         </a>
                                                     </li>
                                                     <li class="active">
                                                         <a href="{{ route('user.index')  }}">
                                                             <i class="tim-icons icon-bullet-list-67"></i>
-                                                            <p>{{ __('Member Management') }}</p>
+                                                            <p>{{ _('User Management') }}</p>
                                                         </a>
                                                     </li>
                                                 </ul>
@@ -97,37 +97,37 @@
                                         <li >
                                             <a href="{{ route('pages.icons') }}">
                                                 <i class="tim-icons icon-atom"></i>
-                                                <p>{{ __('Prayer') }}</p>
+                                                <p>{{ _('Prayer') }}</p>
                                             </a>
                                         </li>
                                         <li >
                                             <a href="{{ route('pages.maps') }}">
                                                 <i class="tim-icons icon-pin"></i>
-                                                <p>{{ __('Maps') }}</p>
+                                                <p>{{ _('Maps') }}</p>
                                             </a>
                                         </li>
                                         <li >
                                             <a href="{{ route('pages.notifications') }}">
                                                 <i class="tim-icons icon-bell-55"></i>
-                                                <p>{{ __('Notifications') }}</p>
+                                                <p>{{ _('Notifications') }}</p>
                                             </a>
                                         </li>
                                         <li >
                                             <a href="{{ route('pages.tables') }}">
                                                 <i class="tim-icons icon-puzzle-10"></i>
-                                                <p>{{ __('Table List') }}</p>
+                                                <p>{{ _('Table List') }}</p>
                                             </a>
                                         </li>
                                         <li >
                                             <a href="{{ route('pages.typography') }}">
                                                 <i class="tim-icons icon-align-center"></i>
-                                                <p>{{ __('Typography') }}</p>
+                                                <p>{{ _('Typography') }}</p>
                                             </a>
                                         </li>
                                         <li >
                                             <a href="{{ route('pages.rtl') }}">
                                                 <i class="tim-icons icon-world"></i>
-                                                <p>{{ __('RTL Support') }}</p>
+                                                <p>{{ _('RTL Support') }}</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -186,7 +186,7 @@
                                         <li class="dropdown nav-item">
                                             <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                                                 <div class="photo">
-                                                    <img src="{{ asset('black') }}/img/anime3.png" alt="{{ __('Profile Photo') }}">
+                                                    <img src="{{-- asset('black') }}/img/anime3.png--}}" alt="{{ __('Profile Photo') }}">
                                                 </div>
                                                 <b class="caret d-none d-lg-block d-xl-block"></b>
                                                 <p class="d-lg-none">{{ __('Log out') }}</p>
@@ -289,7 +289,11 @@
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                               <a class="dropdown-item" href="{{route('user.edit',$member->id)}}">Edit</a>
-                                              <a class="dropdown-item delete-user" data-user-id="{{$member->id}}" href="#">Delete</a>
+                                              <form action="{{route('user.delete',$member->id)}}" method="POST">
+                                                     @csrf
+                                                     @method('DELETE')
+                                                    <button type="submit" class="dropdown-item" >Delete</button>
+                                              </form>
                                             </div>
                                             
                                             
@@ -363,7 +367,7 @@
                 <div class="clearfix"></div>
                 </a>
             </li>
-            <li class="button-container">
+            {{-- <li class="button-container">
                 <a href="https://www.lavvy.com/product/black-dashboard-laravel" target="_blank" class="btn btn-primary btn-block btn-round">Download Now</a>
                 <a href="https://black-dashboard-laravel.lavvy.com/docs/getting-started/laravel-setup.html" target="_blank" class="btn btn-default btn-block btn-round">
                 Documentation
@@ -379,7 +383,7 @@
                 <br>
                 <br>
                 <a class="github-button" href="https://github.com/lavvyofficial/black-dashboard-laravel" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
-            </li>
+            </li> --}}
             </ul>
         </div>
     </div>
@@ -397,33 +401,7 @@
 
     <script src="{{ asset('black') }}/js/black-dashboard.min.js?v=1.0.0"></script>
     <script src="{{ asset('black') }}/js/theme.js"></script>
-    <script>
-    // Add event listener to delete-user links
-    document.querySelectorAll('.delete-user').forEach(item => {
-    item.addEventListener('click', event => {
-        event.preventDefault();
-        if (confirm('Are you sure you want to delete this user?')) {
-            var userId = item.getAttribute('data-user-id');
-            var form = document.createElement('form');
-            form.method = 'POST';
-            form.action = "{{ url('users') }}/" + userId; // Adjusted form action
-            var token = document.createElement('input');
-            token.setAttribute('type', 'hidden');
-            token.setAttribute('name', '_token');
-            token.setAttribute('value', '{{ csrf_token() }}');
-            form.appendChild(token);
-            var method = document.createElement('input');
-            method.setAttribute('type', 'hidden');
-            method.setAttribute('name', '_method');
-            method.setAttribute('value', 'DELETE');
-            form.appendChild(method);
-            document.body.appendChild(form);
-            form.submit();
-        }
-    });
-});
 
-</script>
     @stack('js')
 
     <script>

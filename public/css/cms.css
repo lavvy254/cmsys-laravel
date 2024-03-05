@@ -1,0 +1,20 @@
+@font-face {
+    font-family: 'sedate';
+    src: url(/fonts/sedate.ttf);
+}
+body {
+    /* background-image: url('{{ $bgImage }}') !important; */
+    background-image: url('/images/church.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* display: none; */
+    /* background: red !important; */
+}
+
+/*
+.container {
+  background-image: url('path/to/your/image.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+*/

@@ -152,7 +152,7 @@
               <li class="dropdown nav-item">
                 <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                   <div class="photo">
-                    <img src="{{ asset('black') }}/img/anime3.png" alt="Profile Photo">
+                    <img src="{{-- asset('black') }}/img/anime3.png--}}" alt="Profile Photo">
                   </div>
                   <b class="caret d-none d-lg-block d-xl-block"></b>
                   <p class="d-lg-none">
@@ -605,7 +605,7 @@
             <div class="clearfix"></div>
           </a>
         </li>
-        <li class="adjustments-line text-center color-change">
+        {{-- <li class="adjustments-line text-center color-change">
           <span class="color-label">LIGHT MODE</span>
           <span class="badge light-badge mr-2"></span>
           <span class="badge dark-badge ml-2"></span>
@@ -624,7 +624,7 @@
           <br>
           <br>
           <a class="github-button" href="https://github.com/creativetimofficial/black-dashboard" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
-        </li>
+        </li> --}}
       </ul>
     </div>
   </div>

@@ -385,7 +385,7 @@ demo = {
     });
 
 
-    var ctxGreen = document.getElementById("chartLineGreen").getContext("2d");
+    // var ctxGreen = document.getElementById("chartLineGreen").getContext("2d");
 
     var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
 
@@ -414,12 +414,12 @@ demo = {
       }]
     };
 
-    var myChart = new Chart(ctxGreen, {
-      type: 'line',
-      data: data,
-      options: gradientChartOptionsConfigurationWithTooltipGreen
+    // var myChart = new Chart(ctxGreen, {
+    //   type: 'line',
+    //   data: data,
+    //   options: gradientChartOptionsConfigurationWithTooltipGreen
 
-    });
+    // });
 
 
 
