@@ -95,9 +95,9 @@
                                             </div>
                                         </li>
                                         <li >
-                                            <a href="{{ route('pages.icons') }}">
+                                            <a href="{{ route('giving.index') }}">
                                                 <i class="tim-icons icon-atom"></i>
-                                                <p>{{ _('Icons') }}</p>
+                                                <p>{{ _('giving') }}</p>
                                             </a>
                                         </li>
                                         <li >
