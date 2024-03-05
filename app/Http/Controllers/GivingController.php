@@ -9,7 +9,7 @@ class GivingController extends Controller
 {
     public function index()
     {
-        $givings = Giving::all();
+        $givings = Giving::paginate(5);
         return view('pages.giving.give',compact('givings'));
     }
 }
