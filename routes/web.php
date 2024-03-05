@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PrayerController;
 use App\Http\Controllers\Prayer_requestController;
+use App\Http\Controllers\GivingController;
 
 
 /*
@@ -56,9 +57,15 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/create', [PrayerController::class, 'create'])->name('prayer.add');
 	Route::get('/prayer/{prayer}/edit', [PrayerController::class, 'edit'])->name('prayer.edit');
 	Route::put('/prayer/{prayer}', [PrayerController::class, 'update'])->name('prayer.update');
-	Route::post('/store', [PrayerController::class, 'store'])->name('prayer.store');
+	Route::post('/save', [PrayerController::class, 'store'])->name('prayer.store');
     Route::delete('/prayer/{prayer}',[PrayerController::class,'destroy'])->name('prayer.delete');
 	Route::get('/prayerrequest/{prayer_request}/edit', [Prayer_requestController::class, 'edit'])->name('prayerrequest.edit');
 	Route::put('/prayerrequest/{prayer_request}', [Prayer_requestController::class, 'update'])->name('prayerrequest.update');
 });
+
+Route::group(['middleware' => 'auth'], function () {
+	Route::get('/view', [GivingController::class, 'index'])->name('giving.index');
+	
+});
+
 
