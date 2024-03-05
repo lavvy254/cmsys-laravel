@@ -35,9 +35,9 @@ class PageController extends Controller
      */
     public function tables()
     {
-        $prayers = Prayer::all();
-        $members = User::all();
-        $prayerrequests = Prayer_request::all();
+        $prayers = Prayer::paginate(3);
+        $members = User::paginate(3);
+        $prayerrequests = Prayer_request::paginate(3);
         return view('pages.tables',compact('prayers','prayerrequests','members'));
     }
 

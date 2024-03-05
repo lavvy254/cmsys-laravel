@@ -6,6 +6,8 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PrayerController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +49,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::delete('/users/{user}',[UserController::class,'destroy'])->name('user.delete');
 	Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
 	Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
+	Route::get('/add', [PrayerController::class, 'create'])->name('prayer.add');
+	Route::post('/store', [PrayerController::class, 'store'])->name('prayer.store');
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
 });
 

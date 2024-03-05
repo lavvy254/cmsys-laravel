@@ -6,8 +6,9 @@
     <div class="card ">
       <div class="card-header">
         <h4 class="card-title"> Prayer Table</h4>
-        <a href="#" class="btn btn-sm btn-primary">Add Prayer</a>
+        <a href="{{route('prayer.add')}}"class="btn btn-sm btn-primary">Add Prayer</a>
       </div>
+    
       <div class="card-body">
         <div class="table-responsive">
           <table class="table tablesorter " id="">
@@ -45,7 +46,7 @@
                               <i class="fas fa-ellipsis-v"></i>
                           </a>
                           <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                            <a class="dropdown-item" href="#">Edit</a>
+                            <a class="dropdown-item" href="">Edit</a>
                             <form action="" method="POST">
                                   @csrf
                                   @method('DELETE')
@@ -57,6 +58,7 @@
               </tr>
             </tbody>
             @endforeach
+            {{ $prayers->links('vendor.pagination.bootstrap-5') }}
           </table>
         </div>
       </div>
@@ -67,6 +69,7 @@
       <div class="card-header">
         <h4 class="card-title"> REQUESTED PRAYES</h4>
         <p class="category"> Here is a table for prayer requests</p>
+        <a href="#" class="btn btn-sm btn-primary">Add Request</a>
       </div>
       <div class="card-body">
         <div class="table-responsive">
@@ -104,12 +107,25 @@
                 <td>
                   {{$prayerrequest->status}}
                 </td>
+                </td>
+                  <td class="text-center">
+                        <div class="dropdown">
+                          <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <i class="fas fa-ellipsis-v"></i>
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                            <a class="dropdown-item" href="#">Edit</a>
+                            <form action="" method="POST">
+                                  @csrf
+                                  @method('DELETE')
+                                  <button type="submit" class="dropdown-item" >Delete</button>
               </tr>
               <td class="text-center">
 
               </td>
             </tbody>
              @endforeach
+             {{ $prayerrequests->links('vendor.pagination.bootstrap-5') }}
           </table>
         </div>
       </div>
