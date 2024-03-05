@@ -64,6 +64,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/view', [GivingController::class, 'index'])->name('giving.index');
+	Route::get('/make', [GivingController::class, 'create'])->name('giving.create');
+	Route::post('/keep', [GivingController::class, 'store'])->name('giving.store');
 	
 });
 
