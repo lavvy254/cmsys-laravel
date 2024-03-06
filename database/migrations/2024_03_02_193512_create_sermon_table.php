@@ -11,14 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('giving', function (Blueprint $table) {
+        Schema::create('sermon', function (Blueprint $table) {
             $table->id();
-            $table->enum('type',['tithe','offering'])->default('offering');
-            $table->string('transaction');
-            $table->integer('amount');
-            $table->text('description');
-            // user id is the contributor
-            $table->foreignId('user_id')->on('users')->onDelete('restrict');
+            $table->text('title');
+            $table->text('speaker');
+            $table->unsignedBigInteger('event_id');
             $table->timestamps();
         });
     }
@@ -28,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('giving');
+        Schema::dropIfExists('sermon');
     }
 };

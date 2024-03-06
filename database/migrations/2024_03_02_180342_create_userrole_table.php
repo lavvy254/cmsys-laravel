@@ -11,14 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('prayerrequest', function (Blueprint $table) {
+        Schema::create('userrole', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('prayer_id');
             $table->unsignedBigInteger('user_id');
-            $table->enum('status',['Pending','Answered']);
+            $table->unsignedBigInteger('role_id');
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');
-            $table->foreign('prayer_id')->references('id')->on('prayer')->onDelete('restrict')->onUpdate('cascade');
         });
     }
 
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('prayerrequest');
+        Schema::dropIfExists('userrole');
     }
 };

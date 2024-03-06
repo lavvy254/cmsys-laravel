@@ -15,18 +15,18 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'id' => 1,
+            // 'id' => 1,
             'fname' => 'Lavvy',
             'lname' => 'Wangeci',
-            'age' => '23',
+            'roles' => '1 2 3',
+            'age' => '2000-02-17',
+            'gender_id' => 2,
             'phone' => '0758593172',
-            'gender' => 'female',
-            'role' => 'admin',
             'email' => 'admin@black.com',
             'email_verified_at' => now(),
             'password' => Hash::make('secret'),
-            'created_at' => now(),
-            'updated_at' => now()
+            // 'created_at' => now(),
+            // 'updated_at' => now()
         ]);
     }
 }
