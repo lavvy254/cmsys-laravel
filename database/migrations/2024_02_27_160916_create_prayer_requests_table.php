@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('prayer_request', function (Blueprint $table) {
+        Schema::create('prayer_requests', function (Blueprint $table) {
             $table->id();
             $table->enum('status',['Pending','Answered']);
             $table->timestamps();
             $table->foreignId('requested_by')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');
-            $table->foreignId('prayer_id')->references('id')->on('prayer')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreignId('prayer_id')->constrained('prayers')->onDelete('restrict')->onUpdate('cascade');
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('prayer_request');
+        Schema::dropIfExists('prayer_requests');
     }
 };
