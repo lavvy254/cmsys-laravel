@@ -76,8 +76,7 @@
                     <div class="clearfix"></div>
                     </a>
                 </li>
-<<<<<<< HEAD
-                {{-- <li class="button-container">
+             <li class="button-container">
                     <a href="https://www.lavvy.com/product/black-dashboard-laravel" target="_blank" class="btn btn-primary btn-block btn-round">Download Now</a>
                     <a href="https://demos.lavvy.com/black-dashboard/docs/1.0/getting-started/introduction.html" target="_blank" class="btn btn-default btn-block btn-round">
                     Documentation
@@ -94,9 +93,7 @@
                     <br>
                     <a class="github-button" href="https://github.com/lavvyofficial/black-dashboard-laravel" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
                 </li>
-                </ul> --}}
-=======
->>>>>>> 578509e5437d5dd2a4c7a68cce580c09d0e3202b
+                </ul> 
             </div>
         </div>
         <script src="{{ asset('black') }}/js/core/jquery.min.js"></script>
