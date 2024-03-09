@@ -267,8 +267,8 @@
                          <span class="text-danger">{{ $message}}</span>
                         @enderror
                         <div class="col-md-6 mb-3">
-                            <label for="age" class="form-label">age</label>
-                            <input type="number" class="form-control" id="age" name="age">
+                            <label for="DOB" class="form-label">Date Of Birth</label>
+                            <input type="date" class="form-control" id="DOB" name="DOB">
                         </div>
                         @error('age')
                          <span class="text-danger">{{ $message}}</span>

@@ -29,7 +29,7 @@ class UserController extends Controller
         $request->validate([
             'fname' => 'required|string|max:255',
             'lname' => 'required|string|max:255',
-            'age' => 'required|string|max:255',
+            'DOB' => 'required|date',
             'gender' => 'required|string|max:255',
             'phone' => 'required|string|max:255|unique:users,phone',
             'email' => 'required|string|max:255|unique:users,email',
