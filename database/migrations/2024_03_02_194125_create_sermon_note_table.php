@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('sermon_id');
             $table->text('notes');
             $table->timestamps();
+            $table->foreign('sermon_id')->references('id')->on('sermon')->onDelete('restrict')->onUpdate('cascade');  
         });
     }
 

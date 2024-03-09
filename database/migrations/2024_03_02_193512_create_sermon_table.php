@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('speaker');
             $table->unsignedBigInteger('event_id');
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');  
+            $table->foreign('event_id')->references('id')->on('events')->onDelete('restrict')->onUpdate('cascade');  
         });
     }
 
