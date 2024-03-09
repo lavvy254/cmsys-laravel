@@ -37,7 +37,7 @@
             </li>
             <li>
                 <a data-toggle="collapse" href="#laravel-examples" aria-expanded="true">
-                    <i class="fab fa-laravel" ></i>
+                    <i class="fa fa-object-group" aria-hidden="true"></i>
                     <span class="nav-link-text" >{{ __('Group Management') }}</span>
                     <b class="caret mt-1"></b>
                 </a>
