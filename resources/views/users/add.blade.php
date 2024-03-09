@@ -73,7 +73,7 @@
                                         <li>
                                             <a data-toggle="collapse" href="#laravel-examples" aria-expanded="true">
                                                 <i class="fab fa-laravel" ></i>
-                                                <span class="nav-link-text" >{{ __('Laravel Examples') }}</span>
+                                                <span class="nav-link-text" >{{ __('Manage Users') }}</span>
                                                 <b class="caret mt-1"></b>
                                             </a>
                             
@@ -186,7 +186,7 @@
                                         <li class="dropdown nav-item">
                                             <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                                                 <div class="photo">
-                                                    <img src="{{ asset('black') }}/img/anime3.png" alt="{{ __('Profile Photo') }}">
+                                                    <img src="{{-- asset('black') }}/img/anime3.png--}}" alt="{{ __('Profile Photo') }}">
                                                 </div>
                                                 <b class="caret d-none d-lg-block d-xl-block"></b>
                                                 <p class="d-lg-none">{{ __('Log out') }}</p>

@@ -73,7 +73,7 @@
                                         <li>
                                             <a data-toggle="collapse" href="#laravel-examples" aria-expanded="true">
                                                 <i class="fab fa-laravel" ></i>
-                                                <span class="nav-link-text" >{{ __('Laravel Examples') }}</span>
+                                                <span class="nav-link-text" >{{ __('Manage Users') }}</span>
                                                 <b class="caret mt-1"></b>
                                             </a>
                             
@@ -192,7 +192,7 @@
                                         <li class="dropdown nav-item">
                                             <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                                                 <div class="photo">
-                                                    <img src="{{ asset('black') }}/img/anime3.png" alt="{{ __('Profile Photo') }}">
+                                                    <img src="{{-- asset('black') }}/img/anime3.png--}}" alt="{{ __('Profile Photo') }}">
                                                 </div>
                                                 <b class="caret d-none d-lg-block d-xl-block"></b>
                                                 <p class="d-lg-none">{{ __('Log out') }}</p>
@@ -354,7 +354,7 @@
                 <div class="clearfix"></div>
                 </a>
             </li>
-            <li class="button-container">
+            {{-- <li class="button-container">
                 <a href="https://www.creative-tim.com/product/black-dashboard-laravel" target="_blank" class="btn btn-primary btn-block btn-round">Download Now</a>
                 <a href="https://black-dashboard-laravel.creative-tim.com/docs/getting-started/laravel-setup.html" target="_blank" class="btn btn-default btn-block btn-round">
                 Documentation
@@ -370,7 +370,7 @@
                 <br>
                 <br>
                 <a class="github-button" href="https://github.com/creativetimofficial/black-dashboard-laravel" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
-            </li>
+            </li> --}}
             </ul>
         </div>
     </div>

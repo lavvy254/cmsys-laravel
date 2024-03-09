@@ -39,7 +39,7 @@
                 </div>
                 <div class="card-body">
                     <div class="chart-area">
-                        <canvas id="chartBig1"></canvas>
+                        <canvas id="ph"></canvas>
                     </div>
                 </div>
             </div>

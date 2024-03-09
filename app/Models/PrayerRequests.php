@@ -5,15 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Prayer_request extends Model
+class PrayerRequests extends Model
 {
-    protected $table = 'prayerrequest';
+    use HasFactory;
+    protected $fillable =['prayer_id', 'status', 'requested_by'];
 
-    protected $fillable =[
-        'prayer_id',
-        'user_id',
-        'status',
-    ];
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -24,4 +20,3 @@ class Prayer_request extends Model
         return $this->belongsTo(Prayer::class);
     }
 }
-

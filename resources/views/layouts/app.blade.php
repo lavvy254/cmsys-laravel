@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
+        @php
+            $bgImage = asset('images/img1.jpeg');
+        @endphp
+        <link rel="stylesheet" href="{{asset('css/cms.css')}}">
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,7 +24,8 @@
         <link href="{{ asset('black') }}/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
         <link href="{{ asset('black') }}/css/theme.css" rel="stylesheet" />
     </head>
-    <body class="{{ $class ?? '' }}">
+    <body class="{{ $class ?? '' }}" style="{{ $style ?? '' }}">
+        {{-- {{$bgImage}} --}}
         @auth()
             <div class="wrapper">
                     @include('layouts.navbars.sidebar')
@@ -67,7 +72,7 @@
                     <div class="clearfix"></div>
                     </a>
                 </li>
-                <li class="button-container">
+                {{-- <li class="button-container">
                     <a href="https://www.lavvy.com/product/black-dashboard-laravel" target="_blank" class="btn btn-primary btn-block btn-round">Download Now</a>
                     <a href="https://demos.lavvy.com/black-dashboard/docs/1.0/getting-started/introduction.html" target="_blank" class="btn btn-default btn-block btn-round">
                     Documentation
@@ -84,7 +89,7 @@
                     <br>
                     <a class="github-button" href="https://github.com/lavvyofficial/black-dashboard-laravel" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
                 </li>
-                </ul>
+                </ul> --}}
             </div>
         </div>
         <script src="{{ asset('black') }}/js/core/jquery.min.js"></script>

@@ -1,8 +1,8 @@
-@extends('layouts.app', ['class' => 'register-page', 'page' => __('Register Page'), 'contentClass' => 'register-page'])
+@extends('layouts.app', ['class' => 'register-page', 'page' => __('Register Page'),  'style' => "background-image: '127.0.0.1:8000/images/church.jpg';background-size: cover;background-repeat: no-repeat;"])
 
 @section('content')
     <div class="row">
-        <div class="col-md-5 ml-auto">
+        {{-- <div class="col-md-5 ml-auto">
             <div class="info-area info-horizontal mt-5">
                 <div class="icon icon-warning">
                     <i class="tim-icons icon-wifi"></i>
@@ -36,8 +36,8 @@
                     </p>
                 </div>
             </div>
-        </div>
-        <div class="col-md-7 mr-auto">
+        </div> --}}
+        <div class="col-md-7 mr-auto ml-auto">
             <div class="card card-register card-white">
                 <div class="card-header">
                     <img class="card-img" src="{{ asset('black') }}/img/card-primary.png" alt="Card image">
@@ -53,8 +53,27 @@
                                     <i class="tim-icons icon-single-02"></i>
                                 </div>
                             </div>
-                            <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}">
-                            @include('alerts.feedback', ['field' => 'name'])
+                            <input type="text" name="fname" class="form-control{{ $errors->has('fname') ? ' is-invalid' : '' }}" placeholder="{{ __('First Name') }}">
+                            @include('alerts.feedback', ['field' => 'fname'])
+                        </div>
+                        <div class="input-group{{ $errors->has('lname') ? ' has-danger' : '' }}">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="tim-icons icon-single-02"></i>
+                                </div>
+                            </div>
+                            <input type="text" name="lname" class="form-control{{ $errors->has('lname') ? ' is-invalid' : '' }}" placeholder="{{ __('Last Name') }}">
+                            @include('alerts.feedback', ['field' => 'lname'])
+                        </div>
+                        <div class="input-group{{ $errors->has('phone') ? ' has-danger' : '' }}">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    {{-- <i class="tim-icons icon-mobile-85"></i> --}}
+                                    <i class="fa fa-phone"></i>
+                                </div>
+                            </div>
+                            <input type="tel" name="phone" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" placeholder="{{ __('Phone Number') }}">
+                            @include('alerts.feedback', ['field' => 'phone'])
                         </div>
                         <div class="input-group{{ $errors->has('email') ? ' has-danger' : '' }}">
                             <div class="input-group-prepend">
@@ -64,6 +83,27 @@
                             </div>
                             <input type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}">
                             @include('alerts.feedback', ['field' => 'email'])
+                        </div>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="tim-icons icon-single-02"></i>
+                                </div>
+                            </div>
+                            <select class="form-control" name="gender" id="gender">
+                                <option value="1">Male</option>
+                                <option value="2">Female</option>
+                            </select>
+                            @include('alerts.feedback', ['field' => 'gender'])
+                        </div>
+                        <div class="input-group{{ $errors->has('dob') ? ' has-danger' : '' }}">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="tim-icons icon-email-85"></i>
+                                </div>
+                            </div>
+                            <input type="date" name="dob" class="form-control{{ $errors->has('dob') ? ' is-invalid' : '' }}">
+                            @include('alerts.feedback', ['field' => 'dob'])
                         </div>
                         <div class="input-group{{ $errors->has('password') ? ' has-danger' : '' }}">
                             <div class="input-group-prepend">
@@ -84,7 +124,7 @@
                         </div>
                         <div class="form-check text-left">
                             <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox">
+                                <input class="form-check-input" type="checkbox" name="terms">
                                 <span class="form-check-sign"></span>
                                 {{ __('I agree to the') }}
                                 <a href="#">{{ __('terms and conditions') }}</a>.

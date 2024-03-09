@@ -14,19 +14,5 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'id' => 1,
-            'fname' => 'Lavvy',
-            'lname' => 'Wangeci',
-            'age' => '23',
-            'phone' => '0758593172',
-            'gender' => 'female',
-            'role' => 'admin',
-            'email' => 'admin@black.com',
-            'email_verified_at' => now(),
-            'password' => Hash::make('secret'),
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
     }
 }

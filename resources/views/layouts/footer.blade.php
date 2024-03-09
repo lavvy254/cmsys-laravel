@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <ul class="nav">
             <li class="nav-item">
-                <a href="https://lavvy.com" target="blank" class="nav-link">
+                <a style="color: white; fpnt" href="https://lavvy.com" target="blank" class="nav-link">
                     {{ __('lavvy') }}
                 </a>
             </li>
