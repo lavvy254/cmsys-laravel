@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
+<<<<<<< HEAD
+=======
+        {{-- TODO: create an img variable to be passed to the css --}}
+>>>>>>> 578509e5437d5dd2a4c7a68cce580c09d0e3202b
         @php
             $bgImage = asset('images/img1.jpeg');
         @endphp
@@ -19,6 +23,9 @@
         <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
         <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
         <!-- Icons -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
         <link href="{{ asset('black') }}/css/nucleo-icons.css" rel="stylesheet" />
         <!-- CSS -->
         <link href="{{ asset('black') }}/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
@@ -72,6 +79,7 @@
                     <div class="clearfix"></div>
                     </a>
                 </li>
+<<<<<<< HEAD
                 {{-- <li class="button-container">
                     <a href="https://www.lavvy.com/product/black-dashboard-laravel" target="_blank" class="btn btn-primary btn-block btn-round">Download Now</a>
                     <a href="https://demos.lavvy.com/black-dashboard/docs/1.0/getting-started/introduction.html" target="_blank" class="btn btn-default btn-block btn-round">
@@ -90,6 +98,8 @@
                     <a class="github-button" href="https://github.com/lavvyofficial/black-dashboard-laravel" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
                 </li>
                 </ul> --}}
+=======
+>>>>>>> 578509e5437d5dd2a4c7a68cce580c09d0e3202b
             </div>
         </div>
         <script src="{{ asset('black') }}/js/core/jquery.min.js"></script>

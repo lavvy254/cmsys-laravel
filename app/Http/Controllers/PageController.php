@@ -2,22 +2,13 @@
 
 namespace App\Http\Controllers;
 use App\Models\Prayer;
-use App\Models\Prayer_request;
+use App\Models\PrayerRequests;
 use App\Models\User;
 
 class PageController extends Controller
 
 {
-    /**
-     * Display icons page
-     *
-     * @return \Illuminate\View\View
-     */
-    public function icons()
-    {
-        return view('pages.icons');
-    }
-
+    
     /**
      * Display maps page
      *
@@ -35,9 +26,9 @@ class PageController extends Controller
      */
     public function tables()
     {
-        $prayers = Prayer::all();
-        $members = User::all();
-        $prayerrequests = Prayer_request::all();
+        $prayers = Prayer::paginate(3);
+        $members = User::paginate(3);
+        $prayerrequests = PrayerRequests::paginate(3);
         return view('pages.tables',compact('prayers','prayerrequests','members'));
     }
 

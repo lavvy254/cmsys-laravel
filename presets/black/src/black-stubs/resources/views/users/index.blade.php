@@ -80,7 +80,7 @@
                                             <div class="collapse show" id="laravel-examples">
                                                 <ul class="nav pl-4">
                                                     <li >
-                                                        <a href="{{ route('profile.edit')  }}">
+                                                        <a href="{{route('profile.edit')}}">
                                                             <i class="tim-icons icon-single-02"></i>
                                                             <p>{{ _('User Profile') }}</p>
                                                         </a>
@@ -97,7 +97,7 @@
                                         <li >
                                             <a href="{{ route('pages.icons') }}">
                                                 <i class="tim-icons icon-atom"></i>
-                                                <p>{{ _('Icons') }}</p>
+                                                <p>{{ _('Prayer') }}</p>
                                             </a>
                                         </li>
                                         <li >
@@ -128,12 +128,6 @@
                                             <a href="{{ route('pages.rtl') }}">
                                                 <i class="tim-icons icon-world"></i>
                                                 <p>{{ _('RTL Support') }}</p>
-                                            </a>
-                                        </li>
-                                        <li class=" {{ $pageSlug == 'upgrade' ? 'active' : '' }} bg-info">
-                                            <a href="{{ route('pages.upgrade') }}">
-                                                <i class="tim-icons icon-spaceship"></i>
-                                                <p>{{ _('Upgrade to PRO') }}</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -252,8 +246,16 @@
                         <h4 class="card-title">Users</h4>
                     </div>
                     <div class="col-4 text-right">
-                        <a href="#" class="btn btn-sm btn-primary">Add user</a>
+                        <a href="{{ route('user.add') }}" class="btn btn-sm btn-primary">Add user</a>
                     </div>
+                    @if (session('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{session('success')}}
+                        <button type="button" class="button-close" data-bs-dismiss="alert" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    @endif
                 </div>
             </div>
             <div class="card-body">
@@ -261,30 +263,46 @@
                 <div class="">
                     <table class="table tablesorter " id="">
                         <thead class=" text-primary">
-                            <tr><th scope="col">Name</th>
+                            <tr><th scope="col">fname</th>
+                                <th scope="col">lname</th>
                             <th scope="col">Email</th>
-                            <th scope="col">Creation Date</th>
+                            <th scope="col">age</th>
+                            <th scope="col">gender</th>
+                            <th scope="col">phone</th>
                             <th scope="col"></th>
                         </tr></thead>
                         <tbody>
-                                                                <tr>
-                                    <td>Admin Admin</td>
-                                    <td>
-                                        <a href="mailto:admin@black.com">admin@black.com</a>
-                                    </td>
-                                    <td>24/02/2020 16:47</td>
-                                    <td class="text-right">
-                                            <div class="dropdown">
-                                                <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <i class="fas fa-ellipsis-v"></i>
-                                                </a>
-                                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                                                                                <a class="dropdown-item" href="#">Edit</a>
-                                                                                                        </div>
+                            @foreach ($members as $member )
+                            <tr>
+                                <td>{{$member->fname}}</td>
+                                <td>{{$member->lname}}</td>
+                                <td>
+                                    <a href="mailto:admin@black.com">{{$member->email}}</a>
+                                </td>
+                                <td>{{$member->age}}</td>
+                                <td>{{$member->gender}}</td>
+                                <td>{{$member->phone}}</td>
+                                <td class="text-right">
+                                        <div class="dropdown">
+                                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                              <a class="dropdown-item" href="{{route('user.edit',$member->id)}}">Edit</a>
+                                              <form action="{{route('user.delete',$member->id)}}" method="POST">
+                                                     @csrf
+                                                     @method('DELETE')
+                                                    <button type="submit" class="dropdown-item" >Delete</button>
+                                              </form>
                                             </div>
-                                    </td>
-                                </tr>
-                                                        </tbody>
+                                            
+                                            
+                                        </div>
+                                </td>
+                            </tr>
+                            @endforeach
+      
+                           </tbody>
                     </table>
                 </div>
             </div>
@@ -296,7 +314,7 @@
         </div>
         <div class="alert alert-danger">
                 <span>
-                  <b> </b> This is a <b>PRO</b> feature!</span>
+                  <b> </b> Developer <b>Lavvy</b> Wangeci</span>
               </div>
     </div>
 </div>
@@ -306,13 +324,8 @@
 <div class="container-fluid">
     <ul class="nav">
         <li class="nav-item">
-            <a href="https://creative-tim.com" target="blank" class="nav-link">
-                Creative Tim
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="https://updivision.com" target="blank" class="nav-link">
-                Updivision
+            <a href="https://lavvy.com" target="blank" class="nav-link">
+                Lavvy
             </a>
         </li>
         <li class="nav-item">
@@ -328,8 +341,8 @@
     </ul>
     <div class="copyright">
         © 2020 made with <i class="tim-icons icon-heart-2"></i> by
-        <a href="https://creative-tim.com" target="_blank">Creative Tim</a> &amp;
-        <a href="https://updivision.com" target="_blank">Updivision</a> for a better web.
+        <a href="https://creative-tim.com" target="_blank">Creative Tim</a> 
+        
     </div>
 </div>
 </footer>
@@ -355,11 +368,16 @@
                 </a>
             </li>
             {{-- <li class="button-container">
+<<<<<<< HEAD
                 <a href="https://www.creative-tim.com/product/black-dashboard-laravel" target="_blank" class="btn btn-primary btn-block btn-round">Download Now</a>
                 <a href="https://black-dashboard-laravel.creative-tim.com/docs/getting-started/laravel-setup.html" target="_blank" class="btn btn-default btn-block btn-round">
+=======
+                <a href="https://www.lavvy.com/product/black-dashboard-laravel" target="_blank" class="btn btn-primary btn-block btn-round">Download Now</a>
+                <a href="https://black-dashboard-laravel.lavvy.com/docs/getting-started/laravel-setup.html" target="_blank" class="btn btn-default btn-block btn-round">
+>>>>>>> 578509e5437d5dd2a4c7a68cce580c09d0e3202b
                 Documentation
                 </a>
-                <a href="https://www.creative-tim.com/product/black-dashboard-pro-laravel" target="_blank" class="btn btn-danger btn-block btn-round">
+                <a href="https://www.lavvy.com/product/black-dashboard-pro-laravel" target="_blank" class="btn btn-danger btn-block btn-round">
                 Upgrade to PRO
                 </a>
             </li>
@@ -369,7 +387,11 @@
                 <button id="facebook" class="btn btn-round btn-info"><i class="fab fa-facebook-f"></i> · 50</button>
                 <br>
                 <br>
+<<<<<<< HEAD
                 <a class="github-button" href="https://github.com/creativetimofficial/black-dashboard-laravel" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
+=======
+                <a class="github-button" href="https://github.com/lavvyofficial/black-dashboard-laravel" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
+>>>>>>> 578509e5437d5dd2a4c7a68cce580c09d0e3202b
             </li> --}}
             </ul>
         </div>

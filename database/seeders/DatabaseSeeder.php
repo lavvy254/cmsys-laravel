@@ -20,7 +20,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+<<<<<<< HEAD
         $this->call([UsersTableSeeder::class]);
+=======
+        // moved that user creation to this file
+        // $this->call([UsersTableSeeder::class]);
+>>>>>>> 578509e5437d5dd2a4c7a68cce580c09d0e3202b
 
         // if($this->) {
         // RoleFactory::new()->count(8)->create();
@@ -41,7 +46,11 @@ class DatabaseSeeder extends Seeder
             'age' => '2000-01-01',
              'gender_id' => 1,
               'phone' => '0700000000',
+<<<<<<< HEAD
                'email' => 'admin"account.com', 
+=======
+               'email' => 'admin@account.com', 
+>>>>>>> 578509e5437d5dd2a4c7a68cce580c09d0e3202b
                'password' => bcrypt('Admin123.')
         ]);
         User::create([
@@ -52,7 +61,11 @@ class DatabaseSeeder extends Seeder
             'gender_id' => 2,
             'roles' => '1 2',
             'email' => 'wangeci@black.com',
+<<<<<<< HEAD
             'password' => bcrypt('Lavvy123.'),
+=======
+            'password' => bcrypt('secret'),
+>>>>>>> 578509e5437d5dd2a4c7a68cce580c09d0e3202b
         ]);
     }
 }

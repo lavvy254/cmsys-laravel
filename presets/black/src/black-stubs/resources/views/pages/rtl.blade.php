@@ -605,7 +605,7 @@
             <div class="clearfix"></div>
           </a>
         </li>
-        <li class="adjustments-line text-center color-change">
+        {{-- <li class="adjustments-line text-center color-change">
           <span class="color-label">LIGHT MODE</span>
           <span class="badge light-badge mr-2"></span>
           <span class="badge dark-badge ml-2"></span>

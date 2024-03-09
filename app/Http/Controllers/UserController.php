@@ -40,7 +40,6 @@ class UserController extends Controller
         return redirect()->route('user.index')->with('success', 'New User added Successfully');
     }
     public function edit(User $user)
-
     {
         if (!$user) {
             return redirect()->back()->with('error', 'User not found');

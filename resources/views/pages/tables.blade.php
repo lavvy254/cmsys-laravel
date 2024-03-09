@@ -6,8 +6,9 @@
     <div class="card ">
       <div class="card-header">
         <h4 class="card-title"> Prayer Table</h4>
-        <a href="#" class="btn btn-sm btn-primary">Add Prayer</a>
+        <a href="{{route('prayer.add')}}"class="btn btn-sm btn-primary">Add Prayer</a>
       </div>
+    
       <div class="card-body">
         <div class="table-responsive">
           <table class="table tablesorter " id="">
@@ -45,8 +46,8 @@
                               <i class="fas fa-ellipsis-v"></i>
                           </a>
                           <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                            <a class="dropdown-item" href="#">Edit</a>
-                            <form action="" method="POST">
+                            <a class="dropdown-item" href="{{route('prayer.edit',$prayer->id)}}">Edit</a>
+                            <form action="{{route('prayer.delete',$prayer->id)}}" method="POST">
                                   @csrf
                                   @method('DELETE')
                                   <button type="submit" class="dropdown-item" >Delete</button>
@@ -57,6 +58,7 @@
               </tr>
             </tbody>
             @endforeach
+            {{ $prayers->links('vendor.pagination.bootstrap-5') }}
           </table>
         </div>
       </div>
@@ -104,12 +106,21 @@
                 <td>
                   {{$prayerrequest->status}}
                 </td>
-              </tr>
+                </td>
+                  <td class="text-center">
+                        <div class="dropdown">
+                          <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <i class="fas fa-ellipsis-v"></i>
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                            <a class="dropdown-item" href="{{route('prayerrequest.edit',$prayerrequest->id)}}">Edit</a>
+                          </div> 
               <td class="text-center">
 
               </td>
             </tbody>
              @endforeach
+             {{ $prayerrequests->links('vendor.pagination.bootstrap-5') }}
           </table>
         </div>
       </div>
