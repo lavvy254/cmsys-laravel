@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('fname');
             $table->string('lname');
-            $table->string('roles')->default("1");
-            $table->date('age');
-            $table->foreignId('gender_id')->nullable()->constrained('genders')->onDelete('set null')->onUpdate('cascade');
+            $table->string('roles')->default("female");
+            $table->date('DOB');
+            $table->string('gender');
             $table->string('phone')->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

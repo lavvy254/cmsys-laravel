@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('ename');
-            $table->unsignedBigInteger('location');
+            $table->string('ename');
+            $table->string('location');
             $table->text('description');
             $table->timestamps();
         });

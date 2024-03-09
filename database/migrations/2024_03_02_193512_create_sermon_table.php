@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('sermon', function (Blueprint $table) {
             $table->id();
-            $table->text('title');
-            $table->text('speaker');
+            $table->string('title');
+            $table->string('speaker');
             $table->unsignedBigInteger('event_id');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');  
         });
     }
 

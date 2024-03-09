@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('attendance', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('event_id');
-            $table->unsignedBigInteger('user_id');
+            $table->string('event_id');
+            $table->string('user_id');
             $table->unsignedBigInteger('attendees');
             $table->timestamps();
         });

@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('youths', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->timestamp('birthdate');
+            $table->date('DOB');
             $table->timestamps();
-        });
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');  
+              });
     }
 
     /**
