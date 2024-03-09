@@ -14,9 +14,7 @@
             <li>
                 <a data-toggle="collapse" href="#laravel-examples" aria-expanded="true">
                     <i class="fab fa-laravel" ></i>
-                    <span class="nav-link-text" >{{ __('Manage Users') }}</span>
-                    <span class="nav-link-text" >{{ __('Members ') }}</span>
-
+                    <span class="nav-link-text" >{{ __('Member Management') }}</span>
                     <b class="caret mt-1"></b>
                 </a>
 
@@ -32,6 +30,31 @@
                             <a href="{{ route('user.index')  }}">
                                 <i class="tim-icons icon-bullet-list-67"></i>
                                 <p>{{ __('User Management') }}</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a data-toggle="collapse" href="#laravel-examples" aria-expanded="true">
+                    <i class="fab fa-laravel" ></i>
+                    <span class="nav-link-text" >{{ __('Group Management') }}</span>
+                    <b class="caret mt-1"></b>
+                </a>
+
+                <div class="collapse show" id="laravel-examples">
+                    <ul class="nav pl-4">
+                        <li @if ($pageSlug == 'groups') class="active " @endif>
+                            <a href="{{ route('groups.view')  }}">
+                                <i class="tim-icons icon-single-02"></i>
+                                <p>{{ __('Groups') }}</p>
+                            </a>
+                        </li>
+                        <li @if ($pageSlug == 'gmembers') class="active " @endif>
+                            <a href="{{ route('gmembers.view')  }}">
+                                <i class="fa fa-users" aria-hidden="true"></i>
+
+                                <p>{{ __('Group Memebers') }}</p>
                             </a>
                         </li>
                     </ul>

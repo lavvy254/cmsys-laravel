@@ -9,6 +9,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PrayerController;
 use App\Http\Controllers\Prayer_requestController;
 use App\Http\Controllers\GivingController;
+use App\Http\Controllers\GroupsController;
+use App\Http\Controllers\GmembersController;
 
 
 /*
@@ -67,4 +69,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/make', [GivingController::class, 'create'])->name('giving.create');
 	Route::post('/keep', [GivingController::class, 'store'])->name('giving.store');
 	
+});
+
+Route::group(['middleware' => 'auth'], function () {
+	Route::get('/groupview', [GroupsController::class, 'index'])->name('groups.view');
+	Route::get('/members',[GmembersController::class, 'index'])->name('gmembers.view');
 });
