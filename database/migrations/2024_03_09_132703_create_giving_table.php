@@ -13,12 +13,11 @@ return new class extends Migration
     {
         Schema::create('giving', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->enum('type',['tithe','offering'])->default('offering');
             $table->string('transaction');
             $table->integer('amount');
-            $table->text('description');
-            // user id is the contributor
-            $table->foreignId('user_id')->on('users')->onDelete('restrict');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict')->onUpdate('restrict');
             $table->timestamps();
         });
     }
