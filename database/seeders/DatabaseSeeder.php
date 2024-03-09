@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
         User::create([
             'fname' => 'Lavvy',
             'lname' => 'Wangeci',
-            'age' => '2000-01-01',
+            'dob' => '2000-01-01',
             'phone' => '0758593172',
             'gender' => 'female',
             'roles' => 'admin',

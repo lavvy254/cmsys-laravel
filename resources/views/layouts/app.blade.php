@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-<<<<<<< HEAD
-=======
         {{-- TODO: create an img variable to be passed to the css --}}
->>>>>>> 578509e5437d5dd2a4c7a68cce580c09d0e3202b
         @php
             $bgImage = asset('images/img1.jpeg');
         @endphp

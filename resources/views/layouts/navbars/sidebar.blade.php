@@ -14,11 +14,9 @@
             <li>
                 <a data-toggle="collapse" href="#laravel-examples" aria-expanded="true">
                     <i class="fab fa-laravel" ></i>
-<<<<<<< HEAD
                     <span class="nav-link-text" >{{ __('Manage Users') }}</span>
-=======
                     <span class="nav-link-text" >{{ __('Members ') }}</span>
->>>>>>> 578509e5437d5dd2a4c7a68cce580c09d0e3202b
+
                     <b class="caret mt-1"></b>
                 </a>
 
