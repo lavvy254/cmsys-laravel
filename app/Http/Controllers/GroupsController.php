@@ -29,4 +29,19 @@ class GroupsController extends Controller
        Groups::create($request->all());
        return redirect()->route('groups.view')->with('success', 'New Request added Successfully');
     }
+    Public function edit(Groups $groups)
+    {
+        $leaders=User::all();
+        return view('pages.groups.edit',compact('groups','leaders'));
+    }
+    public function update(Request $request,Groups $groups)
+    {
+        $request->validate([
+            'gname' => 'required|string|max:255',
+            'leader_id' => 'required|exists:users,id',
+            'description' => 'required|string|max:255',
+         ]);
+         $groups->update($request->all());
+         return redirect()->route('groups.view')->with('success', 'New Request added Successfully');
+    }
 }
