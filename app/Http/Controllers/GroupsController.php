@@ -39,7 +39,7 @@ class GroupsController extends Controller
         $request->validate([
             'gname' => 'required|string|max:255',
             'leader_id' => 'required|exists:users,id',
-            'description' => 'required|string|max:255',
+            'description' => 'required|string|max:500',
          ]);
          $groups->update($request->all());
          return redirect()->route('groups.view')->with('success', 'New Request added Successfully');

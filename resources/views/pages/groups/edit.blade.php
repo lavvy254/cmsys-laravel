@@ -8,12 +8,12 @@
         <h4 class="card-title">Add Groups</h4>
          </div>
            <div class="card-body">
-        <form action="{{route('groups.update')}}" method="POST">
+        <form action="{{route('groups.update',$groups->id)}}" method="POST">
           @csrf
-          @method('')
+          @method('PUT')
           <div class="form-group">
             <label for="gname">Group Name</label>
-            <input type="text" name="gname" id="GroupName" class="form-control" placeholder="Enter Group Name">
+            <input type="text" name="gname" id="GroupName" class="form-control" placeholder="Enter Group Name" value="{{$groups->gname}}">
             @error('GroupName')
               <p class="text-danger">{{$message}}</p>
             @enderror
@@ -32,7 +32,7 @@
            </div>
           <div class="form-group">
             <label for="description">Description</label>
-            <textarea name="description" id="description" class="form-control" placeholder="Enter description"></textarea>
+            <textarea name="description" id="description" class="form-control" placeholder="Enter description">{{$groups->description}}</textarea>
             @error('description')
               <p class="text-danger">{{$message}}</p>
             @enderror

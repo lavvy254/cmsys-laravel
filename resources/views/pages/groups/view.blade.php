@@ -34,7 +34,7 @@
                 <th>{{$group->created_at}}</th>
                 </td>
                 <td class="align-middle">
-                  <a rel="tooltip" class="btn btn-success btn-link" href="" data-original-title="" title="">
+                  <a rel="tooltip" class="btn btn-success btn-link" href="{{route('groups.edit',$group->id)}}" data-original-title="" title="">
                       <i class="material-icons">edit</i>
                       <div class="ripple-container"></div>
                   </a>
