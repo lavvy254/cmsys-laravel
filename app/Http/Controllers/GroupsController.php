@@ -14,4 +14,8 @@ class GroupsController extends Controller
         $groups=Groups::paginate(5);
         return view('pages.groups.view',compact('groups'));
     }
+    public function create()
+    {
+        return view('pages.groups.create');
+    }
 }
