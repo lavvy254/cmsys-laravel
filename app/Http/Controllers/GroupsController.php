@@ -16,6 +16,17 @@ class GroupsController extends Controller
     }
     public function create()
     {
-        return view('pages.groups.create');
+        $leaders = User::all();
+        return view('pages.groups.create',compact('leaders'));
+    }
+    public function store(Request $request)
+    {
+       $request->validate([
+          'gname' => 'required|string|max:255',
+          'leader_id' => 'required|exists:users,id',
+          'description' => 'required|string|max:255',
+       ]);
+       Groups::create($request->all());
+       return redirect()->route('groups.view')->with('success', 'New Request added Successfully');
     }
 }

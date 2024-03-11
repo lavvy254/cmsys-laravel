@@ -10,7 +10,7 @@
       </div>
       <div class="card-body">
         <div class="table-responsive">
-          <a href="" class="btn btn-sm btn-primary">Add Group</a> 
+          <a href="{{route('groups.create')}}" class="btn btn-sm btn-primary">Add Group</a> 
           <table class="table tablesorter " id="">
             <thead class=" text-primary">
               <tr>

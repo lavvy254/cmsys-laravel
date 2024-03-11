@@ -73,5 +73,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/groupview', [GroupsController::class, 'index'])->name('groups.view');
+	Route::get('/groups', [GroupsController::class, 'create'])->name('groups.create');
+	Route::post('/groups/store', [GroupsController::class, 'store'])->name('groups.store');
 	Route::get('/members',[GmembersController::class, 'index'])->name('gmembers.view');
+	
 });
