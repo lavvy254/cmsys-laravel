@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => __('Tables'), 'pageSlug' => 'tables'])
+@extends('layouts.app', ['page' => __('groups'), 'pageSlug' => 'groups'])
 
 @section('content')
 <div class="row">
@@ -10,7 +10,6 @@
            <div class="card-body">
         <form action="{{route('groups.store')}}" method="POST">
           @csrf
-          @method('PUT')
           <div class="form-group">
             <label for="gname">Group Name</label>
             <input type="text" name="gname" id="GroupName" class="form-control" placeholder="Enter Group Name">

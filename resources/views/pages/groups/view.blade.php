@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => __('gmembers'), 'pageSlug' => 'gmembers'])
+@extends('layouts.app', ['page' => __('groups'), 'pageSlug' => 'groups'])
 
 @section('content')
 <div class="row">

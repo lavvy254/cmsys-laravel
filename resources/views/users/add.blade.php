@@ -100,10 +100,12 @@
                                                 <p>{{ __('giving') }}</p>
                                             </a>
                                         </li>
+                                        
+                                       
                                         <li >
-                                            <a href="{{ route('pages.maps') }}">
-                                                <i class="tim-icons icon-pin"></i>
-                                                <p>{{ _('Maps') }}</p>
+                                            <a href="{{ route('pages.tables') }}">
+                                                <i class="tim-icons icon-puzzle-10"></i>
+                                                <p>{{ _('Prayer Management') }}</p>
                                             </a>
                                         </li>
                                         <li >
@@ -113,21 +115,9 @@
                                             </a>
                                         </li>
                                         <li >
-                                            <a href="{{ route('pages.tables') }}">
-                                                <i class="tim-icons icon-puzzle-10"></i>
-                                                <p>{{ _('Table List') }}</p>
-                                            </a>
-                                        </li>
-                                        <li >
-                                            <a href="{{ route('pages.typography') }}">
-                                                <i class="tim-icons icon-align-center"></i>
-                                                <p>{{ _('Typography') }}</p>
-                                            </a>
-                                        </li>
-                                        <li >
-                                            <a href="{{ route('pages.rtl') }}">
-                                                <i class="tim-icons icon-world"></i>
-                                                <p>{{ _('RTL Support') }}</p>
+                                            <a href="{{ route('pages.maps') }}">
+                                                <i class="tim-icons icon-pin"></i>
+                                                <p>{{ _('Maps') }}</p>
                                             </a>
                                         </li>
                                     </ul>

@@ -11,6 +11,10 @@ use App\Http\Controllers\Prayer_requestController;
 use App\Http\Controllers\GivingController;
 use App\Http\Controllers\GroupsController;
 use App\Http\Controllers\GmembersController;
+use App\Http\Controllers\SermonController;
+use App\Http\Controllers\Sermon_notesController;
+use App\Http\Controllers\AnnouncementController;
+use App\Http\Controllers\AttendanceController;
 
 
 /*
@@ -36,11 +40,7 @@ Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home')->
 
 Route::group(['middleware' => 'auth'], function () {
 		Route::get('maps', ['as' => 'pages.maps', 'uses' => 'App\Http\Controllers\PageController@maps']);
-		Route::get('notifications', ['as' => 'pages.notifications', 'uses' => 'App\Http\Controllers\PageController@notifications']);
-		Route::get('rtl', ['as' => 'pages.rtl', 'uses' => 'App\Http\Controllers\PageController@rtl']);
 		Route::get('tables', ['as' => 'pages.tables', 'uses' => 'App\Http\Controllers\PageController@tables']);
-		Route::get('typography', ['as' => 'pages.typography', 'uses' => 'App\Http\Controllers\PageController@typography']);
-		Route::get('upgrade', ['as' => 'pages.upgrade', 'uses' => 'App\Http\Controllers\PageController@upgrade']);
 });
 
 Route::group(['middleware' => 'auth'], function () {
@@ -77,6 +77,52 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/groups/store', [GroupsController::class, 'store'])->name('groups.store');
 	Route::get('/groups/{groups}/edit', [GroupsController::class, 'edit'])->name('groups.edit');
 	Route::put('/groups/{groups}', [GroupsController::class, 'update'])->name('groups.update');
-	Route::get('/members',[GmembersController::class, 'index'])->name('gmembers.view');
+	Route::get('/gmembers',[GmembersController::class, 'index'])->name('gmembers.view');
+	Route::get('/gmembers/add', [GmembersController::class, 'create'])->name('gmemebers.create');
+	Route::post('/gmembers/store', [GmembersController::class, 'store'])->name('gmembers.store');
+	Route::get('/gmembers/{gmembers}/edit', [GmembersController::class, 'edit'])->name('gmembers.edit');
+	Route::put('/gmembers/{gmembers}', [GmembersController::class, 'update'])->name('gmembers.update');
 	
+});
+
+
+Route::group(['middleware' => 'auth'], function () {
+	Route::get('/sermon', [SermonController::class, 'index'])->name('sermon.view');
+	Route::get('/sermon/create', [SermonController::class, 'create'])->name('sermon.create');
+	Route::post('/sermon/store', [SermonController::class, 'store'])->name('sermon.store');
+	Route::get('/sermon/{sermon}/edit', [SermonController::class, 'edit'])->name('sermon.edit');
+	Route::put('/sermon/{sermon}', [SermonController::class, 'update'])->name('sermon.update');
+	Route::get('/snotes',[Sermon_notesController::class, 'index'])->name('snote.view');
+	Route::get('/snotes/add', [Sermon_notesController::class, 'create'])->name('snote.create');
+	Route::post('/snotes/store', [Sermon_notesController::class, 'store'])->name('snote.store');
+	Route::get('/snotes/{snotes}/edit', [Sermon_notesController::class, 'edit'])->name('snote.edit');
+	Route::put('/snotes/{snotes}', [Sermon_notesController::class, 'update'])->name('snote.update');
+	
+});
+
+Route::group(['middleware' => 'auth'], function () {
+	Route::get('/announcements', [AnnouncementController::class, 'index'])->name('announcement.view');
+	Route::get('/announcement/create', [AnnouncementController::class, 'create'])->name('announcement.create');
+	Route::post('/announcement/store', [AnnouncementController::class, 'store'])->name('announcement.store');
+	Route::get('/announcement/{announcement}/edit', [AnnouncementController::class, 'edit'])->name('announcement.edit');
+	Route::put('/announcement/{announcement}', [AnnouncementController::class, 'update'])->name('announcement.update');
+	
+});
+Route::group(['middleware' => 'auth'], function () {
+	Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance.view');
+	Route::get('/attendance/create', [AttendanceController::class, 'create'])->name('attendance.create');
+	Route::post('/attendance/store', [AttendanceController::class, 'store'])->name('attendance.store');
+	Route::get('/attendance/{attendance}/edit', [AttendanceController::class, 'edit'])->name('attendance.edit');
+	Route::put('/attendance/{attendance}', [AttendanceController::class, 'update'])->name('attendance.update');
+	
+});
+
+//user routes
+//user prayer and prayer requests
+Route::group(['middleware' => 'auth'], function () {
+	Route::post('/prayers', [PrayerController::class, 'index'])->name('prayers.index');
+	Route::post('/prayerrequest/store', [Prayer_requestController::class, 'store'])->name('prayerrequest.store');
+	Route::get('/prayerrequest/add', [Prayer_requestController::class, 'create'])->name('prayerrequest.add');
+	Route::get('/prayerrequest/{prayer_request}/edit', [Prayer_requestController::class, 'edit'])->name('prayerrequest.edit');
+	Route::put('/prayerrequest/{prayer_request}', [Prayer_requestController::class, 'update'])->name('prayerrequest.update');
 });

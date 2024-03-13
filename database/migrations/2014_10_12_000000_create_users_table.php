@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('fname');
             $table->string('lname');
-            $table->string('roles')->default("female");
+            $table->string('roles')->default("user");
             $table->date('DOB');
             $table->string('gender');
             $table->string('phone')->unique();

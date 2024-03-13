@@ -1,38 +1,38 @@
-@extends('layouts.app', ['page' => __('gmembers'), 'pageSlug' => 'gmembers'])
+@extends('layouts.app', ['page' => __('sermons'), 'pageSlug' => 'sermons'])
 
 @section('content')
 <div class="row">
    <div class="col-md-12">
     <div class="card  card-plain">
       <div class="card-header">
-        <h4 class="card-title"> Group Members </h4>
-        <p class="category"> Here is a table for group members</p>
+        <h4 class="card-title"> Sermon </h4>
+        <p class="category"> Here is a table for Sermons</p>
       </div>
       <div class="card-body">
         <div class="table-responsive">
-          <a href="{{route('gmemebers.create')}}" class="btn btn-sm btn-primary">Add Member</a> 
+          <a href="{{route('sermon.create')}}" class="btn btn-sm btn-primary"> Add Sermon </a> 
           <table class="table tablesorter " id="">
             <thead class=" text-primary">
               <tr>
                 <th>ID</th>
-                <th>First Name</th>
-                <th>Second Name</th>
-                <th>Group Name</th>
-                <th>Joined at</th>
+                <th>Title</th>
+                <th>Speaker</th>
+                <th>Event Title</th>
+                <th>Created at</th>
                 <th class="align-middle">Action</th>
               </tr>
             </thead>
-            @foreach ($gmembers as $gmember )
+            @foreach ($sermons as $sermon )
             <tbody>
               <tr>
-              <th>{{$gmember->id}}</th>
-                <th>{{$gmember->User->fname}}</th>
-                <th>{{$gmember->User->lname}}</th>
-                <th>{{$gmember->Groups->gname}}</th>
-                <th>{{$gmember->created_at}}</th>
+                <th>{{$sermon->id}}</th>
+                <th>{{$sermon->title}}</th>
+                <th>{{$sermon->speaker}}</th>
+                <th>{{$sermon->Event->ename}}</th>
+                <th>{{$sermon->created_at}}</th>
                 </td>
                 <td class="align-middle">
-                  <a rel="tooltip" class="btn btn-success btn-link" href="{{route('gmembers.edit',$gmember->id)}}" data-original-title="" title="">
+                  <a rel="tooltip" class="btn btn-success btn-link" href="{{route('sermon.edit',$sermon->id)}}" data-original-title="" title="">
                       <i class="material-icons">edit</i>
                       <div class="ripple-container"></div>
                   </a>
@@ -50,7 +50,7 @@
               </td>
             </tbody>
              @endforeach 
-             {{ $gmembers->links('vendor.pagination.bootstrap-5') }}
+             {{ $sermons->links('vendor.pagination.bootstrap-5') }}
           </table>
         </div>
       </div>

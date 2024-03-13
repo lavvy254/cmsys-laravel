@@ -11,7 +11,7 @@ class PrayerController extends Controller
     {
         $prayers = Prayer::all();
 
-        return view('pages.table_list', compact('prayers'));
+        return view('pages.members.dashboard', compact('prayers'));
     }
     public function create()
     {

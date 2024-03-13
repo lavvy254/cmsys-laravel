@@ -100,10 +100,11 @@
                                                 <p>{{ __('giving') }}</p>
                                             </a>
                                         </li>
+                                      
                                         <li >
-                                            <a href="{{ route('pages.maps') }}">
-                                                <i class="tim-icons icon-pin"></i>
-                                                <p>{{ _('Maps') }}</p>
+                                            <a href="{{ route('pages.tables') }}">
+                                                <i class="tim-icons icon-puzzle-10"></i>
+                                                <p>{{ _('Prayer Management') }}</p>
                                             </a>
                                         </li>
                                         <li >
@@ -113,23 +114,12 @@
                                             </a>
                                         </li>
                                         <li >
-                                            <a href="{{ route('pages.tables') }}">
-                                                <i class="tim-icons icon-puzzle-10"></i>
-                                                <p>{{ _('Table List') }}</p>
+                                            <a href="{{ route('pages.maps') }}">
+                                                <i class="tim-icons icon-pin"></i>
+                                                <p>{{ _('Maps') }}</p>
                                             </a>
                                         </li>
-                                        <li >
-                                            <a href="{{ route('pages.typography') }}">
-                                                <i class="tim-icons icon-align-center"></i>
-                                                <p>{{ _('Typography') }}</p>
-                                            </a>
-                                        </li>
-                                        <li >
-                                            <a href="{{ route('pages.rtl') }}">
-                                                <i class="tim-icons icon-world"></i>
-                                                <p>{{ _('RTL Support') }}</p>
-                                            </a>
-                                        </li>
+                                         
                                     </ul>
                                 </div>
                             </div>
@@ -301,7 +291,7 @@
                                 </td>
                             </tr>
                             @endforeach
-      
+                            {{ $members->links('vendor.pagination.bootstrap-5') }}
                            </tbody>
                     </table>
                 </div>
@@ -367,7 +357,7 @@
                 <div class="clearfix"></div>
                 </a>
             </li>
-            {{-- <li class="button-container">
+            <li class="button-container">
                 <a href="https://www.lavvy.com/product/black-dashboard-laravel" target="_blank" class="btn btn-primary btn-block btn-round">Download Now</a>
                 <a href="https://black-dashboard-laravel.lavvy.com/docs/getting-started/laravel-setup.html" target="_blank" class="btn btn-default btn-block btn-round">
                 Documentation
@@ -383,7 +373,7 @@
                 <br>
                 <br>
                 <a class="github-button" href="https://github.com/lavvyofficial/black-dashboard-laravel" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
-            </li> --}}
+            </li> 
             </ul>
         </div>
     </div>
@@ -395,7 +385,7 @@
     <!-- Place this tag in your head or just before your close body tag. -->
     {{-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script> --}}
     <!-- Chart JS -->
-    {{-- <script src="{{ asset('black') }}/js/plugins/chartjs.min.js"></script> --}}
+    <script src="{{ asset('black') }}/js/plugins/chartjs.min.js"></script> 
     <!--  Notifications Plugin    -->
     <script src="{{ asset('black') }}/js/plugins/bootstrap-notify.js"></script>
 
