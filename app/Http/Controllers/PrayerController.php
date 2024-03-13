@@ -4,15 +4,30 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Prayer;
+use App\Models\PrayerRequests;
+use Illuminate\Support\Facades\Auth;
 
 class PrayerController extends Controller
 {
     public function index()
     {
-        $prayers = Prayer::paginate(5);
-
-        return view('pages.members.prayers.prayer', compact('prayers'));
+        // Get the currently authenticated user
+        $user = Auth::user();
+    
+        // Check if the user is authenticated
+        if ($user) {
+            // Retrieve data for the authenticated user
+            $prayers = Prayer::paginate(5);
+            $prayerrequests = PrayerRequests::join('users', 'prayer_requests.user_id', '=', 'users.id')
+                ->where('users.email', $user->email)
+                ->paginate(5);
+            return view('pages.members.prayers.prayer', compact('prayers', 'prayerrequests'));
+        } else {
+            // User is not authenticated, handle the case accordingly
+            return redirect()->route('login');
+        }
     }
+    
     public function create()
     {
         return view('pages.prayer.add');

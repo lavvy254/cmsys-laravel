@@ -53,7 +53,7 @@
                             </a>
                         </li>
                         <li @if ($pageSlug == 'userprofile') z class="active " @endif>
-                            <a href="{{ route('pages.tables') }}">
+                            <a href="{{ route('prayers.index') }}">
                                 <i class="tim-icons icon-single-02"></i>
                                 <p>{{ __('Prayers') }}</p>
                             </a>
