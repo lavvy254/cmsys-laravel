@@ -42,8 +42,8 @@
                     <ul class="nav">
                         <li @if ($pageSlug == 'dashboard') z class="active " @endif>
                             <a href="{{ route('home') }}">
-                                <i class="tim-icons icon-chart-pie-36"></i>
-                                <p>{{ __('Dashboard') }}</p>
+                                <i class="fa fa-home" aria-hidden="true"></i>
+                                <p>{{ __('Home') }}</p>
                             </a>
                         </li>
                         <li @if ($pageSlug == 'userprofile') z class="active " @endif>
@@ -54,25 +54,19 @@
                         </li>
                         <li @if ($pageSlug == 'userprofile') z class="active " @endif>
                             <a href="{{ route('prayers.index') }}">
-                                <i class="tim-icons icon-single-02"></i>
+                                <i class="fa fa-comment" aria-hidden="true"></i>
                                 <p>{{ __('Prayers') }}</p>
                             </a>
                         </li>
                         <li @if ($pageSlug == 'userprofile') z class="active " @endif>
                             <a href="{{ route('giving.index') }}">
-                                <i class="tim-icons icon-single-02"></i>
+                                <i class="fa fa-database" aria-hidden="true"></i>
                                 <p>{{ __('Giving') }}</p>
                             </a>
                         </li>
                         <li @if ($pageSlug == 'userprofile') z class="active " @endif>
-                            <a href="{{ route('profile.edit') }}">
-                                <i class="tim-icons icon-single-02"></i>
-                                <p>{{ __('Groups') }}</p>
-                            </a>
-                        </li>
-                        <li @if ($pageSlug == 'userprofile') z class="active " @endif>
-                            <a href="{{ route('profile.edit') }}">
-                                <i class="tim-icons icon-single-02"></i>
+                            <a href="{{ route('groups.view') }}">
+                                <i class="fa fa-users" aria-hidden="true"></i>
                                 <p>{{ __('Groups') }}</p>
                             </a>
                         </li>

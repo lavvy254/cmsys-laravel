@@ -11,8 +11,16 @@ class GroupsController extends Controller
 {
     public function index()
     {
-        $groups=Groups::paginate(5);
-        return view('pages.groups.view',compact('groups'));
+        if(Auth()->user()->roles == 'admin')
+        {
+            $groups=Groups::paginate(5);
+            return view('pages.groups.view',compact('groups'));
+        }
+        else{
+            $groups=Groups::paginate(5);
+            return view('pages.members.groups.groups',compact('groups'));
+        }
+       
     }
     public function create()
     {
