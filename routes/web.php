@@ -34,16 +34,15 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home')->middleware('auth');
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'auth','admin'], function () {
 		Route::get('maps', ['as' => 'pages.maps', 'uses' => 'App\Http\Controllers\PageController@maps']);
 		Route::get('tables', ['as' => 'pages.tables', 'uses' => 'App\Http\Controllers\PageController@tables']);
 });
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'auth','admin'], function () {
 	Route::get('/users', [UserController::class, 'index'])->name('user.index');
 	Route::get('/add', [UserController::class, 'create'])->name('user.add');
 	Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('user.edit');
@@ -54,7 +53,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
 });
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'auth','admin'], function () {
 	Route::get('/create', [PrayerController::class, 'create'])->name('prayer.add');
 	Route::get('/prayer/{prayer}/edit', [PrayerController::class, 'edit'])->name('prayer.edit');
 	Route::put('/prayer/{prayer}', [PrayerController::class, 'update'])->name('prayer.update');
@@ -64,14 +63,14 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('/prayerrequest/{prayer_request}', [Prayer_requestController::class, 'update'])->name('prayerrequest.update');
 });
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'auth','admin'], function () {
 	Route::get('/view', [GivingController::class, 'index'])->name('giving.index');
 	Route::get('/make', [GivingController::class, 'create'])->name('giving.create');
 	Route::post('/keep', [GivingController::class, 'store'])->name('giving.store');
 	
 });
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'auth','admin'], function () {
 	Route::get('/groupview', [GroupsController::class, 'index'])->name('groups.view');
 	Route::get('/groups', [GroupsController::class, 'create'])->name('groups.create');
 	Route::post('/groups/store', [GroupsController::class, 'store'])->name('groups.store');
@@ -86,7 +85,7 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'auth','admin'], function () {
 	Route::get('/sermon', [SermonController::class, 'index'])->name('sermon.view');
 	Route::get('/sermon/create', [SermonController::class, 'create'])->name('sermon.create');
 	Route::post('/sermon/store', [SermonController::class, 'store'])->name('sermon.store');
@@ -100,7 +99,7 @@ Route::group(['middleware' => 'auth'], function () {
 	
 });
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'auth','admin'], function () {
 	Route::get('/announcements', [AnnouncementController::class, 'index'])->name('announcement.view');
 	Route::get('/announcement/create', [AnnouncementController::class, 'create'])->name('announcement.create');
 	Route::post('/announcement/store', [AnnouncementController::class, 'store'])->name('announcement.store');
@@ -108,7 +107,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('/announcement/{announcement}', [AnnouncementController::class, 'update'])->name('announcement.update');
 	
 });
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'auth','admin'], function () {
 	Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance.view');
 	Route::get('/attendance/create', [AttendanceController::class, 'create'])->name('attendance.create');
 	Route::post('/attendance/store', [AttendanceController::class, 'store'])->name('attendance.store');
@@ -120,7 +119,7 @@ Route::group(['middleware' => 'auth'], function () {
 //user routes
 //user prayer and prayer requests
 Route::group(['middleware' => 'auth'], function () {
-	Route::post('/prayers', [PrayerController::class, 'index'])->name('prayers.index');
+	Route::get('/prayers', [PrayerController::class, 'index'])->name('prayers.index');
 	Route::post('/prayerrequest/store', [Prayer_requestController::class, 'store'])->name('prayerrequest.store');
 	Route::get('/prayerrequest/add', [Prayer_requestController::class, 'create'])->name('prayerrequest.add');
 	Route::get('/prayerrequest/{prayer_request}/edit', [Prayer_requestController::class, 'edit'])->name('prayerrequest.edit');

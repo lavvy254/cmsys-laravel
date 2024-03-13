@@ -9,9 +9,9 @@ class PrayerController extends Controller
 {
     public function index()
     {
-        $prayers = Prayer::all();
+        $prayers = Prayer::paginate(5);
 
-        return view('pages.members.dashboard', compact('prayers'));
+        return view('pages.members.prayers.prayer', compact('prayers'));
     }
     public function create()
     {
