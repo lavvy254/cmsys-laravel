@@ -53,7 +53,7 @@
       <div class="card-header">
         <h4 class="card-title"> REQUESTED PRAYES</h4>
         <p class="category"> Here is a table for prayer requests</p>
-        <a href=""class="btn btn-sm btn-primary">Add Prayer Request</a>
+        <a href="{{route('prayerrequest.add')}}"class="btn btn-sm btn-primary">Add Prayer Request</a>
       </div>
       <div class="card-body">
         <div class="table-responsive">
