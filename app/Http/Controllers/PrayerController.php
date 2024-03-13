@@ -13,7 +13,7 @@ class PrayerController extends Controller
     {
         // Get the currently authenticated user
         $user = Auth::user();
-
+    
         // Check if the user is authenticated
         if ($user) {
             // Retrieve data for the authenticated user
@@ -27,7 +27,7 @@ class PrayerController extends Controller
             return redirect()->route('login');
         }
     }
-
+    
     public function create()
     {
         return view('pages.prayer.add');
@@ -38,7 +38,7 @@ class PrayerController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'required|string|max:500'
         ]);
-
+        
 
         Prayer::create($request->all());
         return redirect()->route('pages.tables')->with('success', 'New Prayer added Successfully');
@@ -61,7 +61,7 @@ class PrayerController extends Controller
 
         return redirect()->route('pages.tables')->with('success', 'Prayer updated successfully.');
     }
-    public function destroy(Prayer $prayer)
+     public function destroy(Prayer $prayer)
     {
         $prayer->delete();
 

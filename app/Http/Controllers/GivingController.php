@@ -5,13 +5,33 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Giving;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
 
 class GivingController extends Controller
 {
     public function index()
     {
-        $givings = Giving::paginate(5);
-        return view('pages.giving.give',compact('givings'));
+        if(Auth()->user()->roles == 'admin')
+        {
+            $givings = Giving::paginate(5);
+            return view('pages.giving.give',compact('givings'));
+        }
+        else{
+            $user = Auth::user();
+    
+            // Check if the user is authenticated
+            if ($user) {
+                // Retrieve data for the authenticated user
+                
+                $givings = Giving::join('users', 'giving.user_id', '=', 'users.id')
+                    ->where('users.email', $user->email)
+                    ->paginate(5);
+                    return view('pages.members.giving.give',compact('givings'));
+            }
+           
+        }
+       
     }
     public function create()
     {

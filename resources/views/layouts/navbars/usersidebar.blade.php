@@ -49,7 +49,7 @@
                         <li @if ($pageSlug == 'userprofile') z class="active " @endif>
                             <a href="{{ route('profile.edit') }}">
                                 <i class="tim-icons icon-single-02"></i>
-                                <p>{{ __('User Profi') }}</p>
+                                <p>{{ __('User Profile') }}</p>
                             </a>
                         </li>
                         <li @if ($pageSlug == 'userprofile') z class="active " @endif>
@@ -59,9 +59,9 @@
                             </a>
                         </li>
                         <li @if ($pageSlug == 'userprofile') z class="active " @endif>
-                            <a href="{{ route('profile.edit') }}">
+                            <a href="{{ route('giving.index') }}">
                                 <i class="tim-icons icon-single-02"></i>
-                                <p>{{ __('Groups') }}</p>
+                                <p>{{ __('Giving') }}</p>
                             </a>
                         </li>
                         <li @if ($pageSlug == 'userprofile') z class="active " @endif>
