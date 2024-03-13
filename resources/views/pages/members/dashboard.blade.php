@@ -10,7 +10,7 @@
     <title>Document</title>
 </head>
 <body>
-    <H1>HEY</H1>
+    <H1>Upcoming Events</H1>
 </body>
 </html>
 @endsection
