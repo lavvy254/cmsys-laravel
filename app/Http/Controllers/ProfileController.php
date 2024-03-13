@@ -15,7 +15,13 @@ class ProfileController extends Controller
      */
     public function edit()
     {
-        return view('profile.edit');
+        if(Auth()->user()->roles == 'admin')
+        {
+            return view('profile.edit');
+        }else{
+            return view('profile.edit');
+        }
+       
     }
 
     /**

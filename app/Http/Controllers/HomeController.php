@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Events;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -28,11 +29,10 @@ class HomeController extends Controller
             $usertype = Auth()->user()->roles;
 
             if ($usertype == 'user') {
-                return view('pages.members.dashboard');
+                $events = Events::paginate(5);
+                return view('pages.members.dashboard',compact('events'));
             } else if ($usertype == 'admin') {
                 return view('dashboard');
-            } else {
-                return redirect()->back();
             }
         }
     }
