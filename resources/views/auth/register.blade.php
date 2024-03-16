@@ -102,7 +102,7 @@
                                     <i class="tim-icons icon-email-85"></i>
                                 </div>
                             </div>
-                            <input type="date" name="dob" class="form-control{{ $errors->has('dob') ? ' is-invalid' : '' }}">
+                            <input type="date" name="DOB" class="form-control{{ $errors->has('dob') ? ' is-invalid' : '' }}">
                             @include('alerts.feedback', ['field' => 'dob'])
                         </div>
                         <div class="input-group{{ $errors->has('password') ? ' has-danger' : '' }}">
