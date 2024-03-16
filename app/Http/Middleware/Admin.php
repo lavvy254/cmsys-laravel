@@ -1,4 +1,5 @@
-<?
+<?php
+
 namespace App\Http\Middleware;
 
 use Closure;
@@ -13,9 +14,9 @@ class Admin
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
-     * @return \Illuminate\Http\Response
+     * @return mixed
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next)
     {
         if (Auth::check() && Auth::user()->roles == 'admin') {
             return $next($request);
