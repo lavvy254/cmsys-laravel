@@ -25,15 +25,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if (Auth::id()) {
+        if (Auth::check()) {
             $usertype = Auth()->user()->roles;
 
             if ($usertype == 'user') {
                 $events = Events::paginate(5);
-                return view('pages.members.dashboard',compact('events'));
+                return view('pages.members.dashboard', compact('events'));
             } else if ($usertype == 'admin') {
                 return view('dashboard');
             }
         }
+
+        // Fallback behavior if the user is not authenticated or has an unknown role
+        return redirect()->view('welcome');
     }
+
 }
