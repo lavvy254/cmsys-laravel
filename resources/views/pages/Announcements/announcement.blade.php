@@ -10,7 +10,7 @@
       </div>
       <div class="card-body">
         <div class="table-responsive">
-          <a href="{{route('sermon.create')}}" class="btn btn-sm btn-primary"> Add Announcement</a> 
+          <a href="{{route('announcement.create')}}" class="btn btn-sm btn-primary"> Add Announcement</a> 
           <table class="table tablesorter " id="">
             <thead class=" text-primary">
               <tr>

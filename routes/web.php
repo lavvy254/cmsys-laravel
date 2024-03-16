@@ -41,6 +41,8 @@ Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home')->
 Route::group(['middleware' => 'auth','admin'], function () {
 		Route::get('maps', ['as' => 'pages.maps', 'uses' => 'App\Http\Controllers\PageController@maps']);
 		Route::get('tables', ['as' => 'pages.tables', 'uses' => 'App\Http\Controllers\PageController@tables']);
+		Route::get('notifications', ['as' => 'pages.notifications', 'uses' => 'App\Http\Controllers\PageController@notificatioons']);
+
 });
 
 Route::group(['middleware' => 'auth','admin'], function () {

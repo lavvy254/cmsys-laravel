@@ -12,7 +12,7 @@ class AttendanceController extends Controller
     public function index()
     {
         $attendance = Attendance::paginate(5);
-        return view('pages.attendance.attendance',compact('attenndance'));
+        return view('pages.attendance.view',compact('attendance'));
     }
     public function create(Attendance $attendance)
     {

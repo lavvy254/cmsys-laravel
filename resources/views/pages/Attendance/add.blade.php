@@ -11,16 +11,9 @@
         <form action="{{route('attendance.store')}}" method="POST">
           @csrf
           <div class="form-group">
-            <label for="title">Title</label>
-            <input type="text" name="title" id="title" class="form-control" placeholder="Enter Title">
-            @error('title')
-              <p class="text-danger">{{$message}}</p>
-            @enderror
-          </div>
-          <div class="form-group">
-            <label for="Speaker">Speaker</label>
-            <input type="text" name="speaker" id="speaker" class="form-control" placeholder="Enter Speaker">
-            @error('speaker')
+            <label for="User">User</label>
+            <input type="text" name="user" id="user" class="form-control" placeholder="Enter User">
+            @error('user')
               <p class="text-danger">{{$message}}</p>
             @enderror
           </div>

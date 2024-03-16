@@ -8,7 +8,7 @@
         <h4 class="card-title">Add Announcements</h4>
          </div>
            <div class="card-body">
-        <form action="{{route('sermon.store')}}" method="POST">
+        <form action="{{route('announcement.store')}}" method="POST">
           @csrf
           <div class="form-group">
             <label for="title">Title</label>
@@ -18,24 +18,13 @@
             @enderror
           </div>
           <div class="form-group">
-            <label for="Speaker">Speaker</label>
-            <input type="text" name="speaker" id="speaker" class="form-control" placeholder="Enter Speaker">
-            @error('speaker')
+            <label for="Message">Message</label>
+            <input type="text" name="message" id="message" class="form-control" placeholder="Enter Message">
+            @error('message')
               <p class="text-danger">{{$message}}</p>
             @enderror
           </div>
-          <div class="col-md-6 mb-3">
-            <label for="users" class="form-label">Events</label>
-               <select class="form-control bg-dark" name="event_id" id="event_id">
-                <option value="">Select Event</option>
-                    @foreach ($events as $event)
-                     <option value="{{ $event->id }}">{{ $event->ename }}</option>
-                    @endforeach
-               </select>
-               @error('Event')
-                <span class="text-danger">{{ $message }}</span>
-               @enderror
-           </div>
+         
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>

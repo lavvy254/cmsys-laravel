@@ -15,20 +15,20 @@
             <thead class=" text-primary">
               <tr>
                 <th>ID</th>
-                <th>User_id</th>
-                <th>Event_id</th>
+                <th>User Name</th>
+                <th>Event Name</th>
                 <th class="align-middle">Action</th>
               </tr>
             </thead>
-            @foreach ($attendance as $attendance )
+            @foreach ($attendance as $attend )
             <tbody>
               <tr>
-              <th>{{$attendance->id}}</th>
-                <th>{{$attendance->event_id}}</th>
-                <th>{{$group->user_id}}</th>
+              <th>{{$attend->id}}</th>
+                <th>{{$attend->User->fname}}</th>
+                <th>{{$attend->Event->ename}}</th>
                 </td>
                 <td class="align-middle">
-                  <a rel="tooltip" class="btn btn-success btn-link" href="{{route('attendance.edit',$attendance->id)}}" data-original-title="" title="">
+                  <a rel="tooltip" class="btn btn-success btn-link" href="{{route('attendance.edit',$attend->id)}}" data-original-title="" title="">
                       <i class="material-icons">edit</i>
                       <div class="ripple-container"></div>
                   </a>

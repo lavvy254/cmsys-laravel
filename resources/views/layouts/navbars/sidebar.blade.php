@@ -104,7 +104,7 @@
                 </a>
             </li>
             <li @if ($pageSlug == 'tables') class="active " @endif>
-                <a href="{{ route('pages.tables') }}">
+                <a href="{{ route('attendance.view') }}">
                     <i class="tim-icons icon-puzzle-10"></i>
                     <p>{{ __('Attendance') }}</p>
                 </a>
