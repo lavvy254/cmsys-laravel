@@ -15,6 +15,7 @@ use App\Http\Controllers\SermonController;
 use App\Http\Controllers\Sermon_notesController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\AttendanceController;
+Use App\Http\Controllers\PaymentController;
 
 
 /*
@@ -125,3 +126,4 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/prayerrequest/{prayer_request}/edit', [Prayer_requestController::class, 'edit'])->name('prayerrequest.edit');
 	Route::put('/prayerrequest/{prayer_request}', [Prayer_requestController::class, 'update'])->name('prayerrequest.update');
 });
+Route::get('/mpesa', [PaymentController::class, 'index'])->name('mpesa.index');
