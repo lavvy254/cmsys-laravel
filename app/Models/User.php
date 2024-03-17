@@ -62,7 +62,7 @@ class User extends Authenticatable
     {
         $this->attributes['lname'] = ucfirst(strtolower($value));
     }
-
+ 
 
     /**
      * The attributes that should be cast.

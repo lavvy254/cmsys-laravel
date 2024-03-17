@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('ename');
             $table->string('location');
             $table->text('description');
+            $table->timestamp('start_date');
             $table->timestamps();
         });
     }

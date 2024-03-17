@@ -129,4 +129,4 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('/prayerrequest/{prayer_request}', [Prayer_requestController::class, 'update'])->name('prayerrequest.update');
 });
 Route::get('/mpesa', [PaymentController::class, 'index'])->name('mpesa.index');
-Route::get('/user/gender-ages-data', 'UserController@genderAgesData');
+Route::get('/getGenderAndAgesData', [UserController::class, 'getGenderAndAgesData']);

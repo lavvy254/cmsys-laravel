@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Events;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -32,12 +33,19 @@ class HomeController extends Controller
                 $events = Events::paginate(5);
                 return view('pages.members.dashboard', compact('events'));
             } else if ($usertype == 'admin') {
-                return view('dashboard');
+                $members = User::all();
+
+                // Calculate age for each user
+                foreach ($members as $member) {
+                    $member->age = Carbon::parse($member->DOB)->age;
+                }
+                return view('dashboard',compact('members'));
             }
         }
 
         // Fallback behavior if the user is not authenticated or has an unknown role
         return redirect()->view('welcome');
     }
+    
 
 }

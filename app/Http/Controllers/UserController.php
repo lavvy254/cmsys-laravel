@@ -19,6 +19,13 @@ class UserController extends Controller
     public function index(User $model)
     {
         $members = User::paginate(7);
+
+        // Calculate age for each user
+        foreach ($members as $member) {
+            $member->age = Carbon::parse($member->DOB)->age;
+        }
+
+        // Return view with users including their ages
         return view('users.index', compact('members'));
     }
     public function create()
@@ -71,17 +78,27 @@ class UserController extends Controller
 
         return redirect()->route('user.index')->with('success', 'User deleted successfully.');
     }
-    public function genderAgesData()
-    {
-        $users = User::select('gender', 'DOB')->get();
-        $data = [];
-        foreach ($users as $user) {
-            $age = Carbon::parse($user->DOB)->age;
-            $data[] = [
-                'gender' => $user->gender,
-                'age' => $age
-            ];
-        }
-        return response()->json($data);
+    public function getGenderAndAgesData()
+{
+    // Retrieve users from the database
+    $users = User::all();
+
+    // Initialize arrays to store genders and ages
+    $genders = [];
+    $ages = [];
+
+    // Calculate ages from DOB and store genders
+    foreach ($users as $user) {
+        $genders[] = $user->gender;
+        // Calculate age from DOB
+        $dob = new \DateTime($user->DOB);
+        $now = new \DateTime();
+        $age = $now->diff($dob)->y;
+        $ages[] = $age;
     }
+
+    // Return data as JSON
+    return response()->json(['genders' => $genders, 'ages' => $ages]);
+}
+
 }
