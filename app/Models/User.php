@@ -20,12 +20,15 @@ class User extends Authenticatable
     protected $fillable = [
         'fname',
         'lname',
-        'DOB',
         'roles',
         'gender',
         'phone',
         'email',
         'password',
+    ];
+
+    protected $dates = [
+        'DOB',
     ];
 
     /**
@@ -46,6 +49,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'DOB' => 'date',
     ];
     public function prayerRequests()
     {
