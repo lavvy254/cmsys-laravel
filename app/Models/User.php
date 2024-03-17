@@ -20,6 +20,7 @@ class User extends Authenticatable
     protected $fillable = [
         'fname',
         'lname',
+        'DOB',
         'roles',
         'gender',
         'phone',
@@ -40,6 +41,28 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+    /**
+     * Set the first name attribute.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setFnameAttribute($value)
+    {
+        $this->attributes['fname'] = ucfirst(strtolower($value));
+    }
+
+    /**
+     * Set the last name attribute.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setLnameAttribute($value)
+    {
+        $this->attributes['lname'] = ucfirst(strtolower($value));
+    }
+
 
     /**
      * The attributes that should be cast.
