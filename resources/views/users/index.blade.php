@@ -269,7 +269,7 @@
                                 <td>
                                     <a href="mailto:admin@black.com">{{$member->email}}</a>
                                 </td>
-                                <td>{{$member->age}}</td>
+                                <td>{{$member->DOB}}</td>
                                 <td>{{$member->gender}}</td>
                                 <td>{{$member->phone}}</td>
                                 <td class="text-right">
