@@ -71,5 +71,17 @@ class UserController extends Controller
 
         return redirect()->route('user.index')->with('success', 'User deleted successfully.');
     }
-    
+    public function genderAgesData()
+    {
+        $users = User::select('gender', 'DOB')->get();
+        $data = [];
+        foreach ($users as $user) {
+            $age = Carbon::parse($user->DOB)->age;
+            $data[] = [
+                'gender' => $user->gender,
+                'age' => $age
+            ];
+        }
+        return response()->json($data);
+    }
 }
