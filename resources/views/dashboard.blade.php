@@ -7,8 +7,8 @@
                 <div class="card-header ">
                     <div class="row">
                         <div class="col-sm-6 text-left">
-                            <h5 class="card-category">Total Shipments</h5>
-                            <h2 class="card-title">Performance</h2>
+                            <h5 class="card-category">Yearly Attendance</h5>
+                            <h2 class="card-title">Attendace</h2>
                         </div>
                         <div class="col-sm-6">
                             <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
@@ -53,7 +53,7 @@
                 </div>
                 <div class="card-body">
                     <div class="chart-area">
-                        <canvas id="CountryChart"></canvas>
+                        <canvas id="GivingChart1"></canvas>
                     </div>
                 </div>
             </div>
@@ -66,7 +66,7 @@
                 </div>
                 <div class="card-body">
                     <div class="chart-area">
-                        <canvas id="chartLineGreen"></canvas>
+                        <canvas id="GivingChart"></canvas>
                     </div>
                 </div>
             </div>
