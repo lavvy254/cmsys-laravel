@@ -388,65 +388,67 @@ demo = {
         };
 
         $(document).ready(function() {
-          // Make AJAX request to retrieve data
-          $.ajax({
-              url: '/getGenderAndAgesData',
-              type: 'GET',
-              success: function(response) {
-                  // Parse response data
-                  var genders = response.genders;
-                  var ages = response.ages;
-      
-                  // Create chart
-                  var ctx = document.getElementById('chartLinePurple').getContext('2d');
-                  var myChart = new Chart(ctx, {
-                      type: 'bar',
-                      data: {
-                          labels: genders,
-                          datasets: [{
-                              label: 'Age',
-                              data: ages,
-                              backgroundColor: 'rgba(54, 162, 235, 0.5)', // Blue color with transparency
-                              borderColor: 'rgba(54, 162, 235, 1)', // Solid blue color
-                              borderWidth: 1
-                          }]
-                      },
-                      options: {
-                          maintainAspectRatio: false, // Ensure the chart maintains aspect ratio
-                          responsive: true, // Make the chart responsive
-                          scales: {
-                              yAxes: [{
-                                  ticks: {
-                                      beginAtZero: true,
-                                      precision: 0 // Round age values to whole numbers
-                                  },
-                                  scaleLabel: {
-                                      display: true,
-                                      labelString: 'Age' // Label for the Y-axis
-                                  }
-                              }],
-                              xAxes: [{
-                                  scaleLabel: {
-                                      display: true,
-                                      labelString: 'Gender' // Label for the X-axis
-                                  }
-                              }]
-                          },
-                          title: {
-                              display: true,
-                              text: 'Ages by Gender' // Chart title
-                          },
-                          legend: {
-                              display: false // Hide legend
-                          }
-                      }
-                  });
-              },
-              error: function(xhr, status, error) {
-                  console.error(error);
-              }
-          });
-      });
+            // Make AJAX request to retrieve data
+            $.ajax({
+                url: '/getGenderAndAgesData',
+                type: 'GET',
+                success: function(response) {
+                    // Parse response data
+                    var maleAverageAge = response.maleAverageAge;
+                    var femaleAverageAge = response.femaleAverageAge;
+        
+                    // Create chart
+                    var ctx = document.getElementById('chartLinePurple').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: ['Male', 'Female'],
+                            datasets: [{
+                                label: 'Average Age',
+                                data: [maleAverageAge, femaleAverageAge],
+                                backgroundColor: ['rgba(54, 162, 235, 0.5)', 'rgba(255, 99, 132, 0.5)'],
+                                borderColor: ['rgba(54, 162, 235, 1)', 'rgba(255, 99, 132, 1)'],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            maintainAspectRatio: false,
+                            responsive: true,
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true,
+                                        stepSize: 10,
+                                        max: 70
+                                    },
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Age'
+                                    }
+                                }],
+                                xAxes: [{
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Gender'
+                                    }
+                                }]
+                            },
+                            title: {
+                                display: true,
+                                text: 'Average Ages by Gender'
+                            },
+                            legend: {
+                                display: false
+                            }
+                        }
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        });
+        
       
       
         var myChart = new Chart(ctx, {

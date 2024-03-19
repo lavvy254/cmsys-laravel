@@ -79,40 +79,43 @@ class UserController extends Controller
         return redirect()->route('user.index')->with('success', 'User deleted successfully.');
     }
     public function getGenderAndAgesData()
-{
-    try {
-        // Retrieve only required columns (gender and DOB) from the database
-        $users = User::select('gender', 'DOB')->get();
-
-        // Initialize arrays to store genders and ages
-        $femaleAges = [];
-        $maleAges = [];
-
-        // Calculate ages from DOB and store ages in respective arrays based on gender
+    {
+        // Retrieve users from the database
+        $users = User::all();
+    
+        // Initialize variables to store total age and count for males and females
+        $maleTotalAge = 0;
+        $maleCount = 0;
+        $femaleTotalAge = 0;
+        $femaleCount = 0;
+    
+        // Calculate total ages and counts for males and females
         foreach ($users as $user) {
-            if ($user->DOB) {
-                $dob = new \DateTime($user->DOB);
-                $now = new \DateTime();
-                $age = $now->diff($dob)->y;
-                if ($user->gender === 'female') {
-                    $femaleAges[] = $age;
-                } elseif ($user->gender === 'male') {
-                    $maleAges[] = $age;
-                }
+            // Calculate age from DOB
+            $dob = new \DateTime($user->DOB);
+            $now = new \DateTime();
+            $age = $now->diff($dob)->y;
+    
+            // Increment total age and count based on gender
+            if ($user->gender == 'Male') {
+                $maleTotalAge += $age;
+                $maleCount++;
+            } elseif ($user->gender == 'Female') {
+                $femaleTotalAge += $age;
+                $femaleCount++;
             }
         }
-
-        // Calculate average ages for females and males
-        $averageFemaleAge = count($femaleAges) > 0 ? array_sum($femaleAges) / count($femaleAges) : 0;
-        $averageMaleAge = count($maleAges) > 0 ? array_sum($maleAges) / count($maleAges) : 0;
-
+    
+        // Calculate average ages for males and females
+        $maleAverageAge = $maleCount > 0 ? $maleTotalAge / $maleCount : 0;
+        $femaleAverageAge = $femaleCount > 0 ? $femaleTotalAge / $femaleCount : 0;
+    
         // Return data as JSON
-        return response()->json(['female_average_age' => $averageFemaleAge, 'male_average_age' => $averageMaleAge]);
-    } catch (\Exception $e) {
-        // Handle any exceptions and return an error response
-        return response()->json(['error' => 'An error occurred while fetching data.'], 500);
+        return response()->json([
+            'maleAverageAge' => $maleAverageAge,
+            'femaleAverageAge' => $femaleAverageAge
+        ]);
     }
-}
-
+    
 
 }
