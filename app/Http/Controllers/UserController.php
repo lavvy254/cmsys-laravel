@@ -80,25 +80,39 @@ class UserController extends Controller
     }
     public function getGenderAndAgesData()
 {
-    // Retrieve users from the database
-    $users = User::all();
+    try {
+        // Retrieve only required columns (gender and DOB) from the database
+        $users = User::select('gender', 'DOB')->get();
 
-    // Initialize arrays to store genders and ages
-    $genders = [];
-    $ages = [];
+        // Initialize arrays to store genders and ages
+        $femaleAges = [];
+        $maleAges = [];
 
-    // Calculate ages from DOB and store genders
-    foreach ($users as $user) {
-        $genders[] = $user->gender;
-        // Calculate age from DOB
-        $dob = new \DateTime($user->DOB);
-        $now = new \DateTime();
-        $age = $now->diff($dob)->y;
-        $ages[] = $age;
+        // Calculate ages from DOB and store ages in respective arrays based on gender
+        foreach ($users as $user) {
+            if ($user->DOB) {
+                $dob = new \DateTime($user->DOB);
+                $now = new \DateTime();
+                $age = $now->diff($dob)->y;
+                if ($user->gender === 'female') {
+                    $femaleAges[] = $age;
+                } elseif ($user->gender === 'male') {
+                    $maleAges[] = $age;
+                }
+            }
+        }
+
+        // Calculate average ages for females and males
+        $averageFemaleAge = count($femaleAges) > 0 ? array_sum($femaleAges) / count($femaleAges) : 0;
+        $averageMaleAge = count($maleAges) > 0 ? array_sum($maleAges) / count($maleAges) : 0;
+
+        // Return data as JSON
+        return response()->json(['female_average_age' => $averageFemaleAge, 'male_average_age' => $averageMaleAge]);
+    } catch (\Exception $e) {
+        // Handle any exceptions and return an error response
+        return response()->json(['error' => 'An error occurred while fetching data.'], 500);
     }
-
-    // Return data as JSON
-    return response()->json(['genders' => $genders, 'ages' => $ages]);
 }
+
 
 }
