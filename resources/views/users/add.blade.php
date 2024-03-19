@@ -264,8 +264,10 @@
                          <span class="text-danger">{{ $message}}</span>
                         @enderror
                         <div class="col-md-6 mb-3">
-                            <label for="gender" class="form-label">gender</label>
-                            <input type="text" class="form-control" id="gender" name="gender">
+                            <select class="form-control bg-dark" name="gender" id="gender">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
                         </div>
                         @error('gender')
                          <span class="text-danger">{{ $message}}</span>
