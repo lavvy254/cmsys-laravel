@@ -130,3 +130,4 @@ Route::group(['middleware' => 'auth'], function () {
 });
 Route::get('/mpesa', [PaymentController::class, 'index'])->name('mpesa.index');
 Route::get('/getGenderAndAgesData', [UserController::class, 'getGenderAndAgesData']);
+Route::get('/getYearlyAttendanceData', [AttendanceController::class, 'getYearlyAttendanceData']);

@@ -387,108 +387,155 @@ demo = {
             },
         };
 
-        $(document).ready(function() {
+        $(document).ready(function () {
             // Make AJAX request to retrieve data
             $.ajax({
-                url: '/getGenderAndAgesData',
-                type: 'GET',
-                success: function(response) {
+                url: "/getGenderAndAgesData",
+                type: "GET",
+                success: function (response) {
                     // Parse response data
                     var maleAverageAge = response.maleAverageAge;
                     var femaleAverageAge = response.femaleAverageAge;
-        
+
                     // Create chart
-                    var ctx = document.getElementById('chartLinePurple').getContext('2d');
+                    var ctx = document
+                        .getElementById("chartLinePurple")
+                        .getContext("2d");
                     var myChart = new Chart(ctx, {
-                        type: 'bar',
+                        type: "bar",
                         data: {
-                            labels: ['Male', 'Female'],
-                            datasets: [{
-                                label: 'Average Age',
-                                data: [maleAverageAge, femaleAverageAge],
-                                backgroundColor: ['rgba(54, 162, 235, 0.5)', 'rgba(255, 99, 132, 0.5)'],
-                                borderColor: ['rgba(54, 162, 235, 1)', 'rgba(255, 99, 132, 1)'],
-                                borderWidth: 1
-                            }]
+                            labels: ["Male", "Female"],
+                            datasets: [
+                                {
+                                    label: "Average Age",
+                                    data: [maleAverageAge, femaleAverageAge],
+                                    backgroundColor: [
+                                        "rgba(54, 162, 235, 0.5)",
+                                        "rgba(255, 99, 132, 0.5)",
+                                    ],
+                                    borderColor: [
+                                        "rgba(54, 162, 235, 1)",
+                                        "rgba(255, 99, 132, 1)",
+                                    ],
+                                    borderWidth: 1,
+                                },
+                            ],
                         },
                         options: {
                             maintainAspectRatio: false,
                             responsive: true,
                             scales: {
-                                yAxes: [{
-                                    ticks: {
-                                        beginAtZero: true,
-                                        stepSize: 10,
-                                        max: 70
+                                yAxes: [
+                                    {
+                                        ticks: {
+                                            beginAtZero: true,
+                                            stepSize: 10,
+                                            max: 70,
+                                        },
+                                        scaleLabel: {
+                                            display: true,
+                                            labelString: "Age",
+                                        },
                                     },
-                                    scaleLabel: {
-                                        display: true,
-                                        labelString: 'Age'
-                                    }
-                                }],
-                                xAxes: [{
-                                    scaleLabel: {
-                                        display: true,
-                                        labelString: 'Gender'
-                                    }
-                                }]
+                                ],
+                                xAxes: [
+                                    {
+                                        scaleLabel: {
+                                            display: true,
+                                            labelString: "Gender",
+                                        },
+                                    },
+                                ],
                             },
                             title: {
                                 display: true,
-                                text: 'Average Ages by Gender'
+                                text: "Average Ages by Gender",
                             },
                             legend: {
-                                display: false
-                            }
-                        }
+                                display: false,
+                            },
+                        },
                     });
                 },
-                error: function(xhr, status, error) {
+                error: function (xhr, status, error) {
                     console.error(error);
-                }
+                },
             });
-        });
-        
-      
-      
-        var myChart = new Chart(ctx, {
-            type: "line",
-            data: data,
-            options: gradientChartOptionsConfigurationWithTooltipPurple,
         });
 
         var ctxGreen = document
-            .getElementById("chartLineGreen")
+            .getElementById("attendanceChart")
             .getContext("2d");
 
-        var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+        // Make AJAX request to retrieve data
+        fetch("/getYearlyAttendanceData")
+            .then((response) => response.json())
+            .then((data) => {
+                // Extract years and attendance counts from data
+                const years = data.map((entry) => entry.year);
+                const attendanceCounts = data.map(
+                    (entry) => entry.attendance_count
+                );
 
-        gradientStroke.addColorStop(1, "rgba(66,134,121,0.15)");
-        gradientStroke.addColorStop(0.4, "rgba(66,134,121,0.0)"); //green colors
-        gradientStroke.addColorStop(0, "rgba(66,134,121,0)"); //green colors
-
-        var data = {
-            labels: ["JUL", "AUG", "SEP", "OCT", "NOV"],
-            datasets: [
-                {
-                    label: "My First dataset",
-                    fill: true,
-                    backgroundColor: gradientStroke,
-                    borderColor: "#00d6b4",
-                    borderWidth: 2,
-                    borderDash: [],
-                    borderDashOffset: 0.0,
-                    pointBackgroundColor: "#00d6b4",
-                    pointBorderColor: "rgba(255,255,255,0)",
-                    pointHoverBackgroundColor: "#00d6b4",
-                    pointBorderWidth: 20,
-                    pointHoverRadius: 4,
-                    pointHoverBorderWidth: 15,
-                    pointRadius: 4,
-                    data: [90, 27, 60, 12, 80],
-                },
-            ],
-        };
+                // Create chart
+                var myChart = new Chart(ctxGreen, {
+                    type: "line",
+                    data: {
+                        labels: years,
+                        datasets: [
+                            {
+                                label: "Yearly Attendance",
+                                fill: true,
+                                backgroundColor: gradientStroke,
+                                borderColor: "#00d6b4",
+                                borderWidth: 2,
+                                borderDash: [],
+                                borderDashOffset: 0.0,
+                                pointBackgroundColor: "#00d6b4",
+                                pointBorderColor: "rgba(255,255,255,0)",
+                                pointHoverBackgroundColor: "#00d6b4",
+                                pointBorderWidth: 20,
+                                pointHoverRadius: 4,
+                                pointHoverBorderWidth: 15,
+                                pointRadius: 4,
+                                data: attendanceCounts,
+                            },
+                        ],
+                    },
+                    options: {
+                        maintainAspectRatio: false,
+                        responsive: true,
+                        scales: {
+                            yAxes: [
+                                {
+                                    ticks: {
+                                        beginAtZero: true,
+                                    },
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: "Attendance Count",
+                                    },
+                                },
+                            ],
+                            xAxes: [
+                                {
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: "Year",
+                                    },
+                                },
+                            ],
+                        },
+                        title: {
+                            display: true,
+                            text: "Yearly Attendance",
+                        },
+                    },
+                });
+            })
+            .catch((error) => {
+                console.error("Error fetching data:", error);
+            });
 
         var myChart = new Chart(ctxGreen, {
             type: "line",
