@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Events;
+use App\Models\Giving;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
@@ -39,13 +40,19 @@ class HomeController extends Controller
                 foreach ($members as $member) {
                     $member->age = Carbon::parse($member->DOB)->age;
                 }
-                return view('dashboard',compact('members'));
+
+                // Count total number of users
+                $totalUsers = $members->count();
+                $currentYear = Carbon::now()->year;
+                $totalamtyear = Giving::whereYear('created_at', $currentYear)->sum('amount');
+                $totalGiving = Giving::sum('amount');
+
+                return view('dashboard', compact('members', 'totalUsers', 'totalGiving', 'totalamtyear'));
             }
         }
 
         // Fallback behavior if the user is not authenticated or has an unknown role
-        return redirect()->view('welcome');
+        return redirect()->route('welcome');
     }
-    
 
 }
