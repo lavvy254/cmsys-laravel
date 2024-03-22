@@ -52,8 +52,11 @@
       border-radius: 15px;
     }
   </style>
-@extends('layouts.app', ['page' => __('Mpesa'), 'pageSlug' => 'Mpesa'])
-
+ @if(Auth()->user()->roles == "admin")
+    @extends('layouts.app', ['page' => __('Mpesa'), 'pageSlug' => 'Mpesa'])
+@else
+    @extends('layouts.navbars.usersidebar', ['page' => __('Mpesa'), 'pageSlug' => 'Mpesa'])
+@endif
 @section('content')
 <div class="row justify-content-center">
   <div class="col-md-12">
