@@ -52,7 +52,8 @@
       border-radius: 15px;
     }
   </style>
-@extends('layouts.app', ['page' => __('Mpesa'), 'pageSlug' => 'Mpesa'])
+  
+@extends('layouts.navbars.usersidebar', ['page' => __('Mpesa'), 'pageSlug' => 'Mpesa'])
 @section('content')
 <div class="row justify-content-center">
   <div class="col-md-12">
@@ -69,7 +70,8 @@
       </div>
       <div class="card-body">
         <div class="mt-4">
-          <form action="stk_initiate.php" method="POST">
+          <form action="{{route('mpesa.pay')}}" method="POST">
+            @csrf
             <div class="form-group">
               <label for="amount">Amount to be paid (Ksh)</label>
               <input type="number" class="form-control" id="amount" name="amount" placeholder="Enter Amount">
@@ -80,9 +82,9 @@
             </div>
              <div class="form-group">
               <label for="Type">Type</label>
-               <select class="form-control bg-dark" name="gender" id="gender">
-                                <option value="offering">Offering</option>
-                                <option value="tithe">Tithe</option>
+               <select class="form-control bg-dark" name="type" id="type">
+                 <option value="offering">Offering</option>
+                 <option value="tithe">Tithe</option>
                </select>
             </div>
             <button type="submit" class="btn btn-success">Pay</button>
