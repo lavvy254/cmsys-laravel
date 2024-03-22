@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a994c02dbcee6d1b54e0e95fee16ff03",
+    "content-hash": "25155535e86afa08e0d61d1d0a31c435",
     "packages": [
         {
             "name": "brick/math",
@@ -3350,6 +3350,49 @@
                 }
             ],
             "time": "2023-11-08T05:53:05+00:00"
+        },
+        {
+            "name": "safaricom/mpesa",
+            "version": "1.0.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/safaricom/mpesa-php-sdk.git",
+                "reference": "c66895dcdec8df1f496e017708c557fc252340c5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/safaricom/mpesa-php-sdk/zipball/c66895dcdec8df1f496e017708c557fc252340c5",
+                "reference": "c66895dcdec8df1f496e017708c557fc252340c5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "symfony/dotenv": "^4.3@dev"
+            },
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "Safaricom\\Mpesa\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "mit"
+            ],
+            "authors": [
+                {
+                    "name": "Moses Nandwa",
+                    "email": "mnandwa@safaricom.co.ke"
+                }
+            ],
+            "description": "A PHP package for Mpesa API",
+            "support": {
+                "issues": "https://github.com/safaricom/mpesa-php-sdk/issues",
+                "source": "https://github.com/safaricom/mpesa-php-sdk/tree/master"
+            },
+            "time": "2019-01-06T16:01:21+00:00"
         },
         {
             "name": "symfony/console",

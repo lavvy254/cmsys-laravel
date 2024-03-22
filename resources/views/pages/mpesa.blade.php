@@ -52,11 +52,7 @@
       border-radius: 15px;
     }
   </style>
- @if(Auth()->user()->roles == "admin")
-    @extends('layouts.app', ['page' => __('Mpesa'), 'pageSlug' => 'Mpesa'])
-@else
-    @extends('layouts.navbars.usersidebar', ['page' => __('Mpesa'), 'pageSlug' => 'Mpesa'])
-@endif
+@extends('layouts.app', ['page' => __('Mpesa'), 'pageSlug' => 'Mpesa'])
 @section('content')
 <div class="row justify-content-center">
   <div class="col-md-12">
@@ -81,6 +77,13 @@
             <div class="form-group">
               <label for="phone">Phone Number</label>
               <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter Phone Number">
+            </div>
+             <div class="form-group">
+              <label for="Type">Type</label>
+               <select class="form-control bg-dark" name="gender" id="gender">
+                                <option value="offering">Offering</option>
+                                <option value="tithe">Tithe</option>
+               </select>
             </div>
             <button type="submit" class="btn btn-success">Pay</button>
           </form>
