@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use AfricasTalking\SDK\AfricasTalking;
+use Illuminate\Support\Facades\Log;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
 
@@ -32,6 +34,7 @@ class UserController extends Controller
     {
         return view('users.add');
     }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -43,9 +46,39 @@ class UserController extends Controller
             'email' => 'required|string|max:255|unique:users,email',
             'password' => 'required|string|max:255',
         ]);
-
-        User::create($request->all());
+    
+        // Create the user
+        $user = User::create($request->all());
+    
+        // Send SMS to the user
+        $this->sendWelcomeSMS($user);
+    
         return redirect()->route('user.index')->with('success', 'New User added Successfully');
+    }
+    
+    private function sendWelcomeSMS($user)
+    {
+        $username = env('AFRICASTALKING_USERNAME');
+        $apiKey = env('AFRICASTALKING_API_KEY');
+    
+        $AT = new AfricasTalking($username, $apiKey);
+    
+        // Initialize a service
+        $sms = $AT->sms();
+    
+        // Compose the message
+        $message = "Hello {$user->fname}, welcome to our platform!";
+    
+        // Send the message
+        $result = $sms->send([
+            'to' => $user->phone,
+            'message' => $message
+        ]);
+    
+        // Handle errors
+        if ($result['status'] !== 'success') {
+            Log::error("Failed to send SMS to {$user->phone}. Error: {$result['message']}");
+        }
     }
     public function edit(User $user)
     {
