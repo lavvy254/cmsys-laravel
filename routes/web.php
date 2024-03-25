@@ -134,7 +134,7 @@ Route::group(['middleware' => 'auth'], function () {
 });
 Route::get('/mpesa', [PaymentController::class, 'index'])->name('mpesa.index');
 Route::post('/mpesa/pay', [PaymentController::class, 'initiatePayment'])->name('mpesa.pay');
-Route::post('/mpesa/callback', [PaymentController::class, 'callback'])->name('mpesa.callback');
+Route::get('/mpesa/callback', [PaymentController::class, 'mpesacallback'])->name('mpesa.callback');
 Route::get('/getGenderAndAgesData', [UserController::class, 'getGenderAndAgesData']);
 Route::get('/getYearlyAttendanceData', [AttendanceController::class, 'getYearlyAttendanceData']);
 Route::get('/getYearlyGivingData', [GivingController::class, 'getYearlyGivingData']);

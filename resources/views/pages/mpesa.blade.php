@@ -66,6 +66,17 @@
           <div class="col-md-6">
             <h4 class="card-title text-right">Mpesa Payment</h4>
           </div>
+          @if (session()->has('success'))
+              <div class="alert alert-success">
+                 {{ session()->get('success') }}
+               </div>
+          @endif
+
+          @if (session()->has('error'))
+            <div class="alert alert-danger">
+               {{ session()->get('error') }}
+           </div>
+          @endif
         </div>
       </div>
       <div class="card-body">
@@ -78,6 +89,7 @@
             </div>
             <div class="form-group">
               <label for="phone">Phone Number</label>
+              <p class=' alert alert-success'>format is 25400000000</p>
               <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter Phone Number">
             </div>
              <div class="form-group">
