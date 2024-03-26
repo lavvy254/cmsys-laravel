@@ -19,7 +19,7 @@ class ProfileController extends Controller
         {
             return view('profile.edit');
         }else{
-            return view('profile.edit');
+            return view('pages.members.profile.index');
         }
        
     }

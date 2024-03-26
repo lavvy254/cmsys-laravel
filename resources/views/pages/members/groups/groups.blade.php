@@ -8,9 +8,25 @@
                     <h4 class="card-title"> Groups</h4>
                     <p class="category"> Here is a table for groups</p>
                 </div>
+                 @if (session('success'))
+         <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+                  </button>
+            </div>
+        @endif
+                    
+        @if (session('error'))
+         <div class="alert alert-danger alert-dismissible fade show" role="alert">
+           {{ session('error') }}
+             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+             </button>
+          </div>
+          @endif
                 <div class="card-body">
                     <div class="table-responsive">
-                        <a href="" class="btn btn-sm btn-primary">Join Group</a>
                         <table class="table tablesorter " id="">
                             <thead class=" text-primary">
                                 <tr>
@@ -31,11 +47,19 @@
                                         <td>{{ $group->User->fname }}</td>
                                         <td>{{ $group->User->lname }}</td>
                                         <td>{{ $group->description }}</td>
-                                d       <td>{{ $group->created_at }}</td>
+                                        <td>{{ $group->created_at }}</td>
+                                        <td>
+                                            @if ($group->isMember(auth()->id()))
+                                            <span class="text-success">You are a member</span>
+                                        @else
+                                            <form action="{{ route('group.join') }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="group_id" value="{{ $group->id }}">
+                                                <button type="submit" class="btn btn-sm btn-primary">Join Group</button>
+                                            </form>
+                                        @endif
                                         </td>
-                                        
-                                        
-                                        </td>
+                                    </tr>
                                 </tbody>
                             @endforeach
                             {{ $groups->links('vendor.pagination.bootstrap-5') }}

@@ -135,6 +135,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('Events/edit',[EventController::class,'edit'])->name('events.edit');
 	Route::get('Events',[EventController::class,'index'])->name('events.index');
 	Route::post('/events/{event}/attend', [EventController::class, 'attend'])->name('events.attend');
+	Route::post('/joingroup', [GroupsController::class, 'joingroup'])->name('group.join');
+	Route::get('member/profile', [ProfileController::class, 'edit'])->name('memberprofile');
 });
 
 

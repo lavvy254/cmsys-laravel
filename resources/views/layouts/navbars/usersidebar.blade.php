@@ -53,7 +53,7 @@
                             </a>
                         </li>
                         <li @if ($pageSlug == 'userprofile') z class="active " @endif>
-                            <a href="{{ route('profile.edit') }}">
+                            <a href="{{ route('memberprofile') }}">
                                 <i class="tim-icons icon-single-02"></i>
                                 <p>{{ __('User Profile') }}</p>
                             </a>
@@ -118,34 +118,10 @@
                         <div class="badge-colors text-center">
                             <span class="badge filter badge-primary active" data-color="primary"></span>
                             <span class="badge filter badge-info" data-color="blue"></span>
-                            <span class="badge filter badge-success" data-color="green"></span>
+                            <span class="badge filter badge-success active" data-color="green"></span>
                         </div>
                         <div class="clearfix"></div>
                     </a>
-                </li>
-                <li class="button-container">
-                    <a href="https://www.lavvy.com/product/black-dashboard-laravel" target="_blank"
-                        class="btn btn-primary btn-block btn-round">Download Now</a>
-                    <a href="https://demos.lavvy.com/black-dashboard/docs/1.0/getting-started/introduction.html"
-                        target="_blank" class="btn btn-default btn-block btn-round">
-                        Documentation
-                    </a>
-                    <a href="https://www.lavvy.com/product/black-dashboard-pro-laravel" target="_blank"
-                        class="btn btn-danger btn-block btn-round">
-                        Upgrade to PRO
-                    </a>
-                </li>
-                <li class="header-title">Thank you for 95 shares!</li>
-                <li class="button-container text-center">
-                    <button id="twitter" class="btn btn-round btn-info"><i class="fab fa-twitter"></i> &middot;
-                        45</button>
-                    <button id="facebook" class="btn btn-round btn-info"><i class="fab fa-facebook-f"></i> &middot;
-                        50</button>
-                    <br>
-                    <br>
-                    <a class="github-button" href="https://github.com/lavvyofficial/black-dashboard-laravel"
-                        data-icon="octicon-star" data-size="large" data-show-count="true"
-                        aria-label="Star ntkme/github-buttons on GitHub">Star</a>
                 </li>
             </ul>
         </div>
@@ -156,9 +132,9 @@
     <script src="{{ asset('black') }}/js/plugins/perfect-scrollbar.jquery.min.js"></script>
     <!--  Google Maps Plugin    -->
     <!-- Place this tag in your head or just before your close body tag. -->
-    {{-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script> --}}
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script> 
     <!-- Chart JS -->
-    {{-- <script src="{{ asset('black') }}/js/plugins/chartjs.min.js"></script> --}}
+    <script src="{{ asset('black') }}/js/plugins/chartjs.min.js"></script> 
     <!--  Notifications Plugin    -->
     <script src="{{ asset('black') }}/js/plugins/bootstrap-notify.js"></script>
 
@@ -169,6 +145,7 @@
 
     <script>
         $(document).ready(function() {
+            
             $().ready(function() {
                 $sidebar = $('.sidebar');
                 $navbar = $('.navbar');
@@ -264,6 +241,13 @@
             });
         });
     </script>
+    <script>
+    // Function to hide success and error alerts after 5 seconds
+          setTimeout(function() {
+              $('#success-alert').fadeOut('slow');
+              $('#error-alert').fadeOut('slow');
+             }, 5000); // 5000 milliseconds = 5 seconds
+        </script>
     @stack('js')
 </body>
 
