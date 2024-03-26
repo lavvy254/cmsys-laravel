@@ -6,6 +6,7 @@
             <div class="card ">
                 <div class="card-header">
                     <h1>Upcoming Events</h1>
+                     <p class="category">Upcoming Events for the next 3 Weeks</p>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -29,7 +30,7 @@
                                     </th>
                                 </tr>
                             </thead>
-                            @foreach ($events as $event)
+                            @foreach ($upcomingEvents as $event)
                                 <tbody>
                                     <tr>
                                         <td>
@@ -45,16 +46,66 @@
                                             {{ $event->description }}
                                         </td>
                                         <td>
-                                            {{ $event->starts_at }}
+                                            {{ $event->start_date }}
                                         </td>
                                     </tr>
                                 </tbody>
                             @endforeach
-                            {{ $events->links('vendor.pagination.bootstrap-5') }}
+                            
                         </table>
                     </div>
                 </div>
             </div>
         </div>
+     <div class="col-md-12">
+    <div class="card  card-plain">
+      <div class="card-header">
+        <h4 class="card-title">Announcements</h4>
+        <p class="category">Announcements!Announcements!</p>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table tablesorter " id="">
+            <thead class=" text-primary">
+              <tr>
+                <th>
+                  ID
+                </th>
+                <th>
+                  Title
+                </th>
+                <th>
+                  Message
+                </th>
+                <th>
+                  Created At
+                </th>
+                <th class="text-center"></th>
+                
+              </tr>
+            </thead>
+            @foreach ($announcements as $announcement)
+            <tbody>
+              <tr>
+                <td>
+                  {{$announcement->id}}
+                </td>
+                <td>
+                  {{$announcement->title}}
+                </td>
+                <td>
+                  {{$announcement->message}}
+                </td>
+                <td>
+                  {{$announcement->created_at}}
+                </td>
+            </tbody>
+             @endforeach
+             {{ $announcements->links('vendor.pagination.bootstrap-5') }}
+          </table>
+        </div>
+      </div>
     </div>
+  </div>
+</div>
 @endsection

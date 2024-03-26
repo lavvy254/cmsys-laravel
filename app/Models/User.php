@@ -62,7 +62,7 @@ class User extends Authenticatable
     {
         $this->attributes['lname'] = ucfirst(strtolower($value));
     }
- 
+
 
     /**
      * The attributes that should be cast.
@@ -77,5 +77,14 @@ class User extends Authenticatable
     public function prayerRequests()
     {
         return $this->hasMany(PrayerRequests::class);
+    }
+    public function attendances()
+    {
+        return $this->belongsToMany(Attendance::class);
+    }
+
+    public function eventsAttended()
+    {
+        return $this->belongsToMany(Events::class, 'attendance', 'user_id', 'event_id');
     }
 }

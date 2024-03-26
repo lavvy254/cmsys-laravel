@@ -16,6 +16,7 @@ use App\Http\Controllers\Sermon_notesController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\EventController;
 
 
 /*
@@ -131,7 +132,12 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/prayerrequest/add', [Prayer_requestController::class, 'create'])->name('prayerrequest.add');
 	Route::get('/prayerrequest/{prayer_request}/edit', [Prayer_requestController::class, 'edit'])->name('prayerrequest.edit');
 	Route::put('/prayerrequest/{prayer_request}', [Prayer_requestController::class, 'update'])->name('prayerrequest.update');
+	Route::get('Events/edit',[EventController::class,'edit'])->name('events.edit');
+	Route::get('Events',[EventController::class,'index'])->name('events.index');
+	Route::post('/events/{event}/attend', [EventController::class, 'attend'])->name('events.attend');
 });
+
+
 Route::get('/mpesa', [PaymentController::class, 'index'])->name('mpesa.index');
 Route::post('/mpesa/pay', [PaymentController::class, 'initiatePayment'])->name('mpesa.pay');
 Route::get('/mpesa/callback', [PaymentController::class, 'mpesacallback'])->name('mpesa.callback');
