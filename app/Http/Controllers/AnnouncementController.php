@@ -10,11 +10,11 @@ class AnnouncementController extends Controller
     public function index()
     {
         $announcements = Announcements::paginate(5);
-        return view('pages.announcements.announcement', compact('announcements'));
+        return view('pages.admin.Announcements.announcement', compact('announcements'));
     }
     public function create(Announcements $announcement)
     {
-        return view('pages.announcements.add', compact('announcement'));
+        return view('pages.admin.announcements.add', compact('announcement'));
     }
     public function store(Request $request)
     {
@@ -28,7 +28,7 @@ class AnnouncementController extends Controller
     }
     public function edit(Announcements $announcements)
     {
-        return view('pages.announcements.edit', compact('announcements'));
+        return view('pages.admin.announcements.edit', compact('announcements'));
     }
     public function update(Request $request, Announcements $announcement)
     {
