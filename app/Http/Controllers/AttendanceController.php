@@ -13,13 +13,13 @@ class AttendanceController extends Controller
     public function index()
     {
         $attendance = Attendance::paginate(5);
-        return view('pages.attendance.view', compact('attendance'));
+        return view('pages.admin.attendance.view', compact('attendance'));
     }
     public function create(Attendance $attendance)
     {
         $users = User::all();
         $events = Events::all();
-        return view('pages.attendance.add', compact('attendance', 'events', 'users'));
+        return view('pages.admin.attendance.add', compact('attendance', 'events', 'users'));
     }
     public function store(Request $request)
     {
@@ -33,7 +33,7 @@ class AttendanceController extends Controller
     }
     public function edit(Attendance $attendance)
     {
-        return view('pages.attendance.edit', compact('attendance'));
+        return view('pages.admin.attendance.edit', compact('attendance'));
     }
     public function update(Request $request, Attendance $attendance)
     {
