@@ -14,13 +14,13 @@ class Sermon_notesController extends Controller
         $users = User::all();
         $Sermon = Sermon::all();
         $snotes = SermonNotes::paginate(5);
-        return view('pages.sermon.sermon_notes.sermonnotes',compact('snotes'));
+        return view('pages.admin.sermon.sermon_notes.sermonnotes',compact('snotes'));
     }
     public function create()
     {
         $members = User::all();
         $sermons = Sermon::all();
-        return view('pages.sermon.sermon_notes.add',compact('sermons'));
+        return view('pages.admin.sermon.sermon_notes.add',compact('sermons'));
     }
     public function store(Request $request)
     {
@@ -35,7 +35,7 @@ class Sermon_notesController extends Controller
     {
         $members=User::all();
         $sermons = Sermon::all();
-        return view('pages.sermon.sermon_notes.edit',compact('snotes','members','sermons'));
+        return view('pages.admin.sermon.sermon_notes.edit',compact('snotes','members','sermons'));
     }
     public function update(Request $request,SermonNotes $snotes)
     {
