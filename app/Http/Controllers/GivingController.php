@@ -16,7 +16,7 @@ class GivingController extends Controller
     {
         if (Auth()->user()->roles == 'admin') {
             $givings = Giving::paginate(5);
-            return view('pages.giving.give', compact('givings'));
+            return view('pages.admin.giving.give', compact('givings'));
         } else {
             $user = Auth::user();
 
@@ -37,7 +37,7 @@ class GivingController extends Controller
     {
         $members = User::all();
         $givings = Giving::all();
-        return view('pages.giving.create', compact('members', 'givings'));
+        return view('pages.admin.giving.create', compact('members', 'givings'));
     }
     public function store(Request $request)
     {
