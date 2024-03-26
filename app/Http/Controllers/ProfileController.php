@@ -17,7 +17,7 @@ class ProfileController extends Controller
     {
         if(Auth()->user()->roles == 'admin')
         {
-            return view('profile.edit');
+            return view('pages.admin.profile.edit');
         }else{
             return view('pages.members.profile.index');
         }
