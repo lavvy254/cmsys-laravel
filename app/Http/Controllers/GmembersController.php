@@ -14,13 +14,13 @@ class GmembersController extends Controller
         $users = User::all();
         $groups = Groups::all();
         $gmembers = Gmembers::paginate(5);
-         return view('pages.groups.members.view',compact('gmembers'));
+         return view('pages.admin.groups.members.view',compact('gmembers'));
     }
     public function create()
     {
         $members = User::all();
         $groups = Groups::all();
-        return view('pages.groups.members.add',compact('members','groups'));
+        return view('pages.admin.groups.members.add',compact('members','groups'));
     }
     public function store(Request $request)
     {
@@ -36,7 +36,7 @@ class GmembersController extends Controller
     {
         $members=User::all();
         $groups=Groups::all();
-        return view('pages.groups.members.edit',compact('gmembers','members','groups'));
+        return view('pages.admin.groups.members.edit',compact('gmembers','members','groups'));
     }
     public function update(Request $request,Gmembers $gmembers)
     {
