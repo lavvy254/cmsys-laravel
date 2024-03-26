@@ -13,12 +13,12 @@ class SermonController extends Controller
     {
         $sermons = Sermon::paginate(5);
         $events =Events::all();
-        return view('pages.sermon.sermon',compact('sermons'));
+        return view('pages.admin.sermon.sermon',compact('sermons'));
     }
     public function create()
     {
         $events =Events::all();
-        return view('pages.sermon.add',compact('events'));
+        return view('pages.admin.sermon.add',compact('events'));
     }
     public function store(Request $request)
     {
@@ -33,7 +33,7 @@ class SermonController extends Controller
     Public function edit(Sermon $sermons)
     {
         $events=Events::all();
-        return view('pages.sermon.edit',compact('sermons','events'));
+        return view('pages.admin.sermon.edit',compact('sermons','events'));
     }
     public function update(Request $request,Sermon $sermon)
     {
