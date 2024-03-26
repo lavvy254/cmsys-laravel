@@ -30,7 +30,7 @@ class PrayerController extends Controller
     
     public function create()
     {
-        return view('pages.prayer.add');
+        return view('pages.admin.prayer.add');
     }
     public function store(Request $request)
     {
