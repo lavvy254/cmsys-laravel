@@ -20,20 +20,21 @@
                                     <th>Leader lname</th>
                                     <th>Description</th>
                                     <th>Created at</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             @foreach ($groups as $group)
                                 <tbody>
                                     <tr>
-                                        <th>{{ $group->id }}</th>
-                                        <th>{{ $group->gname }}</th>
-                                        <th>{{ $group->User->fname }}</th>
-                                        <th>{{ $group->User->lname }}</th>
-                                        <th>{{ $group->description }}</th>
-                                        <th>{{ $group->created_at }}</th>
+                                        <td>{{ $group->id }}</td>
+                                        <td>{{ $group->gname }}</td>
+                                        <td>{{ $group->User->fname }}</td>
+                                        <td>{{ $group->User->lname }}</td>
+                                        <td>{{ $group->description }}</td>
+                                d       <td>{{ $group->created_at }}</td>
                                         </td>
-                                        </button>
-                                        </form>
+                                        
+                                        
                                         </td>
                                 </tbody>
                             @endforeach
