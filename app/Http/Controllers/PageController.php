@@ -30,8 +30,5 @@ class PageController extends Controller
         $members = User::paginate(3);
         $prayerrequests = PrayerRequests::paginate(3);
         return view('pages.admin.tables',compact('prayers','prayerrequests','members'));
-    }
-
-   
-    
+    }    
 }
