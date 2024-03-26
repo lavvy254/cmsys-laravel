@@ -29,46 +29,9 @@ class PageController extends Controller
         $prayers = Prayer::paginate(3);
         $members = User::paginate(3);
         $prayerrequests = PrayerRequests::paginate(3);
-        return view('pages.tables',compact('prayers','prayerrequests','members'));
+        return view('pages.admin.tables',compact('prayers','prayerrequests','members'));
     }
 
-    /**
-     * Display notifications page
-     *
-     * @return \Illuminate\View\View
-     */
-    public function notifications()
-    {
-        return view('pages.notifications');
-    }
-
-    /**
-     * Display rtl page
-     *
-     * @return \Illuminate\View\View
-     */
-    public function rtl()
-    {
-        return view('pages.rtl');
-    }
-
-    /**
-     * Display typography page
-     *
-     * @return \Illuminate\View\View
-     */
-    public function typography()
-    {
-        return view('pages.typography');
-    }
-
-    /**
-     * Display upgrade page
-     *
-     * @return \Illuminate\View\View
-     */
-    public function upgrade()
-    {
-        return view('pages.upgrade');
-    }
+   
+    
 }
