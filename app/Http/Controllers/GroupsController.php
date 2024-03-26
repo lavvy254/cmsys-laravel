@@ -14,7 +14,7 @@ class GroupsController extends Controller
     {
         if (Auth()->user()->roles == 'admin') {
             $groups = Groups::paginate(5);
-            return view('pages.groups.view', compact('groups'));
+            return view('pages.admin.groups.view', compact('groups'));
         } else {
             $groups = Groups::paginate(5);
             return view('pages.members.groups.groups', compact('groups'));
@@ -24,7 +24,7 @@ class GroupsController extends Controller
     public function create()
     {
         $leaders = User::all();
-        return view('pages.groups.create', compact('leaders'));
+        return view('pages.admin.groups.create', compact('leaders'));
     }
     public function store(Request $request)
     {
@@ -39,7 +39,7 @@ class GroupsController extends Controller
     public function edit(Groups $groups)
     {
         $leaders = User::all();
-        return view('pages.groups.edit', compact('groups', 'leaders'));
+        return view('pages.admin.groups.edit', compact('groups', 'leaders'));
     }
     public function update(Request $request, Groups $groups)
     {
