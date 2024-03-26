@@ -16,7 +16,7 @@ class Prayer_requestController extends Controller
     {
         $users = User::all();
         $prayers = Prayer::all();
-        return view('pages.prayer.prayer_request.edit', compact('prayer_request', 'users', 'prayers'));
+        return view('pages.admin.prayer.prayer_request.edit', compact('prayer_request', 'users', 'prayers'));
     }
 
     public function update(PrayerRequests $prayer_request, Request $request)
