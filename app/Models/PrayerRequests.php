@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class PrayerRequests extends Model
 {
     use HasFactory;
+    protected $table = 'prayer_requests';
     protected $fillable =['prayer_id', 'status', 'requested_by'];
 
     public function user()
