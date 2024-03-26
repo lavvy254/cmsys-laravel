@@ -8,7 +8,7 @@
         <h4 class="card-title">Add Prayer Request</h4>
       </div>
       <div class="card-body">
-        <form action="{{ route('prayer.store') }}" method="POST">
+        <form action="{{ route('prayerrequest.store') }}" method="POST">
           @csrf
           <div class=" col-md-6 mb-3">
             <label for="prayer" class="form-label">Prayer</label>
