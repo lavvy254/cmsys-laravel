@@ -10,7 +10,6 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-
 class HomeController extends Controller
 {
     /**
@@ -30,36 +29,34 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if (!Auth::check()) {
+        $user = Auth::user();
+
+        if (!$user) {
             return redirect()->route('welcome');
         }
 
-        $user = Auth::user();
-
         if ($user->roles === 'user') {
-            $user = Auth::user();
-
             $endDate = now()->addWeeks(3);
             $announcements = Announcements::paginate(5);
-            $upcomingEvents = Events::whereDate('start_date', '>=', now())
-                ->whereDate('start_date', '<=', $endDate)
+            $upcomingEvents = Events::whereBetween('start_date', [now(), $endDate])
                 ->orderBy('start_date')
                 ->get();
             return view('pages.members.dashboard', compact('upcomingEvents', 'announcements'));
         } elseif ($user->roles === 'admin') {
+            $endDate = now()->addWeeks(3);
+            $upcomingEvents = Events::whereBetween('start_date', [now(), $endDate])
+                ->orderBy('start_date')
+                ->get();
+
             $users = Giving::select('user_id', DB::raw('SUM(amount) as total_contributions'))
                 ->groupBy('user_id')
                 ->orderByDesc('total_contributions')
                 ->take(5)
                 ->get();
 
-            $endDate = now()->addWeeks(3);
-            $upcomingEvents = Events::whereDate('start_date', '>=', now())
-                ->whereDate('start_date', '<=', $endDate)
-                ->orderBy('start_date')
-                ->get();
-            $members = User::all()->each(function ($member) {
+            $members = User::all()->map(function ($member) {
                 $member->age = Carbon::parse($member->DOB)->age;
+                return $member;
             });
 
             $totalUsers = $members->count();
