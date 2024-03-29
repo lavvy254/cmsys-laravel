@@ -17,15 +17,15 @@ class UsersTableSeeder extends Seeder
 
         DB::table('users')->insert([
             'id' => 1,
-            'fname' => 'Lavvy',
-            'lname' => 'Wangeci',
+            'fname' => 'Test',
+            'lname' => 'testing',
             'roles' => 'admin',
             'DOB' => '2000-02-17',
-            'gender' => 'female',
-            'phone' => '0758593172',
-            'email' => 'admin@black.com',
+            'gender' => 'male',
+            'phone' => '0700000000',
+            'email' => 'test@gmail.com',
             'email_verified_at' => now(),
-            'password' => Hash::make('secret'),
+            'password' => Hash::make('Password@123'),
             'created_at' => now(),
             'updated_at' => now()
         ]);

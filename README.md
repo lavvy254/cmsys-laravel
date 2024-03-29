@@ -67,6 +67,11 @@ Follow these steps to set up and run the project locally:
 php artisan migrate --seed
 ```
 
+- Email test@gmail.com
+
+- password Password@123
+
+
 - Enjoy
 
 ## Additional Configuration
