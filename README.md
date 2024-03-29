@@ -20,8 +20,8 @@ Follow these steps to set up and run the project locally:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/ha165/votin_system.git
-   cd voting_system
+   git clone https://github.com/lavvy254/cmsys-laravel.git
+   cd cmsys-laravel
    ```
 
 2. Install Dependencies:
@@ -61,10 +61,8 @@ Follow these steps to set up and run the project locally:
 
 ## Usage
 
-- Register as a voter or administrator. Directly add details from the databse.
-- Administer the election by setting up candidates, positions, and election parameters.
-- Voters cast their votes securely through the blockchain-powered voting system.
-- Results can be viewed securely and transparently after the election concludes.
+- Register as an administrator or a User. Directly add details from the databse.
+- Enjoy
 
 ## Additional Configuration
 
@@ -84,6 +82,7 @@ If you discover a security vulnerability, please send an email to lumumbaharmony
 This project is not licensed for production use. It is provided for educational and non-commercial purposes only.
 
 ## NOTE
-1. THE SYSTEM IS NOT COMPLETE IT IS STILL UNDER DEVELOPMENT
+
+1. THE SYSTEM IS NOT COMPLETE,IT IS STILL UNDER DEVELOPMENT
 
 2. I did not create the Dashboard.You can get the dashboard used in this project from https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.creative-tim.com/blog/web-design/free-dashboards-templates-laravel/&ved=2ahUKEwj60KGskJmFAxUPRfEDHR5PCvsQFnoECA0QAQ&usg=AOvVaw3oWBTvvfTYyuhKRhiC8RcA. 
