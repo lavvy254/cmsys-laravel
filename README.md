@@ -61,7 +61,12 @@ Follow these steps to set up and run the project locally:
 
 ## Usage
 
-- Register as an administrator or a User. Directly add details from the databse.
+- Register as an administrator or a User. Directly add details from the databse,or you can run
+
+```bash
+php artisan migrate --seed
+```
+
 - Enjoy
 
 ## Additional Configuration
