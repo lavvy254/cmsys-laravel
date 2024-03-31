@@ -11,10 +11,17 @@ class EventController extends Controller
 {
     public function index()
     {
-
+    
         $events = Events::paginate(4);
         return view('pages.members.events.event', ['events' => $events]);
     }
+    public function adminindex()
+    {
+    
+        $events = Events::paginate(4);
+        return view('pages.admin.events.index', ['events' => $events]);
+    }
+    
     public function attend(Events $event)
 {
     // Check if the event has started

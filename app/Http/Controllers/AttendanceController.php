@@ -57,5 +57,12 @@ class AttendanceController extends Controller
         // Return data as JSON
         return response()->json($attendanceData);
     }
-
+    Public function destroy(Attendance $attendance)
+    {
+        $attendance->delete();
+        return redirect()->route('attendance.view')->with('success','Deleted Successfully');
+    }
 }
+
+
+

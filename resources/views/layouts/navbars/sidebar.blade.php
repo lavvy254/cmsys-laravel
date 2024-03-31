@@ -35,6 +35,12 @@
                     </ul>
                 </div>
             </li>
+            <li @if ($pageSlug == 'event') class="active " @endif>
+                <a href="{{ route('events.view') }}">
+                    <i class="tim-icons icon-atom"></i>
+                    <p>{{ __('Events') }}</p>
+                </a>
+            </li>
             <li>
                 <a data-toggle="collapse" href="#laravel-examples" aria-expanded="true">
                     <i class="fa fa-object-group" aria-hidden="true"></i>

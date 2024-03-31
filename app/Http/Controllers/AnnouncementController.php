@@ -39,4 +39,9 @@ class AnnouncementController extends Controller
         $announcement->update($request->all());
         return redirect()->route('announcement.view')->with('success', 'Announcement added Successfully');
     }
+    public function destroy(Announcements $announcement)
+    {
+       $announcement->delete();
+       return redirect()->route('announcement.view')->with('success','Deleted Successfully');
+    }
 }

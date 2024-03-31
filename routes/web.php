@@ -83,6 +83,7 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 	Route::post('/gmembers/store', [GmembersController::class, 'store'])->name('gmembers.store');
 	Route::get('/gmembers/{gmembers}/edit', [GmembersController::class, 'edit'])->name('gmembers.edit');
 	Route::put('/gmembers/{gmembers}', [GmembersController::class, 'update'])->name('gmembers.update');
+	Route::get('/admin/event',[EventController::class,'adminindex'])->name('events.view');
 
 });
 
@@ -107,6 +108,7 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 	Route::post('/announcement/store', [AnnouncementController::class, 'store'])->name('announcement.store');
 	Route::get('/announcement/{announcement}/edit', [AnnouncementController::class, 'edit'])->name('announcement.edit');
 	Route::put('/announcement/{announcement}', [AnnouncementController::class, 'update'])->name('announcement.update');
+	Route::delete('/announcemets/{announcement}',[AnnouncementController::class,'destroy'])->name('announcements.delete');
 
 });
 Route::group(['middleware' => ['auth', 'admin']], function () {
@@ -115,6 +117,7 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 	Route::post('/attendance/store', [AttendanceController::class, 'store'])->name('attendance.store');
 	Route::get('/attendance/{attendance}/edit', [AttendanceController::class, 'edit'])->name('attendance.edit');
 	Route::put('/attendance/{attendance}', [AttendanceController::class, 'update'])->name('attendance.update');
+	Route::delete('/attendance/{attendance}',[AttendanceController::class,'destroy'])->name('attendance.delete');
 });
 
 //user routes
