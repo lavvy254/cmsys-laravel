@@ -160,5 +160,7 @@ Route::get('/getTypeWiseGivingData', [GivingController::class, 'getTypeWiseGivin
 Route::get('/givingview', [GivingController::class, 'index'])->name('giving.view');
 Route::delete('/giving/{giving}',[GivingController::class,'destroy'])->name('givings.delete');
 Route::post('/giving/store',[GivingController::class, 'store'])->name('giving.store');
+Route::get('/giving/print', [GivingController::class, 'printPDF'])->name('giving.print');
+
 
 
