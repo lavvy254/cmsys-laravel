@@ -20,8 +20,8 @@ class AnnouncementController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|string|max:255',
-            'message' => 'required|string|max:255',
+            'title' => 'required|alpha|max:255',
+            'message' => 'required|alpha|max:255',
 
         ]);
         Announcements::create($request->all());
@@ -34,7 +34,7 @@ class AnnouncementController extends Controller
     public function update(Request $request, Announcements $announcement)
     {
         $request->validate([
-            'title' => 'required|string|max:255',
+            'title' => 'required|alpha|max:255',
             'message' => 'required|string|max:500',
         ]);
         $announcement->update($request->all());

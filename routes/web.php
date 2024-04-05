@@ -54,7 +54,7 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 	Route::post('/store', [UserController::class, 'store'])->name('user.store');
 	Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('user.delete');
 	Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
-	Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
+	
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
 });
 Route::group(['middleware' => ['auth', 'admin']], function () {
@@ -145,6 +145,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::delete('/events/{event}',[EventController::class,'destroy'])->name('events.delete');
 	Route::post('/joingroup', [GroupsController::class, 'joingroup'])->name('group.join');
 	Route::get('member/profile', [ProfileController::class, 'edit'])->name('memberprofile');
+	Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
 });
 
 
