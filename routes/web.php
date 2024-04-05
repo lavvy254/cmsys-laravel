@@ -96,12 +96,12 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 	Route::post('/sermon/store', [SermonController::class, 'store'])->name('sermon.store');
 	Route::get('/sermon/{sermon}/edit', [SermonController::class, 'edit'])->name('sermon.edit');
 	Route::put('/sermon/{sermon}', [SermonController::class, 'update'])->name('sermon.update');
-
+    Route::delete('/sermon/{sermon}',[SermonController::class,'destroy'])->name('sermon.delete');
 	Route::get('/snotes/add', [Sermon_notesController::class, 'create'])->name('snote.create');
 	Route::post('/snotes/store', [Sermon_notesController::class, 'store'])->name('snote.store');
 	Route::get('/snotes/{snotes}/edit', [Sermon_notesController::class, 'edit'])->name('snote.edit');
 	Route::put('/snotes/{snotes}', [Sermon_notesController::class, 'update'])->name('snote.update');
-
+    Route::delete('/snotes/{snotes}',[SermonController::class,'destroy'])->name('snote.delete');
 });
 
 Route::group(['middleware' => ['auth', 'admin']], function () {
