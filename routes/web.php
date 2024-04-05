@@ -128,7 +128,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/sermon', [SermonController::class, 'index'])->name('sermon.view');
 	Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance.view');
 	Route::get('/groupview', [GroupsController::class, 'index'])->name('groups.view');
-	Route::delete('/groups/{group}',[GroupsController::class,'destroy'])->name('groups.delete');
+	Route::delete('/groups/{groups}',[GroupsController::class,'destroy'])->name('groups.delete');
 	Route::get('/snotes', [Sermon_notesController::class, 'index'])->name('snote.view');
 	Route::get('/gmembers', [GmembersController::class, 'index'])->name('gmembers.view');
 	Route::delete('/gmembers/{gmember}',[GmembersController::class,'destroy'])->name('gmembers.delete');

@@ -8,27 +8,25 @@
                     <h4 class="card-title">Edit Announcements</h4>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('announcement.store') }}" method="POST">
+                    <form action="{{ route('announcement.update',$announcement->id) }}" method="POST">
                         @csrf
+                        @method('PUT')
                         <div class="form-group">
                             <label for="title">Title</label>
                             <input type="text" name="title" id="title" class="form-control"
-                                value="{{ $announcements->title }}">
+                                value="{{ $announcement->title }}">
                             @error('title')
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </div>
-                        <div class="card-body">
-                            <form action="{{ route('announcement.store') }}" method="POST">
-                                @csrf
-                                <div class="form-group">
-                                    <label for="message">Message</label>
-                                    <input type="text" name="message" id="message" class="form-control"
-                                        value="{{ $announcements->message }}">
-                                    @error('message')
-                                        <p class="text-danger">{{ $message }}</p>
-                                    @enderror
-                                </div>
+                        <div class="form-group">
+                            <label for="title">Message</label>
+                            <input type="text" name="message" id="message" class="form-control"
+                                value="{{ $announcement->message}}">
+                            @error('title')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
+                        </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>

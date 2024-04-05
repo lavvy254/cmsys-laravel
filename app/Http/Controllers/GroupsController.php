@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Database\QueryException;
 use App\Models\Groups;
 use App\Models\User;
 use App\Models\Gmembers;
@@ -33,7 +34,7 @@ class GroupsController extends Controller
             'description' => 'required|string|max:255',
         ]);
         Groups::create($request->all());
-        return redirect()->route('groups.view')->with('success', 'New Request added Successfully');
+        return redirect()->route('groups.view')->with('success', 'New Group added Successfully');
     }
     public function edit(Groups $groups)
     {
@@ -48,7 +49,7 @@ class GroupsController extends Controller
             'description' => 'required|string|max:500',
         ]);
         $groups->update($request->all());
-        return redirect()->route('groups.view')->with('success', 'New Request added Successfully');
+        return redirect()->route('groups.view')->with('success', 'New Group added Successfully');
     }
     public function joinGroup(Request $request)
     {
@@ -75,7 +76,17 @@ class GroupsController extends Controller
     }
     public function destroy(Groups $groups)
     {
-        $groups->delete();
-        return redirect()->route('groups.view')->with('success', 'Deleted Successfully');
+        try{
+            $groups->delete();
+            return redirect()->route('groups.view')->with('success', 'Deleted Successfully');
+        }catch (QueryException $e) {
+            $errorCode = $e->errorInfo[1];
+            if ($errorCode == 1451) {
+                $errorMessage = 'Cannot delete this group because it is referenced by one or more table.';
+            } else {
+                $errorMessage = 'An error occurred while deleting the group.';
+            }
+            return redirect()->route('groups.view')->with('error', $errorMessage);
+        }
     }
 }

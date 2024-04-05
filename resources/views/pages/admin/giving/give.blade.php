@@ -52,10 +52,7 @@
                 <th>{{$giving->created_at}}</th>
                 </td>
                 <td class="align-middle">
-                  <a rel="tooltip" class="btn btn-success btn-link" href="" data-original-title="" title="">
-                      <i class="material-icons">edit</i>
-                      <div class="ripple-container"></div>
-                  </a>
+
                   <form action="{{route('givings.delete',$giving->id)}}" method="POST"
                       class="d-inline">
                       @csrf
