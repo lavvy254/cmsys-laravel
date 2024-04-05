@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Database\QueryException;
 use App\Models\Sermon;
 use App\Models\SermonNotes;
 use App\Models\User;
@@ -54,5 +55,20 @@ class Sermon_notesController extends Controller
          ]);
          $snotes->update($request->all());
          return redirect()->route('snotes.view')->with('success', 'Edited successfully');
+    }
+    public function destroy(Sermon $sermon)
+    {
+        try {
+            $sermon->delete();
+            return redirect()->route('snotes.view')->with('success', 'Deleted Successfully');
+        } catch (QueryException $e) {
+            $errorCode = $e->errorInfo[1];
+            if ($errorCode == 1451) {
+                $errorMessage = 'Cannot delete this Sermonnote because it is referenced by one or more table.';
+            } else {
+                $errorMessage = 'An error occurred while deleting the Sermonnote.';
+            }
+            return redirect()->route('snotes.view')->with('error', $errorMessage);
+        }
     }
 }
