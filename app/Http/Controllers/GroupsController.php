@@ -76,10 +76,10 @@ class GroupsController extends Controller
     }
     public function destroy(Groups $groups)
     {
-        try{
+        try {
             $groups->delete();
             return redirect()->route('groups.view')->with('success', 'Deleted Successfully');
-        }catch (QueryException $e) {
+        } catch (QueryException $e) {
             $errorCode = $e->errorInfo[1];
             if ($errorCode == 1451) {
                 $errorMessage = 'Cannot delete this group because it is referenced by one or more table.';

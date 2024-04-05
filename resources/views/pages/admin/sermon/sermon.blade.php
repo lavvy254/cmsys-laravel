@@ -9,6 +9,23 @@
         <p class="category"> Here is a table for Sermons</p>
       </div>
       <div class="card-body">
+        @if (session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="button-close" data-bs-dismiss="alert" aria-label="close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
+    
+    @if (session('error'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ session('error') }}
+            <button type="button" class="button-close" data-bs-dismiss="alert" aria-label="close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
         <div class="table-responsive">
           <a href="{{route('sermon.create')}}" class="btn btn-sm btn-primary"> Add Sermon </a> 
           <table class="table tablesorter " id="">
