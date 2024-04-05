@@ -52,19 +52,19 @@ class SermonController extends Controller
         $sermon->update($request->all());
         return redirect()->route('sermon.view')->with('success', 'Sermon added Successfully');
     }
-    public function destroy(Sermon $sermons)
+    public function destroy(Sermon $sermon)
     {
         try {
-            $sermons->delete();
-            return redirect()->route('sermon.update')->with('success', 'Deleted Successfully');
+            $sermon->delete();
+            return redirect()->route('sermon.view')->with('success', 'Deleted Successfully');
         } catch (QueryException $e) {
             $errorCode = $e->errorInfo[1];
             if ($errorCode == 1451) {
-                $errorMessage = 'Cannot delete this Attendance because it is referenced by one or more Attendance.';
+                $errorMessage = 'Cannot delete this Sermon because it is referenced by one or more table.';
             } else {
-                $errorMessage = 'An error occurred while deleting the Attendance.';
+                $errorMessage = 'An error occurred while deleting the Sermon.';
             }
-            return redirect()->route('sermon.update')->with('error', $errorMessage);
+            return redirect()->route('sermon.view')->with('error', $errorMessage);
         }
     }
 }
