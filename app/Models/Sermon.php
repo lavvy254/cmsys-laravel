@@ -15,4 +15,6 @@ class Sermon extends Model
     {
         return $this->belongsTo(Events::class);
     }
+
+    
 }

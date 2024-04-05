@@ -37,20 +37,21 @@ class SermonController extends Controller
         Sermon::create($request->all());
         return redirect()->route('sermon.view')->with('success', 'Sermon added Successfully');
     }
-    public function edit(Sermon $sermons)
+    public function edit(Sermon $sermon)
     {
         $events = Events::all();
-        return view('pages.admin.sermon.edit', compact('sermons', 'events'));
+        $sermons = Sermon::all();
+        return view('pages.admin.sermon.edit', compact('sermon', 'events'));
     }
     public function update(Request $request, Sermon $sermon)
     {
         $request->validate([
             'title' => 'required|string|max:255',
-            'event_id' => 'required|exists:event,id',
+            'event_id' => 'required|exists:events,id',
             'speaker' => 'required|string|max:500',
         ]);
         $sermon->update($request->all());
-        return redirect()->route('sermon.view')->with('success', 'Sermon added Successfully');
+        return redirect()->route('sermon.view')->with('success', 'Sermon Updated Successfully');
     }
     public function destroy(Sermon $sermon)
     {

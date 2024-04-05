@@ -8,12 +8,13 @@
                     <h4 class="card-title">Edit Sermons</h4>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('sermon.store') }}" method="POST">
+                    <form action="{{ route('sermon.update',$sermon->id) }}" method="POST">
                         @csrf
+                        @method('PUT')
                         <div class="form-group">
                             <label for="title">Title</label>
                             <input type="text" name="title" id="title" class="form-control"
-                                value="{{ $sermons->title }}">
+                                value="{{ $sermon->title }}">
                             @error('title')
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
@@ -21,7 +22,7 @@
                         <div class="form-group">
                             <label for="Speaker">Speaker</label>
                             <input type="text" name="speaker" id="speaker" class="form-control"
-                                value="{{ $sermons->speaker }}">
+                                value="{{ $sermon->speaker }}">
                             @error('speaker')
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
