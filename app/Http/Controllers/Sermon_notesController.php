@@ -49,8 +49,7 @@ class Sermon_notesController extends Controller
     public function update(Request $request,SermonNotes $snotes)
     {
         $request->validate([
-            'user_id' => 'required|exists:users,id',
-            'sermon_id' => 'required|exists:groups,id',
+            'sermon_id' => 'required|exists:sermon,id',
             'notes' => 'required|string|max:500',
          ]);
          $snotes->update($request->all());

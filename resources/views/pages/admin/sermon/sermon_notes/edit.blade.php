@@ -10,6 +10,7 @@
            <div class="card-body">
         <form action="{{route('snote.update',$snotes->id)}}" method="POST">
           @csrf
+          @method('PUT')
           <div class="col-md-6 mb-3">
             <label for="users" class="form-label">Sermon</label>
                <select class="form-control bg-dark" name="sermon_id" id="sermon_id">
