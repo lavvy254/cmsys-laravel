@@ -5,6 +5,24 @@
   <div class="col-md-12">
     <div class="card ">
       <div class="card-header">
+        @if (session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="button-close" data-bs-dismiss="alert" aria-label="close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
+    
+    @if (session('error'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ session('error') }}
+            <button type="button" class="button-close" data-bs-dismiss="alert" aria-label="close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
+    
         <h4 class="card-title"> Prayer Table</h4>
         <a href="{{route('prayer.add')}}"class="btn btn-sm btn-primary">Add Prayer</a>
       </div>

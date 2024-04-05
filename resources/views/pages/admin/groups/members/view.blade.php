@@ -36,7 +36,7 @@
                       <i class="material-icons">edit</i>
                       <div class="ripple-container"></div>
                   </a>
-                  <form action="" method="POST"
+                  <form action="{{route('gmembers.delete',$gmember->id)}}" method="POST"
                       class="d-inline">
                       @csrf
                       @method('DELETE')

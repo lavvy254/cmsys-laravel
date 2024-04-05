@@ -33,6 +33,7 @@
                 <th>Event Name</th>
                 <th>Location</th>
                 <th>Description</th>
+                <th>Attend</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -58,6 +59,23 @@
                 @else
                   <span class="text-success">Attended</span>
                 @endif
+                </td>
+                <td>
+                  <a rel="tooltip" class="btn btn-success btn-link" href="" data-original-title="" title="">
+                    <i class="material-icons">edit</i>
+                    <div class="ripple-container"></div>
+                </a>
+                <form action="{{route('events.delete',$event->id)}}" method="POST"
+                    class="d-inline">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger btn-link"
+                        data-original-title="Delete" title="Delete">
+                        <i class="material-icons">close</i>
+                        <div class="ripple-container"></div>
+        
+                    </button>
+                </form>
                 </td>
               </tr>
               @endforeach

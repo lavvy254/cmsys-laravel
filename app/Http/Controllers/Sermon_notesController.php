@@ -14,7 +14,15 @@ class Sermon_notesController extends Controller
         $users = User::all();
         $Sermon = Sermon::all();
         $snotes = SermonNotes::paginate(5);
-        return view('pages.admin.sermon.sermon_notes.sermonnotes',compact('snotes'));
+    
+        if (Auth()->user()->roles =='admin')
+        {
+            return view('pages.admin.sermon.sermon_notes.sermonnotes',compact('snotes'));
+        }elseif(Auth()->user()->roles =='user'){
+            return view('pages.members.sermonnotes.sermonnotes',compact('snotes'));
+        }else{
+            return route('login');
+        }
     }
     public function create()
     {

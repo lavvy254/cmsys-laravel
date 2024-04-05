@@ -29,9 +29,7 @@ class GivingController extends Controller
                     ->paginate(5);
                 return view('pages.members.giving.give', compact('givings'));
             }
-
         }
-
     }
     public function create()
     {
@@ -42,14 +40,12 @@ class GivingController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'user_id' => 'required|exists:users,id',
-            'transaction' => 'required|string|max:255',
-            'type' => 'required|string|max:255',
-            'amount' => 'required|integer|max:11',
+            'title' => 'required|string|max:255',
+            'message' => 'required|string|max:255',
+
         ]);
         Giving::create($request->all());
-        return redirect()->route('giving.index')->with('Success', 'You Have added New Contribution');
-
+        return redirect()->route('giving.view')->with('success', 'Giving added Successfully');
     }
     public function getYearlyGivingData()
     {
@@ -73,6 +69,13 @@ class GivingController extends Controller
         // Return data as JSON
         return response()->json($givingData);
     }
-
-
+    public function destroy(Giving $giving)
+    {
+        $giving->delete();
+        return redirect()->route('giving.view')->with('success', 'Deleted Successfully');
+    }
+    public function edit(Giving $giving)
+    {
+        return view('pages.admin.announcements.edit', compact('announcements'));
+    }
 }

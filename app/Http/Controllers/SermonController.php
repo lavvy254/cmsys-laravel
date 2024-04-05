@@ -12,37 +12,43 @@ class SermonController extends Controller
     public function index()
     {
         $sermons = Sermon::paginate(5);
-        $events =Events::all();
-        return view('pages.admin.sermon.sermon',compact('sermons'));
+        $events = Events::all();
+        if (Auth()->user()->roles == 'admin') {
+            return view('pages.admin.sermon.sermon', compact('sermons'));
+        } elseif (auth()->user()->roles == 'user') {
+            return view('pages.members.sermon.sermon', compact('sermons'));
+        } else {
+            return route('login');
+        }
     }
     public function create()
     {
-        $events =Events::all();
-        return view('pages.admin.sermon.add',compact('events'));
+        $events = Events::all();
+        return view('pages.admin.sermon.add', compact('events'));
     }
     public function store(Request $request)
     {
-       $request->validate([
-          'speaker' => 'required|string|max:255',
-          'event_id' => 'required|exists:events,id',
-          'title' => 'required|string|max:255',
-       ]);
-       Sermon::create($request->all());
-       return redirect()->route('sermon.view')->with('success', 'Sermon added Successfully');
+        $request->validate([
+            'speaker' => 'required|string|max:255',
+            'event_id' => 'required|exists:events,id',
+            'title' => 'required|string|max:255',
+        ]);
+        Sermon::create($request->all());
+        return redirect()->route('sermon.view')->with('success', 'Sermon added Successfully');
     }
-    Public function edit(Sermon $sermons)
+    public function edit(Sermon $sermons)
     {
-        $events=Events::all();
-        return view('pages.admin.sermon.edit',compact('sermons','events'));
+        $events = Events::all();
+        return view('pages.admin.sermon.edit', compact('sermons', 'events'));
     }
-    public function update(Request $request,Sermon $sermon)
+    public function update(Request $request, Sermon $sermon)
     {
         $request->validate([
             'title' => 'required|string|max:255',
             'event_id' => 'required|exists:event,id',
             'speaker' => 'required|string|max:500',
-         ]);
-         $sermon->update($request->all());
-         return redirect()->route('sermon.view')->with('success', 'Sermon added Successfully');
+        ]);
+        $sermon->update($request->all());
+        return redirect()->route('sermon.view')->with('success', 'Sermon added Successfully');
     }
 }

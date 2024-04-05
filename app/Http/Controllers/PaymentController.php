@@ -31,7 +31,7 @@ class PaymentController extends Controller
 
         $result = json_decode($result);
 
-        if (!isset ($result->access_token)) {
+        if (!isset($result->access_token)) {
             return null;
         }
 
@@ -105,7 +105,7 @@ class PaymentController extends Controller
         curl_close($curl);
 
         $data = json_decode($curlResponse);
-        if (isset ($data->ResponseCode) && $data->ResponseCode == "0") {
+        if (isset($data->ResponseCode) && $data->ResponseCode == "0") {
             $checkoutRequestID = $data->CheckoutRequestID;
             return redirect()->route('mpesa.index')->with('success', 'Payments is processing....');
         } else {
@@ -120,7 +120,7 @@ class PaymentController extends Controller
         Log::info('M-Pesa Callback Data: ' . json_encode($content));
 
         $content = json_decode($request->getContent());
-        if (isset ($content->Body->stkCallback->ResultCode) && $content->Body->stkCallback->ResultCode == 0) {
+        if (isset($content->Body->stkCallback->ResultCode) && $content->Body->stkCallback->ResultCode == 0) {
             // Payment successful, extract relevant data
             $phone = $content->Body->stkCallback->CallbackMetadata->Item[4]->Value;
             $amount = $content->Body->stkCallback->CallbackMetadata->Item[0]->Value;
@@ -141,6 +141,4 @@ class PaymentController extends Controller
             return redirect()->route('mpesa.index')->with('error', 'Payment failed. Error: ' . $content->Body->stkCallback->ResultDesc);
         }
     }
-
-
 }

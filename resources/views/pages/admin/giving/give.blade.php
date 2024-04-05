@@ -9,8 +9,26 @@
         <p class="category"> Here is a table for contributions eg, tithes,offerings</p>
       </div>
       <div class="card-body">
+        @if (session('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="button-close" data-bs-dismiss="alert" aria-label="close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+@endif
+
+@if (session('error'))
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ session('error') }}
+        <button type="button" class="button-close" data-bs-dismiss="alert" aria-label="close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+@endif
+
         <div class="table-responsive">
-          <a href="{{route('mpesa.index')}}" class="btn btn-sm btn-primary">Contribute</a> --}}
+          <a href="{{route('mpesa.index')}}" class="btn btn-sm btn-primary">Contribute</a> 
           <table class="table tablesorter " id="">
             <thead class=" text-primary">
               <tr>
@@ -38,7 +56,7 @@
                       <i class="material-icons">edit</i>
                       <div class="ripple-container"></div>
                   </a>
-                  <form action="" method="POST"
+                  <form action="{{route('givings.delete',$giving->id)}}" method="POST"
                       class="d-inline">
                       @csrf
                       @method('DELETE')

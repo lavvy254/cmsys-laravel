@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Prayer;
 use App\Models\PrayerRequests;
 use App\Models\User;
@@ -8,7 +9,7 @@ use App\Models\User;
 class PageController extends Controller
 
 {
-    
+
     /**
      * Display maps page
      *
@@ -29,6 +30,6 @@ class PageController extends Controller
         $prayers = Prayer::paginate(3);
         $members = User::paginate(3);
         $prayerrequests = PrayerRequests::paginate(3);
-        return view('pages.admin.tables',compact('prayers','prayerrequests','members'));
-    }    
+        return view('pages.tables', compact('prayers', 'prayerrequests', 'members'));
+    }
 }

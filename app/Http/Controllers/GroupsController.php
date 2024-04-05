@@ -19,7 +19,6 @@ class GroupsController extends Controller
             $groups = Groups::paginate(5);
             return view('pages.members.groups.groups', compact('groups'));
         }
-
     }
     public function create()
     {
@@ -73,5 +72,10 @@ class GroupsController extends Controller
 
         // Redirect back or to a different page
         return redirect()->back()->with('success', 'Joined group successfully');
+    }
+    public function destroy(Groups $groups)
+    {
+        $groups->delete();
+        return redirect()->route('groups.view')->with('success', 'Deleted Successfully');
     }
 }

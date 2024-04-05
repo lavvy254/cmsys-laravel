@@ -5,7 +5,7 @@
   <div class="col-md-12">
     <div class="card ">
       <div class="card-header">
-        <h4 class="card-title">Prayer Table</h4>
+        <h4 class="card-title">Event Table</h4>
       </div>
       @if (session('success'))
          <div class="alert alert-success alert-dismissible fade show" role="alert">

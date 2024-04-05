@@ -46,23 +46,48 @@
                                 <p>{{ __('Home') }}</p>
                             </a>
                         </li>
-                        <li @if ($pageSlug == 'events') z class="active " @endif>
-                            <a href="{{ route('events.index') }}">
-                                <i class="fa fa-users" aria-hidden="true"></i>
-                                <p>{{ __('Events') }}</p>
-                            </a>
-                        </li>
                         <li @if ($pageSlug == 'userprofile') z class="active " @endif>
                             <a href="{{ route('memberprofile') }}">
                                 <i class="tim-icons icon-single-02"></i>
                                 <p>{{ __('User Profile') }}</p>
                             </a>
                         </li>
+                        <li @if ($pageSlug == 'events') z class="active " @endif>
+                            <a href="{{ route('events.index') }}">
+                                <i class="fa fa-users" aria-hidden="true"></i>
+                                <p>{{ __('Events') }}</p>
+                            </a>
+                        </li>
+                        
                         <li @if ($pageSlug == 'prayers') z class="active " @endif>
                             <a href="{{ route('prayers.index') }}">
                                 <i class="fa fa-comment" aria-hidden="true"></i>
                                 <p>{{ __('Prayers') }}</p>
                             </a>
+                        </li>
+                        <li>
+                            <a data-toggle="collapse" href="#laravel-examples" aria-expanded="true">
+                                <i class="fab fa-laravel"></i>
+                                <span class="nav-link-text">{{ __('Sermon Viewing') }}</span>
+                                <b class="caret mt-1"></b>
+                            </a>
+            
+                            <div class="collapse show" id="laravel-examples">
+                                <ul class="nav pl-4">
+                                    <li @if ($pageSlug == 'sermons') class="active " @endif>
+                                        <a href="{{ route('sermon.view') }}">
+                                            <i class="tim-icons icon-single-02"></i>
+                                            <p>{{ __('Sermon') }}</p>
+                                        </a>
+                                    </li>
+                                    <li @if ($pageSlug == 'snotes') class="active " @endif>
+                                        <a href="{{route('snote.view')}}">
+                                            <i class="tim-icons icon-bullet-list-67"></i>
+                                            <p>{{ __('Sermon Notes') }}</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                         <li @if ($pageSlug == 'giving') z class="active " @endif>
                             <a href="{{ route('giving.index') }}">

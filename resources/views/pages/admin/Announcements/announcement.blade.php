@@ -1,9 +1,26 @@
-@extends('layouts.app', ['page' => __('announcements'), 'pageSlug' => 'announcemens'])
+@extends('layouts.app', ['page' => __('announcements'), 'pageSlug' => 'announcements'])
 
 @section('content')
 <div class="row">
    <div class="col-md-12">
     <div class="card  card-plain">
+      @if (session('success'))
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+          {{ session('success') }}
+          <button type="button" class="button-close" data-bs-dismiss="alert" aria-label="close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+  @endif
+  
+  @if (session('error'))
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          {{ session('error') }}
+          <button type="button" class="button-close" data-bs-dismiss="alert" aria-label="close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+  @endif
       <div class="card-header">
         <h4 class="card-title"> Announcement </h4>
         <p class="category"> Here is a table for Announcements</p>

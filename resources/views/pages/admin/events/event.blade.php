@@ -1,44 +1,41 @@
-@extends('layouts.app', ['page' => __('groups'), 'pageSlug' => 'groups'])
+@extends('layouts.app', ['page' => __('events'), 'pageSlug' => 'events'])
 
 @section('content')
 <div class="row">
    <div class="col-md-12">
     <div class="card  card-plain">
       <div class="card-header">
-        <h4 class="card-title"> Groups</h4>
-        <p class="category"> Here is a table for groups</p>
+        <h4 class="card-title"> Event </h4>
+        <p class="category"> Here is a table for Events</p>
       </div>
       <div class="card-body">
         <div class="table-responsive">
-          <a href="{{route('groups.create')}}" class="btn btn-sm btn-primary">Add Group</a> 
+          <a href="{{route('event.create')}}" class="btn btn-sm btn-primary"> Add Event</a> 
           <table class="table tablesorter " id="">
             <thead class=" text-primary">
               <tr>
                 <th>ID</th>
-                <th>Group Name</th>
-                <th>Leader fname</th>
-                <th>Leader lname</th>
-                <th>Description</th>
-                <th>Created at</th>
-                <th class="align-middle">Action</th>
+                <th>EVENT NAME</th>
+                <th>LOCATION</th>
+                <th>DESCRIPTION</th>
+                <th class="align-middle">ACTION</th>
               </tr>
             </thead>
-            @foreach ($groups as $group )
+            @foreach ($events as $event )
             <tbody>
               <tr>
-              <th>{{$group->id}}</th>
-                <th>{{$group->gname}}</th>
-                <th>{{$group->User->fname}}</th>
-                <th>{{$group->User->lname}}</th>
-                <th>{{$group->description}}</th>
-                <th>{{$group->created_at}}</th>
+                <th>{{$event->id}}</th>
+                <th>{{$event->event name}}</th>
+                <th>{{$event->location}}</th>
+                <th>{{$event->description}}</th>
+                
                 </td>
                 <td class="align-middle">
-                  <a rel="tooltip" class="btn btn-success btn-link" href="{{route('groups.edit',$group->id)}}" data-original-title="" title="">
+                  <a rel="tooltip" class="btn btn-success btn-link" href="{{route('event.edit',$event->id)}}" data-original-title="" title="">
                       <i class="material-icons">edit</i>
                       <div class="ripple-container"></div>
                   </a>
-                  <form action="{{route('groups.delete',$group->id)}}" method="POST"
+                  <form action="{{route('events.delete',$event->id)}}" method="POST"
                       class="d-inline">
                       @csrf
                       @method('DELETE')
@@ -52,7 +49,7 @@
               </td>
             </tbody>
              @endforeach 
-             {{ $groups->links('vendor.pagination.bootstrap-5') }}
+             {{ $events->links('vendor.pagination.bootstrap-5') }}
           </table>
         </div>
       </div>

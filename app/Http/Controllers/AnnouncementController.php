@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Database\QueryException;
 use App\Models\Announcements;
 
 class AnnouncementController extends Controller
@@ -41,7 +42,17 @@ class AnnouncementController extends Controller
     }
     public function destroy(Announcements $announcement)
     {
-       $announcement->delete();
-       return redirect()->route('announcement.view')->with('success','Deleted Successfully');
+        try {
+            $announcement->delete();
+            return redirect()->route('announcement.view')->with('success', 'Deleted Successfully');
+        } catch (QueryException $e) {
+            $errorCode = $e->errorInfo[1];
+            if ($errorCode == 1451) {
+                $errorMessage = 'Cannot delete this Announcement because it is referenced by one or more Announcement.';
+            } else {
+                $errorMessage = 'An error occurred while deleting the Announcement.';
+            }
+            return redirect()->route('announcement.view')->with('error', $errorMessage);
+        }
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Attendance;
+use Illuminate\Database\QueryException;
 use App\Models\Events;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -57,12 +58,19 @@ class AttendanceController extends Controller
         // Return data as JSON
         return response()->json($attendanceData);
     }
-    Public function destroy(Attendance $attendance)
+    public function destroy(Attendance $attendance)
     {
-        $attendance->delete();
-        return redirect()->route('attendance.view')->with('success','Deleted Successfully');
+        try {
+            $attendance->delete();
+            return redirect()->route('attendance.view')->with('success', 'Deleted Successfully');
+        } catch (QueryException $e) {
+            $errorCode = $e->errorInfo[1];
+            if ($errorCode == 1451) {
+                $errorMessage = 'Cannot delete this Attendance because it is referenced by one or more Attendance.';
+            } else {
+                $errorMessage = 'An error occurred while deleting the Attendance.';
+            }
+            return redirect()->route('attendance.view')->with('error', $errorMessage);
+        }
     }
 }
-
-
-

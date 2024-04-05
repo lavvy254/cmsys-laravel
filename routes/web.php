@@ -126,8 +126,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/sermon', [SermonController::class, 'index'])->name('sermon.view');
 	Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance.view');
 	Route::get('/groupview', [GroupsController::class, 'index'])->name('groups.view');
+	Route::delete('/groups/{group}',[GroupsController::class,'destroy'])->name('groups.delete');
 	Route::get('/snotes', [Sermon_notesController::class, 'index'])->name('snote.view');
 	Route::get('/gmembers', [GmembersController::class, 'index'])->name('gmembers.view');
+	Route::delete('/gmembers/{gmember}',[GmembersController::class,'destroy'])->name('gmembers.delete');
 	Route::get('/prayers', [PrayerController::class, 'index'])->name('prayers.index');
 	Route::get('/announcements', [AnnouncementController::class, 'index'])->name('announcement.view');
 	Route::get('/view', [GivingController::class, 'index'])->name('giving.index');
@@ -137,7 +139,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('/prayerrequest/{prayer_request}', [Prayer_requestController::class, 'update'])->name('prayerrequest.update');
 	Route::get('Events/edit',[EventController::class,'edit'])->name('events.edit');
 	Route::get('Events',[EventController::class,'index'])->name('events.index');
+	Route::post('/event/store',[EventController::class, 'store'])->name('events.store');
+	Route::get('/event/add', [EventController::class, 'create'])->name('event.add');
 	Route::post('/events/{event}/attend', [EventController::class, 'attend'])->name('events.attend');
+	Route::delete('/events/{event}',[EventController::class,'destroy'])->name('events.delete');
 	Route::post('/joingroup', [GroupsController::class, 'joingroup'])->name('group.join');
 	Route::get('member/profile', [ProfileController::class, 'edit'])->name('memberprofile');
 });
@@ -150,4 +155,8 @@ Route::get('/getGenderAndAgesData', [UserController::class, 'getGenderAndAgesDat
 Route::get('/getYearlyAttendanceData', [AttendanceController::class, 'getYearlyAttendanceData']);
 Route::get('/getYearlyGivingData', [GivingController::class, 'getYearlyGivingData']);
 Route::get('/getTypeWiseGivingData', [GivingController::class, 'getTypeWiseGivingData']);
+Route::get('/givingview', [GivingController::class, 'index'])->name('giving.view');
+Route::delete('/giving/{giving}',[GivingController::class,'destroy'])->name('givings.delete');
+Route::post('/giving/store',[GivingController::class, 'store'])->name('giving.store');
+
 
