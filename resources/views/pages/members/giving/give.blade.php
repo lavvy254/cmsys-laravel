@@ -12,7 +12,7 @@
         <div class="table-responsive">
           <a href="{{route('mpesa.index')}}" class="btn btn-sm btn-primary">Contribute</a> 
           <table class="table tablesorter " id="">
-            <a href="{{route('giving.print')}}" class="btn btn-sm btn-primary">Download</a> 
+            <a href="{{route('giving.print')}}" class="btn btn-sm btn-primary text-end">Download</a> 
             <thead class=" text-primary">
               <tr>
                 <th>ID</th>
