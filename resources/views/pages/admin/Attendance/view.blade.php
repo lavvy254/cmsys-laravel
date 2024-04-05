@@ -45,10 +45,7 @@
                 <th>{{$attend->Event->ename}}</th>
                 </td>
                 <td class="align-middle">
-                  <a rel="tooltip" class="btn btn-success btn-link" href="{{route('attendance.edit',$attend->id)}}" data-original-title="" title="">
-                      <i class="material-icons">edit</i>
-                      <div class="ripple-container"></div>
-                  </a>
+                  
                   <form action="{{route('attendance.delete',$attend->id)}}" method="POST"
                       class="d-inline">
                       @csrf
