@@ -15,7 +15,7 @@
         "laravel/ui": "^4.4",
         "nesbot/carbon": "^2.72",
         "safaricom/mpesa": "^1.0",
-        "tecnickcom/tcpdf": "*"
+        "tecnickcom/tcpdf": "^6.7"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
