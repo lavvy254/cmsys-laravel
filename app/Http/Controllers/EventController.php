@@ -18,16 +18,19 @@ class EventController extends Controller
     }
     public function create(Events $event)
     {
-        return view('pages.admin.events.add', compact('announcement'));
+        return view('pages.admin.events.add', compact('event'));
     }
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|string|max:255',
-            'message' => 'required|string|max:255',
+            'ename' => 'required|string|max:255',
+            'location' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
+            'start_date' => 'required|date|max:255',
+            'end_date' => 'required|date|max:255',
         ]);
         Events::create($request->all());
-        return redirect()->route('event.view')->width('success', 'Event added Successfully');
+        return redirect()->route('events.view')->with('success', 'Event added Successfully');
     }
     public function adminindex()
     {

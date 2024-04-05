@@ -25,6 +25,7 @@
           </div>
           @endif
       <div class="card-body">
+        <a href="{{route('event.add')}}" class="btn btn-sm btn-primary">New Event</a> 
         <div class="table-responsive">
           <table class="table tablesorter" id="">
             <thead class="text-primary">

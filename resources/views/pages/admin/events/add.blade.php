@@ -11,21 +11,42 @@
                     <form action="{{ route('event.store') }}" method="POST">
                         @csrf
                         <div class="form-group">
-                            <label for="title">Title</label>
-                            <input type="text" name="title" id="title" class="form-control"
-                                value="{{ $event->title }}">
-                            @error('title')
+                            <label for="title">Event Name</label>
+                            <input type="text" name="ename" id="ename" class="form-control">
+                            @error('event name')
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="message">Message</label>
-                            <input type="text" name="message" id="message" class="form-control"
-                                value="{{ $event->message }}">
-                            @error('message')
+                            <label for="title">Description</label>
+                            <input type="text" name="description" id="description" class="form-control">
+                            @error('description')
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </div>
+                        <div class="form-group">
+                            <label for="title">Location</label>
+                            <input type="text" name="location" id="location" class="form-control">
+                            @error('location')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
+                        </div>
+                      
+                        <div class="form-group">
+                            <label for="title">Start Date</label>
+                            <input type="datetime-local" name="start_date" id="start_date" class="form-control">
+                            @error('start_date')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="title">End Date</label>
+                            <input type="datetime-local" name="end_date" id="end_date" class="form-control">
+                            @error('end_date')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
+                        </div>
+                       
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>

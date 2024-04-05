@@ -70,6 +70,8 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 Route::group(['middleware' => ['auth', 'admin']], function () {
 	Route::get('/make', [GivingController::class, 'create'])->name('giving.create');
 	Route::post('/keep', [GivingController::class, 'store'])->name('giving.store');
+	Route::post('/event/store',[EventController::class, 'store'])->name('event.store');
+	Route::get('/event/add', [EventController::class, 'create'])->name('event.add');
 
 });
 
@@ -139,8 +141,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('/prayerrequest/{prayer_request}', [Prayer_requestController::class, 'update'])->name('prayerrequest.update');
 	Route::get('Events/edit',[EventController::class,'edit'])->name('events.edit');
 	Route::get('Events',[EventController::class,'index'])->name('events.index');
-	Route::post('/event/store',[EventController::class, 'store'])->name('events.store');
-	Route::get('/event/add', [EventController::class, 'create'])->name('event.add');
+	
 	Route::post('/events/{event}/attend', [EventController::class, 'attend'])->name('events.attend');
 	Route::delete('/events/{event}',[EventController::class,'destroy'])->name('events.delete');
 	Route::post('/joingroup', [GroupsController::class, 'joingroup'])->name('group.join');
