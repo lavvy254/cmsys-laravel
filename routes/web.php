@@ -101,7 +101,7 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 	Route::post('/snotes/store', [Sermon_notesController::class, 'store'])->name('snote.store');
 	Route::get('/snotes/{snotes}/edit', [Sermon_notesController::class, 'edit'])->name('snote.edit');
 	Route::put('/snotes/{snotes}', [Sermon_notesController::class, 'update'])->name('snote.update');
-    Route::delete('/snotes/{snotes}',[SermonController::class,'destroy'])->name('snote.delete');
+    Route::delete('/snotes/{snotes}',[Sermon_notesController::class,'destroy'])->name('snote.delete');
 });
 
 Route::group(['middleware' => ['auth', 'admin']], function () {

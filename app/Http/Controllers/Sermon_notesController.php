@@ -54,13 +54,13 @@ class Sermon_notesController extends Controller
             'notes' => 'required|string|max:500',
          ]);
          $snotes->update($request->all());
-         return redirect()->route('snotes.view')->with('success', 'Edited successfully');
+         return redirect()->route('snote.view')->with('success', 'Edited successfully');
     }
-    public function destroy(Sermon $sermon)
+    public function destroy(SermonNotes $snotes)
     {
         try {
-            $sermon->delete();
-            return redirect()->route('snotes.view')->with('success', 'Deleted Successfully');
+            $snotes->delete();
+            return redirect()->route('snote.view')->with('success', 'Deleted Successfully');
         } catch (QueryException $e) {
             $errorCode = $e->errorInfo[1];
             if ($errorCode == 1451) {
@@ -68,7 +68,7 @@ class Sermon_notesController extends Controller
             } else {
                 $errorMessage = 'An error occurred while deleting the Sermonnote.';
             }
-            return redirect()->route('snotes.view')->with('error', $errorMessage);
+            return redirect()->route('snote.view')->with('error', $errorMessage);
         }
     }
 }
