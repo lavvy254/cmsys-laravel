@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Giving;
 use App\Models\User;
+use TCPDF;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -78,47 +79,40 @@ class GivingController extends Controller
     {
         return view('pages.admin.announcements.edit', compact('announcements'));
     }
-}
-public function generatePDF()
+    public function printPDF()
     {
-        $positions = Position::all();
-        $candidates = Candidate::all();
-
-        $pdf = new TCPDF();
+        $user = Auth::user();
+        // Check if the user is authenticated
+        if ($user) {
+            // Retrieve data for the authenticated user
+            $givings = Giving::join('users', 'giving.user_id', '=', 'users.id')
+                ->where('users.email', $user->email)
+                ->get();
+                $pdf = new TCPDF();
         $pdf->SetMargins(10, 10, 10);
         $pdf->AddPage();
 
         $pdf->SetFont('helvetica', 'B', 10);
-        $pdf->Cell(30, 10, 'Photo', 1, 0, 'C');
-        $pdf->Cell(30, 10, 'ID', 1, 0, 'C');
-        $pdf->Cell(50, 10, 'Name', 1, 0, 'C');
-        $pdf->Cell(50, 10, 'Course', 1, 0, 'C');
-        $pdf->Cell(50, 10, 'Student ID', 1, 0, 'C');
+        $pdf->Cell(35, 10, 'First Name', 1, 0, 'C');
+        $pdf->Cell(35, 10, 'Second Name', 1, 0, 'C');
+        $pdf->Cell(35, 10, 'Type', 1, 0, 'C');
+        $pdf->Cell(35, 10, 'Transaction', 1, 0, 'C');
+        $pdf->Cell(35, 10, 'Amount', 1, 0, 'C');
         $pdf->Ln();
         // Loop through candidates data
-        foreach ($candidates as $candidate) {
-
-            // Embed photo if available
-            if ($candidate->photo && file_exists(public_path('storage/' . $candidate->photo))) {
-                // Get the full file path
-                $imagePath = public_path('storage/' . $candidate->photo);
-                // Embed the image into the PDF
-                $pdf->Image($imagePath, $pdf->GetX(), $pdf->GetY(), 30, 20, '', '', 'T', false, 300, '', false, false, 0, false, false, false);
-            } else {
-                // Handle missing image or invalid file path
-                $pdf->Cell(30, 10, 'No Image', 1, 0, 'C');
-            }
-
+        foreach ($givings as $giving) {
             // Add other candidate data
-            $pdf->Cell(30, 10, $candidate->id, 1, 0, 'C');
-            $pdf->Cell(50, 10, $candidate->name, 1, 0, 'C');
-            $pdf->Cell(50, 10, $candidate->course, 1, 0, 'C');
-            $pdf->Cell(50, 10, $candidate->student_id, 1, 0, 'C');
+            $pdf->Cell(35, 10, $giving->User->fname, 1, 0, 'C');
+            $pdf->Cell(35, 10, $giving->User->lname, 1, 0, 'C');
+            $pdf->Cell(35, 10, $giving->type, 1, 0, 'C');
+            $pdf->Cell(35, 10, $giving->transaction, 1, 0, 'C');
+            $pdf->Cell(35, 10, $giving->amount, 1, 0, 'C');
             $pdf->Ln();
             // Add more cells for other candidate data as needed
         }
 
         // Output PDF as download
-        $pdf->Output('candidates.pdf', 'D');
+        $pdf->Output('giving.pdf', 'D');
+    }
     }
 }

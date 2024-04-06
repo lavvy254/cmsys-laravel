@@ -20,6 +20,23 @@ class EventController extends Controller
     {
         return view('pages.admin.events.add', compact('event'));
     }
+    public function edit(Events $event)
+    {
+       
+        return view('pages.admin.events.edit',compact('event'));
+    }
+    public function update(Request $request, Events $event)
+    {
+        $request->validate([
+            'ename' => 'required|string|max:255',
+            'location' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
+            'start_date' => 'required|date|max:255',
+            'end_date' => 'required|date|max:255',
+        ]);
+        $event->update($request->all());
+        return redirect()->route('events.view')->with('success', 'Event added Successfully');
+    }
     public function store(Request $request)
     {
         $request->validate([

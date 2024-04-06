@@ -43,7 +43,6 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 	Route::get('maps', ['as' => 'pages.maps', 'uses' => 'App\Http\Controllers\PageController@maps']);
 	Route::get('tables', ['as' => 'pages.tables', 'uses' => 'App\Http\Controllers\PageController@tables']);
 	Route::get('notifications', ['as' => 'pages.notifications', 'uses' => 'App\Http\Controllers\PageController@notificatioons']);
-
 });
 
 Route::group(['middleware' => ['auth', 'admin']], function () {
@@ -54,7 +53,7 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 	Route::post('/store', [UserController::class, 'store'])->name('user.store');
 	Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('user.delete');
 	Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
-	
+
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
 });
 Route::group(['middleware' => ['auth', 'admin']], function () {
@@ -68,11 +67,12 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 });
 
 Route::group(['middleware' => ['auth', 'admin']], function () {
-	Route::get('/make', [GivingController::class, 'create'])->name('giving.create');
-	Route::post('/keep', [GivingController::class, 'store'])->name('giving.store');
-	Route::post('/event/store',[EventController::class, 'store'])->name('event.store');
+	Route::get('/event/add', [GivingController::class, 'create'])->name('giving.create');
+	Route::post('/giving/store', [GivingController::class, 'store'])->name('giving.store');
+	Route::post('/event/store', [EventController::class, 'store'])->name('event.store');
 	Route::get('/event/add', [EventController::class, 'create'])->name('event.add');
-
+	Route::get('/event/{event}/edit', [EventController::class, 'edit'])->name('event.edit');
+	Route::put('/event/{event}', [EventController::class, 'update'])->name('event.update');
 });
 
 Route::group(['middleware' => ['auth', 'admin']], function () {
@@ -85,23 +85,22 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 	Route::post('/gmembers/store', [GmembersController::class, 'store'])->name('gmembers.store');
 	Route::get('/gmembers/{gmembers}/edit', [GmembersController::class, 'edit'])->name('gmembers.edit');
 	Route::put('/gmembers/{gmembers}', [GmembersController::class, 'update'])->name('gmembers.update');
-	Route::get('/admin/event',[EventController::class,'adminindex'])->name('events.view');
-
+	Route::get('/admin/event', [EventController::class, 'adminindex'])->name('events.view');
 });
 
 
 Route::group(['middleware' => ['auth', 'admin']], function () {
-	
+
 	Route::get('/sermon/create', [SermonController::class, 'create'])->name('sermon.create');
 	Route::post('/sermon/store', [SermonController::class, 'store'])->name('sermon.store');
 	Route::get('/sermon/{sermon}/edit', [SermonController::class, 'edit'])->name('sermon.edit');
 	Route::put('/sermon/{sermon}', [SermonController::class, 'update'])->name('sermon.update');
-    Route::delete('/sermon/{sermon}',[SermonController::class,'destroy'])->name('sermon.delete');
+	Route::delete('/sermon/{sermon}', [SermonController::class, 'destroy'])->name('sermon.delete');
 	Route::get('/snotes/add', [Sermon_notesController::class, 'create'])->name('snote.create');
 	Route::post('/snotes/store', [Sermon_notesController::class, 'store'])->name('snote.store');
 	Route::get('/snotes/{snotes}/edit', [Sermon_notesController::class, 'edit'])->name('snote.edit');
 	Route::put('/snotes/{snotes}', [Sermon_notesController::class, 'update'])->name('snote.update');
-    Route::delete('/snotes/{snotes}',[Sermon_notesController::class,'destroy'])->name('snote.delete');
+	Route::delete('/snotes/{snotes}', [Sermon_notesController::class, 'destroy'])->name('snote.delete');
 });
 
 Route::group(['middleware' => ['auth', 'admin']], function () {
@@ -110,8 +109,7 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 	Route::post('/announcement/store', [AnnouncementController::class, 'store'])->name('announcement.store');
 	Route::get('/announcement/{announcement}/edit', [AnnouncementController::class, 'edit'])->name('announcement.edit');
 	Route::put('/announcement/{announcement}', [AnnouncementController::class, 'update'])->name('announcement.update');
-	Route::delete('/announcemets/{announcement}',[AnnouncementController::class,'destroy'])->name('announcements.delete');
-
+	Route::delete('/announcemets/{announcement}', [AnnouncementController::class, 'destroy'])->name('announcements.delete');
 });
 Route::group(['middleware' => ['auth', 'admin']], function () {
 
@@ -119,7 +117,7 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 	Route::post('/attendance/store', [AttendanceController::class, 'store'])->name('attendance.store');
 	Route::get('/attendance/{attendance}/edit', [AttendanceController::class, 'edit'])->name('attendance.edit');
 	Route::put('/attendance/{attendance}', [AttendanceController::class, 'update'])->name('attendance.update');
-	Route::delete('/attendance/{attendance}',[AttendanceController::class,'destroy'])->name('attendance.delete');
+	Route::delete('/attendance/{attendance}', [AttendanceController::class, 'destroy'])->name('attendance.delete');
 });
 
 //user routes
@@ -128,10 +126,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/sermon', [SermonController::class, 'index'])->name('sermon.view');
 	Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance.view');
 	Route::get('/groupview', [GroupsController::class, 'index'])->name('groups.view');
-	Route::delete('/groups/{groups}',[GroupsController::class,'destroy'])->name('groups.delete');
+	Route::delete('/groups/{groups}', [GroupsController::class, 'destroy'])->name('groups.delete');
 	Route::get('/snotes', [Sermon_notesController::class, 'index'])->name('snote.view');
 	Route::get('/gmembers', [GmembersController::class, 'index'])->name('gmembers.view');
-	Route::delete('/gmembers/{gmember}',[GmembersController::class,'destroy'])->name('gmembers.delete');
+	Route::delete('/gmembers/{gmember}', [GmembersController::class, 'destroy'])->name('gmembers.delete');
 	Route::get('/prayers', [PrayerController::class, 'index'])->name('prayers.index');
 	Route::get('/announcements', [AnnouncementController::class, 'index'])->name('announcement.view');
 	Route::get('/view', [GivingController::class, 'index'])->name('giving.index');
@@ -139,11 +137,11 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/prayerrequest/add', [Prayer_requestController::class, 'create'])->name('prayerrequest.add');
 	Route::get('/prayerrequest/{prayer_request}/edit', [Prayer_requestController::class, 'edit'])->name('prayerrequest.edit');
 	Route::put('/prayerrequest/{prayer_request}', [Prayer_requestController::class, 'update'])->name('prayerrequest.update');
-	Route::get('Events/edit',[EventController::class,'edit'])->name('events.edit');
-	Route::get('Events',[EventController::class,'index'])->name('events.index');
-	
+	Route::get('Events/edit', [EventController::class, 'edit'])->name('events.edit');
+	Route::get('Events', [EventController::class, 'index'])->name('events.index');
+
 	Route::post('/events/{event}/attend', [EventController::class, 'attend'])->name('events.attend');
-	Route::delete('/events/{event}',[EventController::class,'destroy'])->name('events.delete');
+	Route::delete('/events/{event}', [EventController::class, 'destroy'])->name('events.delete');
 	Route::post('/joingroup', [GroupsController::class, 'joingroup'])->name('group.join');
 	Route::get('member/profile', [ProfileController::class, 'edit'])->name('memberprofile');
 	Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -158,9 +156,6 @@ Route::get('/getYearlyAttendanceData', [AttendanceController::class, 'getYearlyA
 Route::get('/getYearlyGivingData', [GivingController::class, 'getYearlyGivingData']);
 Route::get('/getTypeWiseGivingData', [GivingController::class, 'getTypeWiseGivingData']);
 Route::get('/givingview', [GivingController::class, 'index'])->name('giving.view');
-Route::delete('/giving/{giving}',[GivingController::class,'destroy'])->name('givings.delete');
-Route::post('/giving/store',[GivingController::class, 'store'])->name('giving.store');
+Route::delete('/giving/{giving}', [GivingController::class, 'destroy'])->name('givings.delete');
+Route::post('/giving/store', [GivingController::class, 'store'])->name('giving.store');
 Route::get('/giving/print', [GivingController::class, 'printPDF'])->name('giving.print');
-
-
-
