@@ -30,21 +30,21 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'fname' => 'ADMIN',
-            'lname' => 'ADMIN', 
+            'lname' => 'ADMIN',
             'age' => '2000-01-01',
-            'gender' => 'female',
+            'gender' => 'Male',
             'phone' => '0700000000',
-            'email' => 'admin"account.com', 
+            'email' => 'admin"account.com',
             'password' => bcrypt('Admin123.')
         ]);
         User::create([
-            'fname' => 'Lavvy',
-            'lname' => 'Wangeci',
+            'fname' => 'harmony',
+            'lname' => 'lumumba',
             'dob' => '2000-01-01',
-            'phone' => '0758593172',
-            'gender' => 'female',
+            'phone' => '0702486902',
+            'gender' => 'male',
             'roles' => 'admin',
-            'email' => 'wangeci@black.com',
+            'email' => 'lumumbaharmony@gmail.com',
             'password' => bcrypt('secret'),
 
         ]);
