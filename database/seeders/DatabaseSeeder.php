@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
         User::create([
             'fname' => 'ADMIN',
             'lname' => 'ADMIN',
-            'age' => '2000-01-01',
+            'dob' => '2000-01-01',
             'gender' => 'Male',
             'phone' => '0700000000',
             'email' => 'admin"account.com',
